@@ -247,7 +247,7 @@ class ZMQTest (DahomeyTestFramework):
             self.log.info("Skipping reorg test because wallet is disabled")
             return
 
-        address = 'tcp://127.0.0.1:28333'
+        address = 'tcp://127.0.0.1:22022'
 
         # Should only notify the tip if a reorg occurs
         hashblock, hashtx = self.setup_zmq_test(
@@ -301,7 +301,7 @@ class ZMQTest (DahomeyTestFramework):
         <32-byte hash>A<8-byte LE uint> : Transactionhash added mempool
         """
         self.log.info("Testing 'sequence' publisher")
-        [seq] = self.setup_zmq_test([("sequence", "tcp://127.0.0.1:28333")])
+        [seq] = self.setup_zmq_test([("sequence", "tcp://127.0.0.1:22022")])
         self.disconnect_nodes(0, 1)
 
         # Mempool sequence number starts at 1
@@ -447,7 +447,7 @@ class ZMQTest (DahomeyTestFramework):
             return
 
         self.log.info("Testing 'mempool sync' usage of sequence notifier")
-        [seq] = self.setup_zmq_test([("sequence", "tcp://127.0.0.1:28333")])
+        [seq] = self.setup_zmq_test([("sequence", "tcp://127.0.0.1:22022")])
 
         # In-memory counter, should always start at 1
         next_mempool_seq = self.nodes[0].getrawmempool(mempool_sequence=True)["mempool_sequence"]
