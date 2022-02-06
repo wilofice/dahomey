@@ -1,0 +1,7 @@
+[main]
+host = https://www.transifex.com
+
+[dahomey.qt-translation-022x]
+file_filter = src/qt/locale/dahomey_<lang>.xlf
+source_file = src/qt/locale/dahomey_en.xlf
+source_lang = en
