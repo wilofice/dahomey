@@ -5,8 +5,8 @@
 /**
  * Functionality for communicating with Tor.
  */
-#ifndef BITCOIN_TORCONTROL_H
-#define BITCOIN_TORCONTROL_H
+#ifndef DANXOME_TORCONTROL_H
+#define DANXOME_TORCONTROL_H
 
 #include <fs.h>
 #include <netaddress.h>
@@ -157,4 +157,4 @@ public:
     static void reconnect_cb(evutil_socket_t fd, short what, void *arg);
 };
 
-#endif // BITCOIN_TORCONTROL_H
+#endif // DANXOME_TORCONTROL_H

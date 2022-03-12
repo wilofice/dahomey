@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_BITCOINAMOUNTFIELD_H
-#define BITCOIN_QT_BITCOINAMOUNTFIELD_H
+#ifndef DANXOME_QT_DANXOMEAMOUNTFIELD_H
+#define DANXOME_QT_DANXOMEAMOUNTFIELD_H
 
 #include <consensus/amount.h>
 
@@ -81,4 +81,4 @@ private Q_SLOTS:
 
 };
 
-#endif // BITCOIN_QT_BITCOINAMOUNTFIELD_H
+#endif // DANXOME_QT_DANXOMEAMOUNTFIELD_H

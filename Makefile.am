@@ -16,20 +16,20 @@ endif
 
 export PYTHONPATH
 
-if BUILD_BITCOIN_LIBS
+if BUILD_DANXOME_LIBS
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libdanxomeconsensus.pc
 endif
 
-BITCOIND_BIN=$(top_builddir)/src/$(BITCOIN_DAEMON_NAME)$(EXEEXT)
-BITCOIN_QT_BIN=$(top_builddir)/src/qt/$(BITCOIN_GUI_NAME)$(EXEEXT)
-BITCOIN_CLI_BIN=$(top_builddir)/src/$(BITCOIN_CLI_NAME)$(EXEEXT)
-BITCOIN_TX_BIN=$(top_builddir)/src/$(BITCOIN_TX_NAME)$(EXEEXT)
-BITCOIN_UTIL_BIN=$(top_builddir)/src/$(BITCOIN_UTIL_NAME)$(EXEEXT)
-BITCOIN_WALLET_BIN=$(top_builddir)/src/$(BITCOIN_WALLET_TOOL_NAME)$(EXEEXT)
-BITCOIN_NODE_BIN=$(top_builddir)/src/$(BITCOIN_MP_NODE_NAME)$(EXEEXT)
-BITCOIN_GUI_BIN=$(top_builddir)/src/$(BITCOIN_MP_GUI_NAME)$(EXEEXT)
-BITCOIN_WIN_INSTALLER=$(PACKAGE)-$(PACKAGE_VERSION)-win64-setup$(EXEEXT)
+DANXOMED_BIN=$(top_builddir)/src/$(DANXOME_DAEMON_NAME)$(EXEEXT)
+DANXOME_QT_BIN=$(top_builddir)/src/qt/$(DANXOME_GUI_NAME)$(EXEEXT)
+DANXOME_CLI_BIN=$(top_builddir)/src/$(DANXOME_CLI_NAME)$(EXEEXT)
+DANXOME_TX_BIN=$(top_builddir)/src/$(DANXOME_TX_NAME)$(EXEEXT)
+DANXOME_UTIL_BIN=$(top_builddir)/src/$(DANXOME_UTIL_NAME)$(EXEEXT)
+DANXOME_WALLET_BIN=$(top_builddir)/src/$(DANXOME_WALLET_TOOL_NAME)$(EXEEXT)
+DANXOME_NODE_BIN=$(top_builddir)/src/$(DANXOME_MP_NODE_NAME)$(EXEEXT)
+DANXOME_GUI_BIN=$(top_builddir)/src/$(DANXOME_MP_GUI_NAME)$(EXEEXT)
+DANXOME_WIN_INSTALLER=$(PACKAGE)-$(PACKAGE_VERSION)-win64-setup$(EXEEXT)
 
 empty :=
 space := $(empty) $(empty)
@@ -76,19 +76,19 @@ dist-hook:
 	-$(GIT) archive --format=tar HEAD -- src/clientversion.cpp | $(AMTAR) -C $(top_distdir) -xf -
 
 if TARGET_WINDOWS
-$(BITCOIN_WIN_INSTALLER): all-recursive
+$(DANXOME_WIN_INSTALLER): all-recursive
 	$(MKDIR_P) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(BITCOIND_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(BITCOIN_QT_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(BITCOIN_CLI_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(BITCOIN_TX_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(BITCOIN_WALLET_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(BITCOIN_UTIL_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(DANXOMED_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(DANXOME_QT_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(DANXOME_CLI_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(DANXOME_TX_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(DANXOME_WALLET_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(DANXOME_UTIL_BIN) $(top_builddir)/release
 	@test -f $(MAKENSIS) && echo 'OutFile "$@"' | cat $(top_builddir)/share/setup.nsi - | $(MAKENSIS) -V2 - || \
 	  echo error: could not build $@
 	@echo built $@
 
-deploy: $(BITCOIN_WIN_INSTALLER)
+deploy: $(DANXOME_WIN_INSTALLER)
 endif
 
 if TARGET_DARWIN
@@ -110,7 +110,7 @@ $(OSX_APP)/Contents/Resources/danxome.icns: $(OSX_INSTALLER_ICONS)
 
 $(OSX_APP)/Contents/MacOS/Danxome-Qt: all-recursive
 	$(MKDIR_P) $(@D)
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $(BITCOIN_QT_BIN) $@
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $(DANXOME_QT_BIN) $@
 
 $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings:
 	$(MKDIR_P) $(@D)
@@ -158,28 +158,28 @@ appbundle: $(OSX_APP_BUILT)
 deploy: $(OSX_DMG)
 endif
 
-$(BITCOIN_QT_BIN): FORCE
+$(DANXOME_QT_BIN): FORCE
 	$(MAKE) -C src qt/$(@F)
 
-$(BITCOIND_BIN): FORCE
+$(DANXOMED_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
-$(BITCOIN_CLI_BIN): FORCE
+$(DANXOME_CLI_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
-$(BITCOIN_TX_BIN): FORCE
+$(DANXOME_TX_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
-$(BITCOIN_UTIL_BIN): FORCE
+$(DANXOME_UTIL_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
-$(BITCOIN_WALLET_BIN): FORCE
+$(DANXOME_WALLET_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
-$(BITCOIN_NODE_BIN): FORCE
+$(DANXOME_NODE_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
-$(BITCOIN_GUI_BIN): FORCE
+$(DANXOME_GUI_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
 if USE_LCOV
@@ -329,7 +329,7 @@ EXTRA_DIST += \
     test/util/data/txcreatesignv2.hex \
     test/util/rpcauth-test.py
 
-CLEANFILES = $(OSX_DMG) $(BITCOIN_WIN_INSTALLER)
+CLEANFILES = $(OSX_DMG) $(DANXOME_WIN_INSTALLER)
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-man
 

@@ -7,8 +7,8 @@
 #error This header can only be compiled as C++.
 #endif
 
-#ifndef BITCOIN_PROTOCOL_H
-#define BITCOIN_PROTOCOL_H
+#ifndef DANXOME_PROTOCOL_H
+#define DANXOME_PROTOCOL_H
 
 #include <netaddress.h>
 #include <primitives/transaction.h>
@@ -511,4 +511,4 @@ public:
 /** Convert a TX/WITNESS_TX/WTX CInv to a GenTxid. */
 GenTxid ToGenTxid(const CInv& inv);
 
-#endif // BITCOIN_PROTOCOL_H
+#endif // DANXOME_PROTOCOL_H

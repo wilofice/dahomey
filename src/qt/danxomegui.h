@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_BITCOINGUI_H
-#define BITCOIN_QT_BITCOINGUI_H
+#ifndef DANXOME_QT_DANXOMEGUI_H
+#define DANXOME_QT_DANXOMEGUI_H
 
 #if defined(HAVE_CONFIG_H)
 #include <config/danxome-config.h>
@@ -356,4 +356,4 @@ private Q_SLOTS:
     void onMenuSelection(QAction* action);
 };
 
-#endif // BITCOIN_QT_BITCOINGUI_H
+#endif // DANXOME_QT_DANXOMEGUI_H

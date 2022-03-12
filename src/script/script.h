@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_SCRIPT_SCRIPT_H
-#define BITCOIN_SCRIPT_SCRIPT_H
+#ifndef DANXOME_SCRIPT_SCRIPT_H
+#define DANXOME_SCRIPT_SCRIPT_H
 
 #include <attributes.h>
 #include <crypto/common.h>
@@ -573,4 +573,4 @@ struct CScriptWitness
 /** Test for OP_SUCCESSx opcodes as defined by BIP342. */
 bool IsOpSuccess(const opcodetype& opcode);
 
-#endif // BITCOIN_SCRIPT_SCRIPT_H
+#endif // DANXOME_SCRIPT_SCRIPT_H

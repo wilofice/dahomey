@@ -391,7 +391,7 @@ def main():
 
     logging.debug("Temporary test directory at %s" % tmpdir)
 
-    enable_danxomed = config["components"].getboolean("ENABLE_BITCOIND")
+    enable_danxomed = config["components"].getboolean("ENABLE_DANXOMED")
 
     if not enable_danxomed:
         print("No functional tests to run.")

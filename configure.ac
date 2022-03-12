@@ -19,15 +19,15 @@ if test "$PKG_CONFIG" = ""; then
   AC_MSG_ERROR([pkg-config not found])
 fi
 
-BITCOIN_DAEMON_NAME=danxomed
-BITCOIN_GUI_NAME=danxome-qt
-BITCOIN_CLI_NAME=danxome-cli
-BITCOIN_TX_NAME=danxome-tx
-BITCOIN_UTIL_NAME=danxome-util
-BITCOIN_WALLET_TOOL_NAME=danxome-wallet
+DANXOME_DAEMON_NAME=danxomed
+DANXOME_GUI_NAME=danxome-qt
+DANXOME_CLI_NAME=danxome-cli
+DANXOME_TX_NAME=danxome-tx
+DANXOME_UTIL_NAME=danxome-util
+DANXOME_WALLET_TOOL_NAME=danxome-wallet
 dnl Multi Process
-BITCOIN_MP_NODE_NAME=danxome-node
-BITCOIN_MP_GUI_NAME=danxome-gui
+DANXOME_MP_NODE_NAME=danxome-node
+DANXOME_MP_GUI_NAME=danxome-gui
 
 dnl Unless the user specified ARFLAGS, force it to be cr
 AC_ARG_VAR([ARFLAGS], [Flags for the archiver, defaults to <cr> if not set])
@@ -37,9 +37,9 @@ fi
 
 AC_CANONICAL_HOST
 
-AH_TOP([#ifndef BITCOIN_CONFIG_H])
-AH_TOP([#define BITCOIN_CONFIG_H])
-AH_BOTTOM([#endif //BITCOIN_CONFIG_H])
+AH_TOP([#ifndef DANXOME_CONFIG_H])
+AH_TOP([#define DANXOME_CONFIG_H])
+AH_BOTTOM([#endif //DANXOME_CONFIG_H])
 
 dnl faketime breaks configure and is only needed for make. Disable it here.
 unset FAKETIME
@@ -694,7 +694,7 @@ case $host in
 
          if test "$use_bdb" != "no" && $BREW list --versions berkeley-db@4 >/dev/null && test "$BDB_CFLAGS" = "" && test "$BDB_LIBS" = ""; then
            bdb_prefix=$($BREW --prefix berkeley-db@4 2>/dev/null)
-           dnl This must precede the call to BITCOIN_FIND_BDB48 below.
+           dnl This must precede the call to DANXOME_FIND_BDB48 below.
            BDB_CFLAGS="-I$bdb_prefix/include"
            BDB_LIBS="-L$bdb_prefix/lib -ldb_cxx-4.8"
          fi
@@ -1283,10 +1283,10 @@ if test "$enable_fuzz" = "yes"; then
       */ int not_main() {
      ]])])
 else
-  BITCOIN_QT_INIT
+  DANXOME_QT_INIT
 
   dnl sets $danxome_enable_qt, $danxome_enable_qt_test, $danxome_enable_qt_dbus
-  BITCOIN_QT_CONFIGURE([5.9.5])
+  DANXOME_QT_CONFIGURE([5.9.5])
 
   dnl Keep a copy of the original $QT_INCLUDES and use it when invoking qt's moc
   QT_INCLUDES_UNSUPPRESSED=$QT_INCLUDES
@@ -1302,7 +1302,7 @@ fi
 if test "$enable_wallet" != "no"; then
     dnl Check for libdb_cxx only if wallet enabled
     if test "$use_bdb" != "no"; then
-      BITCOIN_FIND_BDB48
+      DANXOME_FIND_BDB48
       if test "$suppress_external_warnings" != "no" ; then
         BDB_CPPFLAGS=SUPPRESS_WARNINGS($BDB_CPPFLAGS)
       fi
@@ -1537,7 +1537,7 @@ fi
 dnl QR Code encoding library check
 
 if test "$use_qr" != "no"; then
-  BITCOIN_QT_CHECK([PKG_CHECK_MODULES([QR], [libqrencode], [have_qrencode=yes], [have_qrencode=no])])
+  DANXOME_QT_CHECK([PKG_CHECK_MODULES([QR], [libqrencode], [have_qrencode=yes], [have_qrencode=no])])
 fi
 
 dnl ZMQ check
@@ -1587,8 +1587,8 @@ else
 fi
 
 AM_CONDITIONAL([BUILD_MULTIPROCESS], [test "$build_multiprocess" = "yes"])
-AM_CONDITIONAL([BUILD_BITCOIN_NODE], [test "$build_multiprocess" = "yes"])
-AM_CONDITIONAL([BUILD_BITCOIN_GUI], [test "$build_multiprocess" = "yes"])
+AM_CONDITIONAL([BUILD_DANXOME_NODE], [test "$build_multiprocess" = "yes"])
+AM_CONDITIONAL([BUILD_DANXOME_GUI], [test "$build_multiprocess" = "yes"])
 
 dnl codegen tools check
 
@@ -1602,27 +1602,27 @@ if test "$build_multiprocess" != "no"; then
 fi
 
 AC_MSG_CHECKING([whether to build danxomed])
-AM_CONDITIONAL([BUILD_BITCOIND], [test $build_danxomed = "yes"])
+AM_CONDITIONAL([BUILD_DANXOMED], [test $build_danxomed = "yes"])
 AC_MSG_RESULT($build_danxomed)
 
 AC_MSG_CHECKING([whether to build danxome-cli])
-AM_CONDITIONAL([BUILD_BITCOIN_CLI], [test $build_danxome_cli = "yes"])
+AM_CONDITIONAL([BUILD_DANXOME_CLI], [test $build_danxome_cli = "yes"])
 AC_MSG_RESULT($build_danxome_cli)
 
 AC_MSG_CHECKING([whether to build danxome-tx])
-AM_CONDITIONAL([BUILD_BITCOIN_TX], [test $build_danxome_tx = "yes"])
+AM_CONDITIONAL([BUILD_DANXOME_TX], [test $build_danxome_tx = "yes"])
 AC_MSG_RESULT($build_danxome_tx)
 
 AC_MSG_CHECKING([whether to build danxome-wallet])
-AM_CONDITIONAL([BUILD_BITCOIN_WALLET], [test $build_danxome_wallet = "yes"])
+AM_CONDITIONAL([BUILD_DANXOME_WALLET], [test $build_danxome_wallet = "yes"])
 AC_MSG_RESULT($build_danxome_wallet)
 
 AC_MSG_CHECKING([whether to build danxome-util])
-AM_CONDITIONAL([BUILD_BITCOIN_UTIL], [test $build_danxome_util = "yes"])
+AM_CONDITIONAL([BUILD_DANXOME_UTIL], [test $build_danxome_util = "yes"])
 AC_MSG_RESULT($build_danxome_util)
 
 AC_MSG_CHECKING([whether to build libraries])
-AM_CONDITIONAL([BUILD_BITCOIN_LIBS], [test $build_danxome_libs = "yes"])
+AM_CONDITIONAL([BUILD_DANXOME_LIBS], [test $build_danxome_libs = "yes"])
 if test "$build_danxome_libs" = "yes"; then
   AC_DEFINE([HAVE_CONSENSUS_LIB], [1], [Define this symbol if the consensus lib has been built])
   AC_CONFIG_FILES([libdanxomeconsensus.pc:libdanxomeconsensus.pc.in])
@@ -1834,14 +1834,14 @@ AC_SUBST(COPYRIGHT_YEAR, _COPYRIGHT_YEAR)
 AC_SUBST(COPYRIGHT_HOLDERS, "_COPYRIGHT_HOLDERS")
 AC_SUBST(COPYRIGHT_HOLDERS_SUBSTITUTION, "_COPYRIGHT_HOLDERS_SUBSTITUTION")
 AC_SUBST(COPYRIGHT_HOLDERS_FINAL, "_COPYRIGHT_HOLDERS_FINAL")
-AC_SUBST(BITCOIN_DAEMON_NAME)
-AC_SUBST(BITCOIN_GUI_NAME)
-AC_SUBST(BITCOIN_CLI_NAME)
-AC_SUBST(BITCOIN_TX_NAME)
-AC_SUBST(BITCOIN_UTIL_NAME)
-AC_SUBST(BITCOIN_WALLET_TOOL_NAME)
-AC_SUBST(BITCOIN_MP_NODE_NAME)
-AC_SUBST(BITCOIN_MP_GUI_NAME)
+AC_SUBST(DANXOME_DAEMON_NAME)
+AC_SUBST(DANXOME_GUI_NAME)
+AC_SUBST(DANXOME_CLI_NAME)
+AC_SUBST(DANXOME_TX_NAME)
+AC_SUBST(DANXOME_UTIL_NAME)
+AC_SUBST(DANXOME_WALLET_TOOL_NAME)
+AC_SUBST(DANXOME_MP_NODE_NAME)
+AC_SUBST(DANXOME_MP_GUI_NAME)
 
 AC_SUBST(RELDFLAGS)
 AC_SUBST(DEBUG_CPPFLAGS)

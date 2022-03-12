@@ -15,40 +15,40 @@ AM_LIBTOOLFLAGS = --preserve-dup-deps
 PTHREAD_FLAGS = $(PTHREAD_CFLAGS) $(PTHREAD_LIBS)
 EXTRA_LIBRARIES =
 
-BITCOIN_INCLUDES=-I$(builddir) -I$(srcdir)/$(MINISKETCH_INCLUDE_DIR_INT) -I$(srcdir)/secp256k1/include -I$(srcdir)/$(UNIVALUE_INCLUDE_DIR_INT) $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS)
+DANXOME_INCLUDES=-I$(builddir) -I$(srcdir)/$(MINISKETCH_INCLUDE_DIR_INT) -I$(srcdir)/secp256k1/include -I$(srcdir)/$(UNIVALUE_INCLUDE_DIR_INT) $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS)
 
-LIBBITCOIN_NODE=libdanxome_node.a
-LIBBITCOIN_COMMON=libdanxome_common.a
-LIBBITCOIN_CONSENSUS=libdanxome_consensus.a
-LIBBITCOIN_CLI=libdanxome_cli.a
-LIBBITCOIN_UTIL=libdanxome_util.a
-LIBBITCOIN_CRYPTO_BASE=crypto/libdanxome_crypto_base.a
-LIBBITCOINQT=qt/libdanxomeqt.a
+LIBDANXOME_NODE=libdanxome_node.a
+LIBDANXOME_COMMON=libdanxome_common.a
+LIBDANXOME_CONSENSUS=libdanxome_consensus.a
+LIBDANXOME_CLI=libdanxome_cli.a
+LIBDANXOME_UTIL=libdanxome_util.a
+LIBDANXOME_CRYPTO_BASE=crypto/libdanxome_crypto_base.a
+LIBDANXOMEQT=qt/libdanxomeqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBBITCOIN_ZMQ=libdanxome_zmq.a
+LIBDANXOME_ZMQ=libdanxome_zmq.a
 endif
-if BUILD_BITCOIN_LIBS
-LIBBITCOINCONSENSUS=libdanxomeconsensus.la
+if BUILD_DANXOME_LIBS
+LIBDANXOMECONSENSUS=libdanxomeconsensus.la
 endif
 if ENABLE_WALLET
-LIBBITCOIN_WALLET=libdanxome_wallet.a
-LIBBITCOIN_WALLET_TOOL=libdanxome_wallet_tool.a
+LIBDANXOME_WALLET=libdanxome_wallet.a
+LIBDANXOME_WALLET_TOOL=libdanxome_wallet_tool.a
 endif
 
-LIBBITCOIN_CRYPTO= $(LIBBITCOIN_CRYPTO_BASE)
+LIBDANXOME_CRYPTO= $(LIBDANXOME_CRYPTO_BASE)
 if ENABLE_SSE41
-LIBBITCOIN_CRYPTO_SSE41 = crypto/libdanxome_crypto_sse41.a
-LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_SSE41)
+LIBDANXOME_CRYPTO_SSE41 = crypto/libdanxome_crypto_sse41.a
+LIBDANXOME_CRYPTO += $(LIBDANXOME_CRYPTO_SSE41)
 endif
 if ENABLE_AVX2
-LIBBITCOIN_CRYPTO_AVX2 = crypto/libdanxome_crypto_avx2.a
-LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_AVX2)
+LIBDANXOME_CRYPTO_AVX2 = crypto/libdanxome_crypto_avx2.a
+LIBDANXOME_CRYPTO += $(LIBDANXOME_CRYPTO_AVX2)
 endif
 if ENABLE_SHANI
-LIBBITCOIN_CRYPTO_SHANI = crypto/libdanxome_crypto_shani.a
-LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_SHANI)
+LIBDANXOME_CRYPTO_SHANI = crypto/libdanxome_crypto_shani.a
+LIBDANXOME_CRYPTO += $(LIBDANXOME_CRYPTO_SHANI)
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(wildcard secp256k1/include/*)
@@ -57,18 +57,18 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(w
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBBITCOIN_CRYPTO) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_NODE) \
-  $(LIBBITCOIN_CLI) \
-  $(LIBBITCOIN_IPC) \
-  $(LIBBITCOIN_WALLET) \
-  $(LIBBITCOIN_WALLET_TOOL) \
-  $(LIBBITCOIN_ZMQ)
+  $(LIBDANXOME_CRYPTO) \
+  $(LIBDANXOME_UTIL) \
+  $(LIBDANXOME_COMMON) \
+  $(LIBDANXOME_CONSENSUS) \
+  $(LIBDANXOME_NODE) \
+  $(LIBDANXOME_CLI) \
+  $(LIBDANXOME_IPC) \
+  $(LIBDANXOME_WALLET) \
+  $(LIBDANXOME_WALLET_TOOL) \
+  $(LIBDANXOME_ZMQ)
 
-lib_LTLIBRARIES = $(LIBBITCOINCONSENSUS)
+lib_LTLIBRARIES = $(LIBDANXOMECONSENSUS)
 noinst_LTLIBRARIES =
 
 bin_PROGRAMS =
@@ -76,35 +76,35 @@ noinst_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-if BUILD_BITCOIND
+if BUILD_DANXOMED
   bin_PROGRAMS += danxomed
 endif
 
-if BUILD_BITCOIN_NODE
+if BUILD_DANXOME_NODE
   bin_PROGRAMS += danxome-node
 endif
 
-if BUILD_BITCOIN_CLI
+if BUILD_DANXOME_CLI
   bin_PROGRAMS += danxome-cli
 endif
 
-if BUILD_BITCOIN_TX
+if BUILD_DANXOME_TX
   bin_PROGRAMS += danxome-tx
 endif
 
 if ENABLE_WALLET
-if BUILD_BITCOIN_WALLET
+if BUILD_DANXOME_WALLET
   bin_PROGRAMS += danxome-wallet
 endif
 endif
 
-if BUILD_BITCOIN_UTIL
+if BUILD_DANXOME_UTIL
   bin_PROGRAMS += danxome-util
 endif
 
 .PHONY: FORCE check-symbols check-security
 # danxome core #
-BITCOIN_CORE_H = \
+DANXOME_CORE_H = \
   addrdb.h \
   addrman.h \
   addrman_impl.h \
@@ -318,7 +318,7 @@ ipc/capnp/libdanxome_ipc_a-ipc.$(OBJEXT): $(libdanxome_ipc_mpgen_input:=.h)
 # Contains code accessing mempool and chain state that is meant to be separated
 # from wallet and gui code (see node/README.md). Shared code should go in
 # libdanxome_common or libdanxome_util libraries, instead.
-libdanxome_node_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(NATPMP_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libdanxome_node_a_CPPFLAGS = $(AM_CPPFLAGS) $(DANXOME_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(NATPMP_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libdanxome_node_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libdanxome_node_a_SOURCES = \
   addrdb.cpp \
@@ -380,7 +380,7 @@ libdanxome_node_a_SOURCES = \
   validation.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  $(BITCOIN_CORE_H)
+  $(DANXOME_CORE_H)
 
 if ENABLE_WALLET
 libdanxome_node_a_SOURCES += wallet/init.cpp
@@ -390,7 +390,7 @@ libdanxome_node_a_SOURCES += dummywallet.cpp
 endif
 
 if ENABLE_ZMQ
-libdanxome_zmq_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
+libdanxome_zmq_a_CPPFLAGS = $(AM_CPPFLAGS) $(DANXOME_INCLUDES) $(ZMQ_CFLAGS)
 libdanxome_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libdanxome_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
@@ -403,7 +403,7 @@ endif
 
 # wallet: shared between danxomed and danxome-qt, but only linked
 # when wallet enabled
-libdanxome_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(SQLITE_CFLAGS)
+libdanxome_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(DANXOME_INCLUDES) $(SQLITE_CFLAGS)
 libdanxome_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libdanxome_wallet_a_SOURCES = \
   wallet/coincontrol.cpp \
@@ -433,7 +433,7 @@ libdanxome_wallet_a_SOURCES = \
   wallet/walletdb.cpp \
   wallet/walletutil.cpp \
   wallet/coinselection.cpp \
-  $(BITCOIN_CORE_H)
+  $(DANXOME_CORE_H)
 
 if USE_SQLITE
 libdanxome_wallet_a_SOURCES += wallet/sqlite.cpp
@@ -442,11 +442,11 @@ if USE_BDB
 libdanxome_wallet_a_SOURCES += wallet/bdb.cpp wallet/salvage.cpp
 endif
 
-libdanxome_wallet_tool_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libdanxome_wallet_tool_a_CPPFLAGS = $(AM_CPPFLAGS) $(DANXOME_INCLUDES)
 libdanxome_wallet_tool_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libdanxome_wallet_tool_a_SOURCES = \
   wallet/wallettool.cpp \
-  $(BITCOIN_CORE_H)
+  $(DANXOME_CORE_H)
 
 # crypto primitives library
 crypto_libdanxome_crypto_base_a_CPPFLAGS = $(AM_CPPFLAGS)
@@ -505,7 +505,7 @@ crypto_libdanxome_crypto_shani_a_CPPFLAGS += -DENABLE_SHANI
 crypto_libdanxome_crypto_shani_a_SOURCES = crypto/sha256_shani.cpp
 
 # consensus: shared between all executables that validate any consensus rules.
-libdanxome_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libdanxome_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(DANXOME_INCLUDES)
 libdanxome_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libdanxome_consensus_a_SOURCES = \
   arith_uint256.cpp \
@@ -542,7 +542,7 @@ libdanxome_consensus_a_SOURCES = \
   version.h
 
 # common: shared between danxomed, and danxome-qt and non-server tools
-libdanxome_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libdanxome_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(DANXOME_INCLUDES)
 libdanxome_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libdanxome_common_a_SOURCES = \
   base58.cpp \
@@ -577,12 +577,12 @@ libdanxome_common_a_SOURCES = \
   script/signingprovider.cpp \
   script/standard.cpp \
   warnings.cpp \
-  $(BITCOIN_CORE_H)
+  $(DANXOME_CORE_H)
 
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # sanity checks are linked.
-libdanxome_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libdanxome_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(DANXOME_INCLUDES)
 libdanxome_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libdanxome_util_a_SOURCES = \
   support/lockedpool.cpp \
@@ -624,27 +624,27 @@ libdanxome_util_a_SOURCES = \
   util/syscall_sandbox.cpp \
   util/time.cpp \
   util/tokenpipe.cpp \
-  $(BITCOIN_CORE_H)
+  $(DANXOME_CORE_H)
 
 if USE_LIBEVENT
 libdanxome_util_a_SOURCES += util/url.cpp
 endif
 
 # cli: shared between danxome-cli and danxome-qt
-libdanxome_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libdanxome_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(DANXOME_INCLUDES)
 libdanxome_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libdanxome_cli_a_SOURCES = \
   compat/stdin.h \
   compat/stdin.cpp \
   rpc/client.cpp \
-  $(BITCOIN_CORE_H)
+  $(DANXOME_CORE_H)
 
 nodist_libdanxome_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # danxomed & danxome-node binaries #
 danxome_daemon_sources = danxomed.cpp
-danxome_bin_cppflags = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+danxome_bin_cppflags = $(AM_CPPFLAGS) $(DANXOME_INCLUDES)
 danxome_bin_cxxflags = $(AM_CXXFLAGS) $(PIE_FLAGS)
 danxome_bin_ldflags = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
@@ -653,13 +653,13 @@ danxome_daemon_sources += danxomed-res.rc
 endif
 
 danxome_bin_ldadd = \
-  $(LIBBITCOIN_WALLET) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UTIL) \
+  $(LIBDANXOME_WALLET) \
+  $(LIBDANXOME_COMMON) \
+  $(LIBDANXOME_UTIL) \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_ZMQ) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
+  $(LIBDANXOME_ZMQ) \
+  $(LIBDANXOME_CONSENSUS) \
+  $(LIBDANXOME_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBLEVELDB_SSE42) \
   $(LIBMEMENV) \
@@ -671,17 +671,17 @@ danxomed_SOURCES = $(danxome_daemon_sources) init/danxomed.cpp
 danxomed_CPPFLAGS = $(danxome_bin_cppflags)
 danxomed_CXXFLAGS = $(danxome_bin_cxxflags)
 danxomed_LDFLAGS = $(danxome_bin_ldflags)
-danxomed_LDADD = $(LIBBITCOIN_NODE) $(danxome_bin_ldadd)
+danxomed_LDADD = $(LIBDANXOME_NODE) $(danxome_bin_ldadd)
 
 danxome_node_SOURCES = $(danxome_daemon_sources) init/danxome-node.cpp
 danxome_node_CPPFLAGS = $(danxome_bin_cppflags)
 danxome_node_CXXFLAGS = $(danxome_bin_cxxflags)
 danxome_node_LDFLAGS = $(danxome_bin_ldflags)
-danxome_node_LDADD = $(LIBBITCOIN_NODE) $(danxome_bin_ldadd) $(LIBBITCOIN_IPC) $(LIBMULTIPROCESS_LIBS)
+danxome_node_LDADD = $(LIBDANXOME_NODE) $(danxome_bin_ldadd) $(LIBDANXOME_IPC) $(LIBMULTIPROCESS_LIBS)
 
 # danxome-cli binary #
 danxome_cli_SOURCES = danxome-cli.cpp
-danxome_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+danxome_cli_CPPFLAGS = $(AM_CPPFLAGS) $(DANXOME_INCLUDES) $(EVENT_CFLAGS)
 danxome_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 danxome_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
@@ -690,17 +690,17 @@ danxome_cli_SOURCES += danxome-cli-res.rc
 endif
 
 danxome_cli_LDADD = \
-  $(LIBBITCOIN_CLI) \
+  $(LIBDANXOME_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_CRYPTO)
+  $(LIBDANXOME_UTIL) \
+  $(LIBDANXOME_CRYPTO)
 
 danxome_cli_LDADD += $(BOOST_LIBS) $(EVENT_LIBS)
 #
 
 # danxome-tx binary #
 danxome_tx_SOURCES = danxome-tx.cpp
-danxome_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+danxome_tx_CPPFLAGS = $(AM_CPPFLAGS) $(DANXOME_INCLUDES)
 danxome_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 danxome_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
@@ -710,10 +710,10 @@ endif
 
 danxome_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
+  $(LIBDANXOME_COMMON) \
+  $(LIBDANXOME_UTIL) \
+  $(LIBDANXOME_CONSENSUS) \
+  $(LIBDANXOME_CRYPTO) \
   $(LIBSECP256K1)
 
 danxome_tx_LDADD += $(BOOST_LIBS)
@@ -726,13 +726,13 @@ danxome_wallet_CPPFLAGS = $(danxome_bin_cppflags)
 danxome_wallet_CXXFLAGS = $(danxome_bin_cxxflags)
 danxome_wallet_LDFLAGS = $(danxome_bin_ldflags)
 danxome_wallet_LDADD = \
-  $(LIBBITCOIN_WALLET_TOOL) \
-  $(LIBBITCOIN_WALLET) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UTIL) \
+  $(LIBDANXOME_WALLET_TOOL) \
+  $(LIBDANXOME_WALLET) \
+  $(LIBDANXOME_COMMON) \
+  $(LIBDANXOME_UTIL) \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
+  $(LIBDANXOME_CONSENSUS) \
+  $(LIBDANXOME_CRYPTO) \
   $(LIBSECP256K1) \
   $(BOOST_LIBS) \
   $(BDB_LIBS) \
@@ -745,7 +745,7 @@ endif
 
 # danxome-util binary #
 danxome_util_SOURCES = danxome-util.cpp
-danxome_util_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+danxome_util_CPPFLAGS = $(AM_CPPFLAGS) $(DANXOME_INCLUDES)
 danxome_util_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 danxome_util_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
@@ -754,24 +754,24 @@ danxome_util_SOURCES += danxome-util-res.rc
 endif
 
 danxome_util_LDADD = \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UTIL) \
+  $(LIBDANXOME_COMMON) \
+  $(LIBDANXOME_UTIL) \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
+  $(LIBDANXOME_CONSENSUS) \
+  $(LIBDANXOME_CRYPTO) \
   $(LIBSECP256K1)
 
 danxome_util_LDADD += $(BOOST_LIBS)
 #
 
 # danxomeconsensus library #
-if BUILD_BITCOIN_LIBS
+if BUILD_DANXOME_LIBS
 include_HEADERS = script/danxomeconsensus.h
 libdanxomeconsensus_la_SOURCES = support/cleanse.cpp $(crypto_libdanxome_crypto_base_a_SOURCES) $(libdanxome_consensus_a_SOURCES)
 
 libdanxomeconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
 libdanxomeconsensus_la_LIBADD = $(LIBSECP256K1)
-libdanxomeconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
+libdanxomeconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_DANXOME_INTERNAL
 libdanxomeconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
@@ -843,7 +843,7 @@ EXTRA_DIST += $(libdanxome_ipc_mpgen_input)
 %.capnp:
 
 if BUILD_MULTIPROCESS
-LIBBITCOIN_IPC=libdanxome_ipc.a
+LIBDANXOME_IPC=libdanxome_ipc.a
 libdanxome_ipc_a_SOURCES = \
   ipc/capnp/context.h \
   ipc/capnp/init-types.h \
@@ -855,7 +855,7 @@ libdanxome_ipc_a_SOURCES = \
   ipc/process.cpp \
   ipc/process.h \
   ipc/protocol.h
-libdanxome_ipc_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libdanxome_ipc_a_CPPFLAGS = $(AM_CPPFLAGS) $(DANXOME_INCLUDES)
 libdanxome_ipc_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(LIBMULTIPROCESS_CFLAGS)
 
 include $(MPGEN_PREFIX)/include/mpgen.mk

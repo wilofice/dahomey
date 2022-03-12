@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_UTIL_TOKENPIPE_H
-#define BITCOIN_UTIL_TOKENPIPE_H
+#ifndef DANXOME_UTIL_TOKENPIPE_H
+#define DANXOME_UTIL_TOKENPIPE_H
 
 #ifndef WIN32
 
@@ -124,4 +124,4 @@ public:
 
 #endif // WIN32
 
-#endif // BITCOIN_UTIL_TOKENPIPE_H
+#endif // DANXOME_UTIL_TOKENPIPE_H

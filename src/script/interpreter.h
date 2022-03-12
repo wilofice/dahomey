@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_SCRIPT_INTERPRETER_H
-#define BITCOIN_SCRIPT_INTERPRETER_H
+#ifndef DANXOME_SCRIPT_INTERPRETER_H
+#define DANXOME_SCRIPT_INTERPRETER_H
 
 #include <hash.h>
 #include <script/script_error.h>
@@ -348,4 +348,4 @@ bool CheckMinimalPush(const std::vector<unsigned char>& data, opcodetype opcode)
 
 int FindAndDelete(CScript& script, const CScript& b);
 
-#endif // BITCOIN_SCRIPT_INTERPRETER_H
+#endif // DANXOME_SCRIPT_INTERPRETER_H

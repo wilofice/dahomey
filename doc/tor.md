@@ -1,4 +1,4 @@
-# TOR SUPPORT IN BITCOIN
+# TOR SUPPORT IN DANXOME
 
 It is possible to run Danxome Core as a Tor onion service, and connect to such services.
 

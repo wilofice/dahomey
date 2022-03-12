@@ -36,8 +36,8 @@
 #include <QStringList>
 #include <QUrlQuery>
 
-const int BITCOIN_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
-const QString BITCOIN_IPC_PREFIX("danxome:");
+const int DANXOME_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
+const QString DANXOME_IPC_PREFIX("danxome:");
 
 //
 // Create a name that is unique for:
@@ -85,7 +85,7 @@ void PaymentServer::ipcParseCommandLine(int argc, char* argv[])
         // network as that would require fetching and parsing the payment request.
         // That means clicking such an URI which contains a testnet payment request
         // will start a mainnet instance and throw a "wrong network" error.
-        if (arg.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // danxome: URI
+        if (arg.startsWith(DANXOME_IPC_PREFIX, Qt::CaseInsensitive)) // danxome: URI
         {
             if (savedPaymentRequests.contains(arg)) continue;
             savedPaymentRequests.insert(arg);
@@ -121,7 +121,7 @@ bool PaymentServer::ipcSendCommandLine()
     {
         QLocalSocket* socket = new QLocalSocket();
         socket->connectToServer(ipcServerName(), QIODevice::WriteOnly);
-        if (!socket->waitForConnected(BITCOIN_IPC_CONNECT_TIMEOUT))
+        if (!socket->waitForConnected(DANXOME_IPC_CONNECT_TIMEOUT))
         {
             delete socket;
             socket = nullptr;
@@ -136,7 +136,7 @@ bool PaymentServer::ipcSendCommandLine()
 
         socket->write(block);
         socket->flush();
-        socket->waitForBytesWritten(BITCOIN_IPC_CONNECT_TIMEOUT);
+        socket->waitForBytesWritten(DANXOME_IPC_CONNECT_TIMEOUT);
         socket->disconnectFromServer();
 
         delete socket;
@@ -224,7 +224,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
         Q_EMIT message(tr("URI handling"), tr("'danxome://' is not a valid URI. Use 'danxome:' instead."),
             CClientUIInterface::MSG_ERROR);
     }
-    else if (s.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // danxome: URI
+    else if (s.startsWith(DANXOME_IPC_PREFIX, Qt::CaseInsensitive)) // danxome: URI
     {
         QUrlQuery uri((QUrl(s)));
         // normal URI

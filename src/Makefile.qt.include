@@ -4,7 +4,7 @@
 
 bin_PROGRAMS += qt/danxome-qt
 
-if BUILD_BITCOIN_GUI
+if BUILD_DANXOME_GUI
   bin_PROGRAMS += danxome-gui
 endif
 
@@ -89,7 +89,7 @@ QT_MOC_CPP = \
   qt/moc_walletmodel.cpp \
   qt/moc_walletview.cpp
 
-BITCOIN_MM = \
+DANXOME_MM = \
   qt/macdockiconhandler.mm \
   qt/macnotificationhandler.mm \
   qt/macos_appnap.mm
@@ -105,7 +105,7 @@ QT_QRC = qt/danxome.qrc
 QT_QRC_LOCALE_CPP = qt/qrc_danxome_locale.cpp
 QT_QRC_LOCALE = qt/danxome_locale.qrc
 
-BITCOIN_QT_H = \
+DANXOME_QT_H = \
   qt/addressbookpage.h \
   qt/addresstablemodel.h \
   qt/askpassphrasedialog.h \
@@ -219,7 +219,7 @@ QT_RES_ICONS = \
   qt/res/icons/tx_mined.png \
   qt/res/icons/warning.png
 
-BITCOIN_QT_BASE_CPP = \
+DANXOME_QT_BASE_CPP = \
   qt/bantablemodel.cpp \
   qt/danxome.cpp \
   qt/danxomeaddressvalidator.cpp \
@@ -246,9 +246,9 @@ BITCOIN_QT_BASE_CPP = \
   qt/trafficgraphwidget.cpp \
   qt/utilitydialog.cpp
 
-BITCOIN_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
+DANXOME_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
 
-BITCOIN_QT_WALLET_CPP = \
+DANXOME_QT_WALLET_CPP = \
   qt/addressbookpage.cpp \
   qt/addresstablemodel.cpp \
   qt/askpassphrasedialog.cpp \
@@ -279,29 +279,29 @@ BITCOIN_QT_WALLET_CPP = \
   qt/walletmodeltransaction.cpp \
   qt/walletview.cpp
 
-BITCOIN_QT_CPP = $(BITCOIN_QT_BASE_CPP)
+DANXOME_QT_CPP = $(DANXOME_QT_BASE_CPP)
 if TARGET_WINDOWS
-BITCOIN_QT_CPP += $(BITCOIN_QT_WINDOWS_CPP)
+DANXOME_QT_CPP += $(DANXOME_QT_WINDOWS_CPP)
 endif
 if ENABLE_WALLET
-BITCOIN_QT_CPP += $(BITCOIN_QT_WALLET_CPP)
+DANXOME_QT_CPP += $(DANXOME_QT_WALLET_CPP)
 endif # ENABLE_WALLET
 
 QT_RES_ANIMATION = $(wildcard $(srcdir)/qt/res/animation/spinner-*.png)
 
-BITCOIN_QT_RC = qt/res/danxome-qt-res.rc
+DANXOME_QT_RC = qt/res/danxome-qt-res.rc
 
-BITCOIN_QT_INCLUDES = -DQT_NO_KEYWORDS -DQT_USE_QSTRINGBUILDER
+DANXOME_QT_INCLUDES = -DQT_NO_KEYWORDS -DQT_USE_QSTRINGBUILDER
 
-qt_libdanxomeqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+qt_libdanxomeqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(DANXOME_INCLUDES) $(DANXOME_QT_INCLUDES) \
   $(QT_INCLUDES) $(QT_DBUS_INCLUDES) $(QR_CFLAGS)
 qt_libdanxomeqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 qt_libdanxomeqt_a_OBJCXXFLAGS = $(AM_OBJCXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_libdanxomeqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
+qt_libdanxomeqt_a_SOURCES = $(DANXOME_QT_CPP) $(DANXOME_QT_H) $(QT_FORMS_UI) \
   $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(QT_RES_FONTS) $(QT_RES_ICONS) $(QT_RES_ANIMATION)
 if TARGET_DARWIN
-  qt_libdanxomeqt_a_SOURCES += $(BITCOIN_MM)
+  qt_libdanxomeqt_a_SOURCES += $(DANXOME_MM)
 endif
 
 nodist_qt_libdanxomeqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
@@ -315,22 +315,22 @@ $(QT_MOC): $(QT_FORMS_H)
 $(qt_libdanxomeqt_a_OBJECTS) $(qt_danxome_qt_OBJECTS) $(danxome_gui_OBJECTS) : | $(QT_MOC)
 
 # danxome-qt and danxome-gui binaries #
-danxome_qt_cppflags = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+danxome_qt_cppflags = $(AM_CPPFLAGS) $(DANXOME_INCLUDES) $(DANXOME_QT_INCLUDES) \
   $(QT_INCLUDES) $(QR_CFLAGS)
 danxome_qt_cxxflags = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
 danxome_qt_sources = qt/main.cpp
 if TARGET_WINDOWS
-  danxome_qt_sources += $(BITCOIN_QT_RC)
+  danxome_qt_sources += $(DANXOME_QT_RC)
 endif
-danxome_qt_ldadd = qt/libdanxomeqt.a $(LIBBITCOIN_NODE)
+danxome_qt_ldadd = qt/libdanxomeqt.a $(LIBDANXOME_NODE)
 if ENABLE_WALLET
-danxome_qt_ldadd += $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
+danxome_qt_ldadd += $(LIBDANXOME_UTIL) $(LIBDANXOME_WALLET)
 endif
 if ENABLE_ZMQ
-danxome_qt_ldadd += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+danxome_qt_ldadd += $(LIBDANXOME_ZMQ) $(ZMQ_LIBS)
 endif
-danxome_qt_ldadd += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
+danxome_qt_ldadd += $(LIBDANXOME_CLI) $(LIBDANXOME_COMMON) $(LIBDANXOME_UTIL) $(LIBDANXOME_CONSENSUS) $(LIBDANXOME_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(SQLITE_LIBS)
 danxome_qt_ldflags = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
@@ -346,7 +346,7 @@ qt_danxome_qt_LIBTOOLFLAGS = $(danxome_qt_libtoolflags)
 danxome_gui_CPPFLAGS = $(danxome_qt_cppflags)
 danxome_gui_CXXFLAGS = $(danxome_qt_cxxflags)
 danxome_gui_SOURCES = $(danxome_qt_sources) init/danxome-gui.cpp
-danxome_gui_LDADD = $(danxome_qt_ldadd) $(LIBBITCOIN_IPC) $(LIBBITCOIN_UTIL) $(LIBMULTIPROCESS_LIBS)
+danxome_gui_LDADD = $(danxome_qt_ldadd) $(LIBDANXOME_IPC) $(LIBDANXOME_UTIL) $(LIBMULTIPROCESS_LIBS)
 danxome_gui_LDFLAGS = $(danxome_qt_ldflags)
 danxome_gui_LIBTOOLFLAGS = $(danxome_qt_libtoolflags)
 
@@ -359,7 +359,7 @@ $(srcdir)/qt/danxomestrings.cpp: FORCE
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) COPYRIGHT_HOLDERS="$(COPYRIGHT_HOLDERS)" $(PYTHON) ../share/qt/extract_strings_qt.py $(libdanxome_node_a_SOURCES) $(libdanxome_wallet_a_SOURCES) $(libdanxome_common_a_SOURCES) $(libdanxome_zmq_a_SOURCES) $(libdanxome_consensus_a_SOURCES) $(libdanxome_util_a_SOURCES)
 
-translate: $(srcdir)/qt/danxomestrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_BASE_CPP) qt/danxome.cpp $(BITCOIN_QT_WINDOWS_CPP) $(BITCOIN_QT_WALLET_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: $(srcdir)/qt/danxomestrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(DANXOME_QT_BASE_CPP) qt/danxome.cpp $(DANXOME_QT_WINDOWS_CPP) $(DANXOME_QT_WALLET_CPP) $(DANXOME_QT_H) $(DANXOME_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
 	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) -no-obsolete -I $(srcdir) -locations relative $^ -ts $(srcdir)/qt/locale/danxome_en.ts
 	@test -n $(LCONVERT) || echo "lconvert is required for updating translations"
@@ -380,7 +380,7 @@ CLEAN_QT = $(nodist_qt_libdanxomeqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda 
 CLEANFILES += $(CLEAN_QT)
 
 danxome_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libdanxomeqt_a_OBJECTS) $(qt_danxome_qt_OBJECTS) qt/danxome-qt$(EXEEXT) $(LIBBITCOINQT)
+	rm -f $(CLEAN_QT) $(qt_libdanxomeqt_a_OBJECTS) $(qt_danxome_qt_OBJECTS) qt/danxome-qt$(EXEEXT) $(LIBDANXOMEQT)
 
 danxome_qt : qt/danxome-qt$(EXEEXT)
 

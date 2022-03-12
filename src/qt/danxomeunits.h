@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_BITCOINUNITS_H
-#define BITCOIN_QT_BITCOINUNITS_H
+#ifndef DANXOME_QT_DANXOMEUNITS_H
+#define DANXOME_QT_DANXOMEUNITS_H
 
 #include <consensus/amount.h>
 
@@ -111,4 +111,4 @@ private:
 };
 typedef DanxomeUnits::Unit DanxomeUnit;
 
-#endif // BITCOIN_QT_BITCOINUNITS_H
+#endif // DANXOME_QT_DANXOMEUNITS_H

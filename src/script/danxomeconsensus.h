@@ -3,12 +3,12 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_SCRIPT_BITCOINCONSENSUS_H
-#define BITCOIN_SCRIPT_BITCOINCONSENSUS_H
+#ifndef DANXOME_SCRIPT_DANXOMECONSENSUS_H
+#define DANXOME_SCRIPT_DANXOMECONSENSUS_H
 
 #include <stdint.h>
 
-#if defined(BUILD_BITCOIN_INTERNAL) && defined(HAVE_CONFIG_H)
+#if defined(BUILD_DANXOME_INTERNAL) && defined(HAVE_CONFIG_H)
 #include <config/danxome-config.h>
   #if defined(_WIN32)
     #if defined(HAVE_DLLEXPORT_ATTRIBUTE)
@@ -19,7 +19,7 @@
   #elif defined(HAVE_DEFAULT_VISIBILITY_ATTRIBUTE)
     #define EXPORT_SYMBOL __attribute__ ((visibility ("default")))
   #endif
-#elif defined(MSC_VER) && !defined(STATIC_LIBBITCOINCONSENSUS)
+#elif defined(MSC_VER) && !defined(STATIC_LIBDANXOMECONSENSUS)
   #define EXPORT_SYMBOL __declspec(dllimport)
 #endif
 
@@ -31,7 +31,7 @@
 extern "C" {
 #endif
 
-#define BITCOINCONSENSUS_API_VER 1
+#define DANXOMECONSENSUS_API_VER 1
 
 typedef enum danxomeconsensus_error_t
 {
@@ -78,4 +78,4 @@ EXPORT_SYMBOL unsigned int danxomeconsensus_version();
 
 #undef EXPORT_SYMBOL
 
-#endif // BITCOIN_SCRIPT_BITCOINCONSENSUS_H
+#endif // DANXOME_SCRIPT_DANXOMECONSENSUS_H

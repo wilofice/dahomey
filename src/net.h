@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_NET_H
-#define BITCOIN_NET_H
+#ifndef DANXOME_NET_H
+#define DANXOME_NET_H
 
 #include <chainparams.h>
 #include <common/bloom.h>
@@ -1313,4 +1313,4 @@ struct NodeEvictionCandidate
  */
 void ProtectEvictionCandidatesByRatio(std::vector<NodeEvictionCandidate>& vEvictionCandidates);
 
-#endif // BITCOIN_NET_H
+#endif // DANXOME_NET_H

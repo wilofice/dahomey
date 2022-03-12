@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_SYNC_H
-#define BITCOIN_SYNC_H
+#ifndef DANXOME_SYNC_H
+#define DANXOME_SYNC_H
 
 #include <logging.h>
 #include <logging/timer.h>
@@ -365,4 +365,4 @@ public:
     }
 };
 
-#endif // BITCOIN_SYNC_H
+#endif // DANXOME_SYNC_H

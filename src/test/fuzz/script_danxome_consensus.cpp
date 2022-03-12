@@ -22,7 +22,7 @@ FUZZ_TARGET(script_danxome_consensus)
     danxomeconsensus_error* err_p = fuzzed_data_provider.ConsumeBool() ? &err : nullptr;
     const unsigned int n_in = fuzzed_data_provider.ConsumeIntegral<unsigned int>();
     const unsigned int flags = fuzzed_data_provider.ConsumeIntegral<unsigned int>();
-    assert(danxomeconsensus_version() == BITCOINCONSENSUS_API_VER);
+    assert(danxomeconsensus_version() == DANXOMECONSENSUS_API_VER);
     if ((flags & SCRIPT_VERIFY_WITNESS) != 0 && (flags & SCRIPT_VERIFY_P2SH) == 0) {
         return;
     }

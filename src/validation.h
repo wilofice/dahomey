@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_VALIDATION_H
-#define BITCOIN_VALIDATION_H
+#ifndef DANXOME_VALIDATION_H
+#define DANXOME_VALIDATION_H
 
 #if defined(HAVE_CONFIG_H)
 #include <config/danxome-config.h>
@@ -1006,4 +1006,4 @@ bool LoadMempool(CTxMemPool& pool, CChainState& active_chainstate, FopenFn mocka
  */
 const AssumeutxoData* ExpectedAssumeutxo(const int height, const CChainParams& params);
 
-#endif // BITCOIN_VALIDATION_H
+#endif // DANXOME_VALIDATION_H

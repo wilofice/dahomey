@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_WALLET_H
-#define BITCOIN_WALLET_WALLET_H
+#ifndef DANXOME_WALLET_WALLET_H
+#define DANXOME_WALLET_WALLET_H
 
 #include <consensus/amount.h>
 #include <fs.h>
@@ -943,4 +943,4 @@ bool DummySignInput(const SigningProvider& provider, CTxIn &tx_in, const CTxOut 
 bool FillInputToWeight(CTxIn& txin, int64_t target_weight);
 } // namespace wallet
 
-#endif // BITCOIN_WALLET_WALLET_H
+#endif // DANXOME_WALLET_WALLET_H

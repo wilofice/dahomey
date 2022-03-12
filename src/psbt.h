@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_PSBT_H
-#define BITCOIN_PSBT_H
+#ifndef DANXOME_PSBT_H
+#define DANXOME_PSBT_H
 
 #include <attributes.h>
 #include <node/transaction.h>
@@ -990,4 +990,4 @@ bool FinalizeAndExtractPSBT(PartiallySignedTransaction& psbtx, CMutableTransacti
 //! Decode a raw (binary blob) PSBT into a PartiallySignedTransaction
 [[nodiscard]] bool DecodeRawPSBT(PartiallySignedTransaction& decoded_psbt, const std::string& raw_psbt, std::string& error);
 
-#endif // BITCOIN_PSBT_H
+#endif // DANXOME_PSBT_H

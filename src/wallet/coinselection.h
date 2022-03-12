@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_COINSELECTION_H
-#define BITCOIN_WALLET_COINSELECTION_H
+#ifndef DANXOME_WALLET_COINSELECTION_H
+#define DANXOME_WALLET_COINSELECTION_H
 
 #include <consensus/amount.h>
 #include <policy/feerate.h>
@@ -252,4 +252,4 @@ std::optional<SelectionResult> SelectCoinsSRD(const std::vector<OutputGroup>& ut
 std::optional<SelectionResult> KnapsackSolver(std::vector<OutputGroup>& groups, const CAmount& nTargetValue);
 } // namespace wallet
 
-#endif // BITCOIN_WALLET_COINSELECTION_H
+#endif // DANXOME_WALLET_COINSELECTION_H

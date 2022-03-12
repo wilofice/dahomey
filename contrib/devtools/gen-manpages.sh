@@ -10,18 +10,18 @@ BUILDDIR=${BUILDDIR:-$TOPDIR}
 BINDIR=${BINDIR:-$BUILDDIR/src}
 MANDIR=${MANDIR:-$TOPDIR/doc/man}
 
-BITCOIND=${BITCOIND:-$BINDIR/danxomed}
-BITCOINCLI=${BITCOINCLI:-$BINDIR/danxome-cli}
-BITCOINTX=${BITCOINTX:-$BINDIR/danxome-tx}
+DANXOMED=${DANXOMED:-$BINDIR/danxomed}
+DANXOMECLI=${DANXOMECLI:-$BINDIR/danxome-cli}
+DANXOMETX=${DANXOMETX:-$BINDIR/danxome-tx}
 WALLET_TOOL=${WALLET_TOOL:-$BINDIR/danxome-wallet}
-BITCOINUTIL=${BITCOINQT:-$BINDIR/danxome-util}
-BITCOINQT=${BITCOINQT:-$BINDIR/qt/danxome-qt}
+DANXOMEUTIL=${DANXOMEQT:-$BINDIR/danxome-util}
+DANXOMEQT=${DANXOMEQT:-$BINDIR/qt/danxome-qt}
 
-[ ! -x "$BITCOIND" ] && echo "$BITCOIND not found or not executable." && exit 1
+[ ! -x "$DANXOMED" ] && echo "$DANXOMED not found or not executable." && exit 1
 
 # Don't allow man pages to be generated for binaries built from a dirty tree
 DIRTY=""
-for cmd in $BITCOIND $BITCOINCLI $BITCOINTX $WALLET_TOOL $BITCOINUTIL $BITCOINQT; do
+for cmd in $DANXOMED $DANXOMECLI $DANXOMETX $WALLET_TOOL $DANXOMEUTIL $DANXOMEQT; do
   VERSION_OUTPUT=$($cmd --version)
   if [[ $VERSION_OUTPUT == *"dirty"* ]]; then
     DIRTY="${DIRTY}${cmd}\n"
@@ -36,15 +36,15 @@ then
 fi
 
 # The autodetected version git tag can screw up manpage output a little bit
-read -r -a DANVER <<< "$($BITCOINCLI --version | head -n1 | awk -F'[ -]' '{ print $6, $7 }')"
+read -r -a DANVER <<< "$($DANXOMECLI --version | head -n1 | awk -F'[ -]' '{ print $6, $7 }')"
 
 # Create a footer file with copyright content.
 # This gets autodetected fine for danxomed if --version-string is not set,
 # but has different outcomes for danxome-qt and danxome-cli.
 echo "[COPYRIGHT]" > footer.h2m
-$BITCOIND --version | sed -n '1!p' >> footer.h2m
+$DANXOMED --version | sed -n '1!p' >> footer.h2m
 
-for cmd in $BITCOIND $BITCOINCLI $BITCOINTX $WALLET_TOOL $BITCOINUTIL $BITCOINQT; do
+for cmd in $DANXOMED $DANXOMECLI $DANXOMETX $WALLET_TOOL $DANXOMEUTIL $DANXOMEQT; do
   cmdname="${cmd##*/}"
   help2man -N --version-string="${DANVER[0]}" --include=footer.h2m -o "${MANDIR}/${cmdname}.1" "${cmd}"
   sed -i "s/\\\-${DANVER[1]}//g" "${MANDIR}/${cmdname}.1"

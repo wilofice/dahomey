@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_NETADDRESS_H
-#define BITCOIN_NETADDRESS_H
+#ifndef DANXOME_NETADDRESS_H
+#define DANXOME_NETADDRESS_H
 
 #if defined(HAVE_CONFIG_H)
 #include <config/danxome-config.h>
@@ -576,4 +576,4 @@ private:
     const uint64_t m_salt_k1 = GetRand(std::numeric_limits<uint64_t>::max());
 };
 
-#endif // BITCOIN_NETADDRESS_H
+#endif // DANXOME_NETADDRESS_H

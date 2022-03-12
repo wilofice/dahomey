@@ -243,8 +243,8 @@ class DanxomeTestFramework(metaclass=DanxomeTestMetaClass):
             "src",
             "danxome-cli" + config["environment"]["EXEEXT"],
         )
-        self.options.danxomed = os.getenv("BITCOIND", default=fname_danxomed)
-        self.options.danxomecli = os.getenv("BITCOINCLI", default=fname_danxomecli)
+        self.options.danxomed = os.getenv("DANXOMED", default=fname_danxomed)
+        self.options.danxomecli = os.getenv("DANXOMECLI", default=fname_danxomecli)
 
         os.environ['PATH'] = os.pathsep.join([
             os.path.join(config['environment']['BUILDDIR'], 'src'),

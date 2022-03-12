@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TEST_FUZZ_UTIL_H
-#define BITCOIN_TEST_FUZZ_UTIL_H
+#ifndef DANXOME_TEST_FUZZ_UTIL_H
+#define DANXOME_TEST_FUZZ_UTIL_H
 
 #include <arith_uint256.h>
 #include <attributes.h>
@@ -413,4 +413,4 @@ public:
     return FuzzedSock{fuzzed_data_provider};
 }
 
-#endif // BITCOIN_TEST_FUZZ_UTIL_H
+#endif // DANXOME_TEST_FUZZ_UTIL_H
