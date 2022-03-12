@@ -1,11 +1,11 @@
-Dahomey-Qt version 0.8.5 is now available from:
-  http://sourceforge.net/projects/dahomey/files/Dahomey/dahomey-0.8.5/
+Danxome-Qt version 0.8.5 is now available from:
+  http://sourceforge.net/projects/danxome/files/Danxome/danxome-0.8.5/
 
 This is a maintenance release to fix a critical bug;
 we urge all users to upgrade.
 
 Please report bugs using the issue tracker at github:
-  https://github.com/dahomey/dahomey/issues
+  https://github.com/danxome/danxome/issues
 
 
 How to Upgrade
@@ -14,7 +14,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait
 until it has completely shut down (which might take a few minutes for older
 versions), then run the installer (on Windows) or just copy over
-/Applications/Dahomey-Qt (on Mac) or dahomeyd/dahomey-qt (on Linux).
+/Applications/Danxome-Qt (on Mac) or danxomed/danxome-qt (on Linux).
 
 If you are upgrading from version 0.7.2 or earlier, the first time you
 run 0.8.5 your blockchain files will be re-indexed, which will take

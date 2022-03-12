@@ -1,32 +1,32 @@
 Dependencies
 ============
 
-These are the dependencies currently used by Dahomey Core. You can find instructions for installing them in the `build-*.md` file for your platform.
+These are the dependencies currently used by Danxome Core. You can find instructions for installing them in the `build-*.md` file for your platform.
 
 | Dependency | Version used | Minimum required | CVEs | Shared | [Bundled Qt library](https://doc.qt.io/qt-5/configure-options.html#third-party-libraries) |
 | --- | --- | --- | --- | --- | --- |
 | Berkeley DB | [4.8.30](https://www.oracle.com/technetwork/database/database-technologies/berkeleydb/downloads/index.html) | 4.8.x | No |  |  |
-| Boost | [1.71.0](https://www.boost.org/users/download/) | [1.64.0](https://github.com/dahomey/dahomey/pull/22320) | No |  |  |
+| Boost | [1.71.0](https://www.boost.org/users/download/) | [1.64.0](https://github.com/danxome/danxome/pull/22320) | No |  |  |
 | Clang<sup>[ \* ](#note1)</sup> |  | [7.0](https://releases.llvm.org/download.html) (C++17 & std::filesystem support) |  |  |  |
 | Fontconfig | [2.12.6](https://www.freedesktop.org/software/fontconfig/release/) |  | No | Yes |  |
-| FreeType | [2.11.0](https://download.savannah.gnu.org/releases/freetype) |  | No |  | [Yes](https://github.com/dahomey/dahomey/blob/master/depends/packages/qt.mk) (Android only) |
+| FreeType | [2.11.0](https://download.savannah.gnu.org/releases/freetype) |  | No |  | [Yes](https://github.com/danxome/danxome/blob/master/depends/packages/qt.mk) (Android only) |
 | GCC |  | [8.1](https://gcc.gnu.org/) (C++17 & std::filesystem support) |  |  |  |
 | glibc | | [2.18](https://www.gnu.org/software/libc/) |  |  |  |  |
-| HarfBuzz-NG |  |  |  |  | [Yes](https://github.com/dahomey/dahomey/blob/master/depends/packages/qt.mk) |
-| libevent | [2.1.12-stable](https://github.com/libevent/libevent/releases) | [2.0.21](https://github.com/dahomey/dahomey/pull/18676) | No |  |  |
+| HarfBuzz-NG |  |  |  |  | [Yes](https://github.com/danxome/danxome/blob/master/depends/packages/qt.mk) |
+| libevent | [2.1.12-stable](https://github.com/libevent/libevent/releases) | [2.0.21](https://github.com/danxome/danxome/pull/18676) | No |  |  |
 | libnatpmp | git commit [4536032...](https://github.com/miniupnp/libnatpmp/tree/4536032ae32268a45c073a4d5e91bbab4534773a) |  | No |  |  |
-| libpng |  |  |  |  | [Yes](https://github.com/dahomey/dahomey/blob/master/depends/packages/qt.mk) |
+| libpng |  |  |  |  | [Yes](https://github.com/danxome/danxome/blob/master/depends/packages/qt.mk) |
 | MiniUPnPc | [2.2.2](https://miniupnp.tuxfamily.org/files) |  | No |  |  |
-| PCRE |  |  |  |  | [Yes](https://github.com/dahomey/dahomey/blob/master/depends/packages/qt.mk) |
+| PCRE |  |  |  |  | [Yes](https://github.com/danxome/danxome/blob/master/depends/packages/qt.mk) |
 | Python (tests) |  | [3.6](https://www.python.org/downloads) |  |  |  |
 | qrencode | [3.4.4](https://fukuchi.org/works/qrencode) |  | No |  |  |
-| Qt | [5.15.2](https://download.qt.io/official_releases/qt/) | [5.9.5](https://github.com/dahomey/dahomey/issues/20104) | No |  |  |
-| SQLite | [3.32.1](https://sqlite.org/download.html) | [3.7.17](https://github.com/dahomey/dahomey/pull/19077) |  |  |  |
-| XCB |  |  |  |  | [Yes](https://github.com/dahomey/dahomey/blob/master/depends/packages/qt.mk) (Linux only) |
+| Qt | [5.15.2](https://download.qt.io/official_releases/qt/) | [5.9.5](https://github.com/danxome/danxome/issues/20104) | No |  |  |
+| SQLite | [3.32.1](https://sqlite.org/download.html) | [3.7.17](https://github.com/danxome/danxome/pull/19077) |  |  |  |
+| XCB |  |  |  |  | [Yes](https://github.com/danxome/danxome/blob/master/depends/packages/qt.mk) (Linux only) |
 | systemtap ([tracing](tracing.md))| [4.5](https://sourceware.org/systemtap/ftp/releases/) |  |  |  | |
-| xkbcommon |  |  |  |  | [Yes](https://github.com/dahomey/dahomey/blob/master/depends/packages/qt.mk) (Linux only) |
+| xkbcommon |  |  |  |  | [Yes](https://github.com/danxome/danxome/blob/master/depends/packages/qt.mk) (Linux only) |
 | ZeroMQ | [4.3.1](https://github.com/zeromq/libzmq/releases) | 4.0.0 | No |  |  |
-| zlib |  |  |  |  | [Yes](https://github.com/dahomey/dahomey/blob/master/depends/packages/qt.mk) |
+| zlib |  |  |  |  | [Yes](https://github.com/danxome/danxome/blob/master/depends/packages/qt.mk) |
 
 <a name="note1">Note \*</a> : When compiling with `-stdlib=libc++`, the minimum supported libc++ version is 7.0.
 

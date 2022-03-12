@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2020-2021 The Dahomey Core developers
+# Copyright (c) 2020-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test coinstatsindex across nodes.
@@ -28,13 +28,13 @@ from test_framework.script import (
     OP_FALSE,
     OP_RETURN,
 )
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import (
     assert_equal,
     assert_raises_rpc_error,
 )
 
-class CoinStatsIndexTest(DahomeyTestFramework):
+class CoinStatsIndexTest(DanxomeTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 2
@@ -155,7 +155,7 @@ class CoinStatsIndexTest(DahomeyTestFramework):
         signed_tx1 = self.nodes[0].signrawtransactionwithwallet(funded_tx1['hex'])
         tx1_txid = self.nodes[0].sendrawtransaction(signed_tx1['hex'])
 
-        # Find the right position of the 21 DEY output
+        # Find the right position of the 21 DAN output
         tx1_final = self.nodes[0].gettransaction(tx1_txid)
         for output in tx1_final['details']:
             if output['amount'] == Decimal('21.00000000') and output['category'] == 'receive':

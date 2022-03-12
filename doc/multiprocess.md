@@ -1,17 +1,17 @@
-# Multiprocess Dahomey
+# Multiprocess Danxome
 
-On unix systems, the `--enable-multiprocess` build option can be passed to `./configure` to build new `dahomey-node`, `dahomey-wallet`, and `dahomey-gui` executables alongside existing `dahomeyd` and `dahomey-qt` executables.
+On unix systems, the `--enable-multiprocess` build option can be passed to `./configure` to build new `danxome-node`, `danxome-wallet`, and `danxome-gui` executables alongside existing `danxomed` and `danxome-qt` executables.
 
-`dahomey-node` is a drop-in replacement for `dahomeyd`, and `dahomey-gui` is a drop-in replacement for `dahomey-qt`, and there are no differences in use or external behavior between the new and old executables. But internally (after [#10102](https://github.com/dahomey/dahomey/pull/10102)), `dahomey-gui` will spawn a `dahomey-node` process to run P2P and RPC code, communicating with it across a socket pair, and `dahomey-node` will spawn `dahomey-wallet` to run wallet code, also communicating over a socket pair. This will let node, wallet, and GUI code run in separate address spaces for better isolation, and allow future improvements like being able to start and stop components independently on different machines and environments.
+`danxome-node` is a drop-in replacement for `danxomed`, and `danxome-gui` is a drop-in replacement for `danxome-qt`, and there are no differences in use or external behavior between the new and old executables. But internally (after [#10102](https://github.com/danxome/danxome/pull/10102)), `danxome-gui` will spawn a `danxome-node` process to run P2P and RPC code, communicating with it across a socket pair, and `danxome-node` will spawn `danxome-wallet` to run wallet code, also communicating over a socket pair. This will let node, wallet, and GUI code run in separate address spaces for better isolation, and allow future improvements like being able to start and stop components independently on different machines and environments.
 
 ## Next steps
 
-Specific next steps after [#10102](https://github.com/dahomey/dahomey/pull/10102) will be:
+Specific next steps after [#10102](https://github.com/danxome/danxome/pull/10102) will be:
 
-- [ ] Adding `-ipcbind` and `-ipcconnect` options to `dahomey-node`, `dahomey-wallet`, and `dahomey-gui` executables so they can listen and connect to TCP ports and unix socket paths. This will allow separate processes to be started and stopped any time and connect to each other.
-- [ ] Adding `-server` and `-rpcbind` options to the `dahomey-wallet` executable so wallet processes can handle RPC requests directly without going through the node.
+- [ ] Adding `-ipcbind` and `-ipcconnect` options to `danxome-node`, `danxome-wallet`, and `danxome-gui` executables so they can listen and connect to TCP ports and unix socket paths. This will allow separate processes to be started and stopped any time and connect to each other.
+- [ ] Adding `-server` and `-rpcbind` options to the `danxome-wallet` executable so wallet processes can handle RPC requests directly without going through the node.
 - [ ] Supporting windows, not just unix systems. The existing socket code is already cross-platform, so the only windows-specific code that needs to be written is code spawning a process and passing a socket descriptor. This can be implemented with `CreateProcess` and `WSADuplicateSocket`. Example: https://memset.wordpress.com/2010/10/13/win32-api-passing-socket-with-ipc-method/.
-- [ ] Adding sandbox features, restricting subprocess access to resources and data. See [https://eklitzke.org/multiprocess-dahomey](https://eklitzke.org/multiprocess-dahomey).
+- [ ] Adding sandbox features, restricting subprocess access to resources and data. See [https://eklitzke.org/multiprocess-danxome](https://eklitzke.org/multiprocess-danxome).
 
 ## Debugging
 
@@ -26,8 +26,8 @@ cd <BITCOIN_SOURCE_DIRECTORY>
 make -C depends NO_QT=1 MULTIPROCESS=1
 CONFIG_SITE=$PWD/depends/x86_64-pc-linux-gnu/share/config.site ./configure
 make
-src/dahomey-node -regtest -printtoconsole -debug=ipc
-BITCOIND=dahomey-node test/functional/test_runner.py
+src/danxome-node -regtest -printtoconsole -debug=ipc
+BITCOIND=danxome-node test/functional/test_runner.py
 ```
 
 The configure script will pick up settings and library locations from the depends directory, so there is no need to pass `--enable-multiprocess` as a separate flag when using the depends system (it's controlled by the `MULTIPROCESS=1` option).

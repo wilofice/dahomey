@@ -1,16 +1,16 @@
-# Copyright (c) 2013-2016 The Dahomey Core developers
+# Copyright (c) 2013-2016 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-bin_PROGRAMS += qt/dahomey-qt
+bin_PROGRAMS += qt/danxome-qt
 
 if BUILD_BITCOIN_GUI
-  bin_PROGRAMS += dahomey-gui
+  bin_PROGRAMS += danxome-gui
 endif
 
-EXTRA_LIBRARIES += qt/libdahomeyqt.a
+EXTRA_LIBRARIES += qt/libdanxomeqt.a
 
-# dahomey qt core #
+# danxome qt core #
 include Makefile.qt_locale.include
 
 QT_FORMS_UI = \
@@ -40,11 +40,11 @@ QT_MOC_CPP = \
   qt/moc_askpassphrasedialog.cpp \
   qt/moc_createwalletdialog.cpp \
   qt/moc_bantablemodel.cpp \
-  qt/moc_dahomey.cpp \
-  qt/moc_dahomeyaddressvalidator.cpp \
-  qt/moc_dahomeyamountfield.cpp \
-  qt/moc_dahomeygui.cpp \
-  qt/moc_dahomeyunits.cpp \
+  qt/moc_danxome.cpp \
+  qt/moc_danxomeaddressvalidator.cpp \
+  qt/moc_danxomeamountfield.cpp \
+  qt/moc_danxomegui.cpp \
+  qt/moc_danxomeunits.cpp \
   qt/moc_clientmodel.cpp \
   qt/moc_coincontroldialog.cpp \
   qt/moc_coincontroltreewidget.cpp \
@@ -95,26 +95,26 @@ BITCOIN_MM = \
   qt/macos_appnap.mm
 
 QT_MOC = \
-  qt/dahomeyamountfield.moc \
+  qt/danxomeamountfield.moc \
   qt/intro.moc \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
 
-QT_QRC_CPP = qt/qrc_dahomey.cpp
-QT_QRC = qt/dahomey.qrc
-QT_QRC_LOCALE_CPP = qt/qrc_dahomey_locale.cpp
-QT_QRC_LOCALE = qt/dahomey_locale.qrc
+QT_QRC_CPP = qt/qrc_danxome.cpp
+QT_QRC = qt/danxome.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_danxome_locale.cpp
+QT_QRC_LOCALE = qt/danxome_locale.qrc
 
 BITCOIN_QT_H = \
   qt/addressbookpage.h \
   qt/addresstablemodel.h \
   qt/askpassphrasedialog.h \
   qt/bantablemodel.h \
-  qt/dahomey.h \
-  qt/dahomeyaddressvalidator.h \
-  qt/dahomeyamountfield.h \
-  qt/dahomeygui.h \
-  qt/dahomeyunits.h \
+  qt/danxome.h \
+  qt/danxomeaddressvalidator.h \
+  qt/danxomeamountfield.h \
+  qt/danxomegui.h \
+  qt/danxomeunits.h \
   qt/clientmodel.h \
   qt/coincontroldialog.h \
   qt/coincontroltreewidget.h \
@@ -174,9 +174,9 @@ QT_RES_FONTS = \
 QT_RES_ICONS = \
   qt/res/icons/add.png \
   qt/res/icons/address-book.png \
-  qt/res/icons/dahomey.ico \
-  qt/res/icons/dahomey_testnet.ico \
-  qt/res/icons/dahomey.png \
+  qt/res/icons/danxome.ico \
+  qt/res/icons/danxome_testnet.ico \
+  qt/res/icons/danxome.png \
   qt/res/icons/chevron.png \
   qt/res/icons/clock1.png \
   qt/res/icons/clock2.png \
@@ -221,11 +221,11 @@ QT_RES_ICONS = \
 
 BITCOIN_QT_BASE_CPP = \
   qt/bantablemodel.cpp \
-  qt/dahomey.cpp \
-  qt/dahomeyaddressvalidator.cpp \
-  qt/dahomeyamountfield.cpp \
-  qt/dahomeygui.cpp \
-  qt/dahomeyunits.cpp \
+  qt/danxome.cpp \
+  qt/danxomeaddressvalidator.cpp \
+  qt/danxomeamountfield.cpp \
+  qt/danxomegui.cpp \
+  qt/danxomeunits.cpp \
   qt/clientmodel.cpp \
   qt/csvmodelwriter.cpp \
   qt/guiutil.cpp \
@@ -289,22 +289,22 @@ endif # ENABLE_WALLET
 
 QT_RES_ANIMATION = $(wildcard $(srcdir)/qt/res/animation/spinner-*.png)
 
-BITCOIN_QT_RC = qt/res/dahomey-qt-res.rc
+BITCOIN_QT_RC = qt/res/danxome-qt-res.rc
 
 BITCOIN_QT_INCLUDES = -DQT_NO_KEYWORDS -DQT_USE_QSTRINGBUILDER
 
-qt_libdahomeyqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+qt_libdanxomeqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(QT_DBUS_INCLUDES) $(QR_CFLAGS)
-qt_libdahomeyqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
-qt_libdahomeyqt_a_OBJCXXFLAGS = $(AM_OBJCXXFLAGS) $(QT_PIE_FLAGS)
+qt_libdanxomeqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_libdanxomeqt_a_OBJCXXFLAGS = $(AM_OBJCXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_libdahomeyqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
+qt_libdanxomeqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
   $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(QT_RES_FONTS) $(QT_RES_ICONS) $(QT_RES_ANIMATION)
 if TARGET_DARWIN
-  qt_libdahomeyqt_a_SOURCES += $(BITCOIN_MM)
+  qt_libdanxomeqt_a_SOURCES += $(BITCOIN_MM)
 endif
 
-nodist_qt_libdahomeyqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
+nodist_qt_libdanxomeqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
 
 # forms/foo.h -> forms/ui_foo.h
 QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:.ui=.h))))
@@ -312,89 +312,89 @@ QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:
 # Most files will depend on the forms and moc files as includes. Generate them
 # before anything else.
 $(QT_MOC): $(QT_FORMS_H)
-$(qt_libdahomeyqt_a_OBJECTS) $(qt_dahomey_qt_OBJECTS) $(dahomey_gui_OBJECTS) : | $(QT_MOC)
+$(qt_libdanxomeqt_a_OBJECTS) $(qt_danxome_qt_OBJECTS) $(danxome_gui_OBJECTS) : | $(QT_MOC)
 
-# dahomey-qt and dahomey-gui binaries #
-dahomey_qt_cppflags = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+# danxome-qt and danxome-gui binaries #
+danxome_qt_cppflags = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(QR_CFLAGS)
-dahomey_qt_cxxflags = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+danxome_qt_cxxflags = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
-dahomey_qt_sources = qt/main.cpp
+danxome_qt_sources = qt/main.cpp
 if TARGET_WINDOWS
-  dahomey_qt_sources += $(BITCOIN_QT_RC)
+  danxome_qt_sources += $(BITCOIN_QT_RC)
 endif
-dahomey_qt_ldadd = qt/libdahomeyqt.a $(LIBBITCOIN_NODE)
+danxome_qt_ldadd = qt/libdanxomeqt.a $(LIBBITCOIN_NODE)
 if ENABLE_WALLET
-dahomey_qt_ldadd += $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
+danxome_qt_ldadd += $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
 endif
 if ENABLE_ZMQ
-dahomey_qt_ldadd += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+danxome_qt_ldadd += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
-dahomey_qt_ldadd += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
+danxome_qt_ldadd += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(SQLITE_LIBS)
-dahomey_qt_ldflags = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
-dahomey_qt_libtoolflags = $(AM_LIBTOOLFLAGS) --tag CXX
+danxome_qt_ldflags = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+danxome_qt_libtoolflags = $(AM_LIBTOOLFLAGS) --tag CXX
 
-qt_dahomey_qt_CPPFLAGS = $(dahomey_qt_cppflags)
-qt_dahomey_qt_CXXFLAGS = $(dahomey_qt_cxxflags)
-qt_dahomey_qt_SOURCES = $(dahomey_qt_sources) init/dahomey-qt.cpp
-qt_dahomey_qt_LDADD = $(dahomey_qt_ldadd)
-qt_dahomey_qt_LDFLAGS = $(dahomey_qt_ldflags)
-qt_dahomey_qt_LIBTOOLFLAGS = $(dahomey_qt_libtoolflags)
+qt_danxome_qt_CPPFLAGS = $(danxome_qt_cppflags)
+qt_danxome_qt_CXXFLAGS = $(danxome_qt_cxxflags)
+qt_danxome_qt_SOURCES = $(danxome_qt_sources) init/danxome-qt.cpp
+qt_danxome_qt_LDADD = $(danxome_qt_ldadd)
+qt_danxome_qt_LDFLAGS = $(danxome_qt_ldflags)
+qt_danxome_qt_LIBTOOLFLAGS = $(danxome_qt_libtoolflags)
 
-dahomey_gui_CPPFLAGS = $(dahomey_qt_cppflags)
-dahomey_gui_CXXFLAGS = $(dahomey_qt_cxxflags)
-dahomey_gui_SOURCES = $(dahomey_qt_sources) init/dahomey-gui.cpp
-dahomey_gui_LDADD = $(dahomey_qt_ldadd) $(LIBBITCOIN_IPC) $(LIBBITCOIN_UTIL) $(LIBMULTIPROCESS_LIBS)
-dahomey_gui_LDFLAGS = $(dahomey_qt_ldflags)
-dahomey_gui_LIBTOOLFLAGS = $(dahomey_qt_libtoolflags)
+danxome_gui_CPPFLAGS = $(danxome_qt_cppflags)
+danxome_gui_CXXFLAGS = $(danxome_qt_cxxflags)
+danxome_gui_SOURCES = $(danxome_qt_sources) init/danxome-gui.cpp
+danxome_gui_LDADD = $(danxome_qt_ldadd) $(LIBBITCOIN_IPC) $(LIBBITCOIN_UTIL) $(LIBMULTIPROCESS_LIBS)
+danxome_gui_LDFLAGS = $(danxome_qt_ldflags)
+danxome_gui_LIBTOOLFLAGS = $(danxome_qt_libtoolflags)
 
 #locale/foo.ts -> locale/foo.qm
 QT_QM=$(QT_TS:.ts=.qm)
 
 SECONDARY: $(QT_QM)
 
-$(srcdir)/qt/dahomeystrings.cpp: FORCE
+$(srcdir)/qt/danxomestrings.cpp: FORCE
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
-	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) COPYRIGHT_HOLDERS="$(COPYRIGHT_HOLDERS)" $(PYTHON) ../share/qt/extract_strings_qt.py $(libdahomey_node_a_SOURCES) $(libdahomey_wallet_a_SOURCES) $(libdahomey_common_a_SOURCES) $(libdahomey_zmq_a_SOURCES) $(libdahomey_consensus_a_SOURCES) $(libdahomey_util_a_SOURCES)
+	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) COPYRIGHT_HOLDERS="$(COPYRIGHT_HOLDERS)" $(PYTHON) ../share/qt/extract_strings_qt.py $(libdanxome_node_a_SOURCES) $(libdanxome_wallet_a_SOURCES) $(libdanxome_common_a_SOURCES) $(libdanxome_zmq_a_SOURCES) $(libdanxome_consensus_a_SOURCES) $(libdanxome_util_a_SOURCES)
 
-translate: $(srcdir)/qt/dahomeystrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_BASE_CPP) qt/dahomey.cpp $(BITCOIN_QT_WINDOWS_CPP) $(BITCOIN_QT_WALLET_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: $(srcdir)/qt/danxomestrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_BASE_CPP) qt/danxome.cpp $(BITCOIN_QT_WINDOWS_CPP) $(BITCOIN_QT_WALLET_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) -no-obsolete -I $(srcdir) -locations relative $^ -ts $(srcdir)/qt/locale/dahomey_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) -no-obsolete -I $(srcdir) -locations relative $^ -ts $(srcdir)/qt/locale/danxome_en.ts
 	@test -n $(LCONVERT) || echo "lconvert is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LCONVERT) -o $(srcdir)/qt/locale/dahomey_en.xlf -i $(srcdir)/qt/locale/dahomey_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LCONVERT) -o $(srcdir)/qt/locale/danxome_en.xlf -i $(srcdir)/qt/locale/danxome_en.ts
 
 $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	@test -f $(RCC)
 	@cp -f $< $(@D)/temp_$(<F)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name dahomey_locale --format-version 1 $(@D)/temp_$(<F) > $@
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name danxome_locale --format-version 1 $(@D)/temp_$(<F) > $@
 	@rm $(@D)/temp_$(<F)
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(QT_RES_FONTS) $(QT_RES_ICONS) $(QT_RES_ANIMATION)
 	@test -f $(RCC)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name dahomey --format-version 1 $< > $@
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name danxome --format-version 1 $< > $@
 
-CLEAN_QT = $(nodist_qt_libdahomeyqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/temp_dahomey_locale.qrc
+CLEAN_QT = $(nodist_qt_libdanxomeqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/temp_danxome_locale.qrc
 
 CLEANFILES += $(CLEAN_QT)
 
-dahomey_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libdahomeyqt_a_OBJECTS) $(qt_dahomey_qt_OBJECTS) qt/dahomey-qt$(EXEEXT) $(LIBBITCOINQT)
+danxome_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libdanxomeqt_a_OBJECTS) $(qt_danxome_qt_OBJECTS) qt/danxome-qt$(EXEEXT) $(LIBBITCOINQT)
 
-dahomey_qt : qt/dahomey-qt$(EXEEXT)
+danxome_qt : qt/danxome-qt$(EXEEXT)
 
 APK_LIB_DIR = qt/android/libs/$(ANDROID_ARCH)
 QT_BASE_VERSION = $(lastword $(shell $(MOC) --version))
 QT_BASE_PATH = $(shell find ../depends/sources/ -maxdepth 1 -type f -regex ".*qtbase.*$(QT_BASE_VERSION)\.tar.xz")
 QT_BASE_TLD = $(shell tar tf $(QT_BASE_PATH) --exclude='*/*')
 
-dahomey_qt_apk: FORCE
+danxome_qt_apk: FORCE
 	mkdir -p $(APK_LIB_DIR)
 	cp $(dir $(lastword $(CC)))../sysroot/usr/lib/$(host_alias)/libc++_shared.so $(APK_LIB_DIR)
 	tar xf $(QT_BASE_PATH) -C qt/android/src/ $(QT_BASE_TLD)src/android/jar/src --strip-components=5
 	tar xf $(QT_BASE_PATH) -C qt/android/src/ $(QT_BASE_TLD)src/android/java/src --strip-components=5
-	cp qt/dahomey-qt $(APK_LIB_DIR)/libdahomey-qt_$(ANDROID_ARCH).so
+	cp qt/danxome-qt $(APK_LIB_DIR)/libdanxome-qt_$(ANDROID_ARCH).so
 	cd qt/android && gradle wrapper --gradle-version=6.6.1
 	cd qt/android && ./gradlew build
 

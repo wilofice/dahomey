@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018-2021 The Dahomey Core developers
+# Copyright (c) 2018-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import (
     assert_equal,
     assert_raises_rpc_error,
@@ -13,7 +13,7 @@ from test_framework.blocktools import (
 )
 
 
-class CreateTxWalletTest(DahomeyTestFramework):
+class CreateTxWalletTest(DanxomeTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1

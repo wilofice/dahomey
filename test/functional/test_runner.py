@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2014-2021 The Dahomey Core developers
+# Copyright (c) 2014-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Run regression test suite.
@@ -8,7 +8,7 @@ This module calls down into individual test cases via subprocess. It will
 forward all unrecognized arguments onto the individual test scripts.
 
 For a description of arguments recognized by test scripts, see
-`test/functional/test_framework/test_framework.py:DahomeyTestFramework.main`.
+`test/functional/test_framework/test_framework.py:DanxomeTestFramework.main`.
 
 """
 
@@ -138,8 +138,8 @@ BASE_SCRIPTS = [
     'feature_fee_estimation.py',
     'interface_zmq.py',
     'rpc_invalid_address_message.py',
-    'interface_dahomey_cli.py --legacy-wallet',
-    'interface_dahomey_cli.py --descriptors',
+    'interface_danxome_cli.py --legacy-wallet',
+    'interface_danxome_cli.py --descriptors',
     'feature_bind_extra.py',
     'mempool_resurrect.py',
     'wallet_txn_doublespend.py --mineblock',
@@ -391,9 +391,9 @@ def main():
 
     logging.debug("Temporary test directory at %s" % tmpdir)
 
-    enable_dahomeyd = config["components"].getboolean("ENABLE_BITCOIND")
+    enable_danxomed = config["components"].getboolean("ENABLE_BITCOIND")
 
-    if not enable_dahomeyd:
+    if not enable_danxomed:
         print("No functional tests to run.")
         print("Rerun ./configure with --with-daemon and then make")
         sys.exit(0)
@@ -475,11 +475,11 @@ def main():
 def run_tests(*, test_list, src_dir, build_dir, tmpdir, jobs=1, enable_coverage=False, args=None, combined_logs_len=0, failfast=False, use_term_control):
     args = args or []
 
-    # Warn if dahomeyd is already running
+    # Warn if danxomed is already running
     try:
         # pgrep exits with code zero when one or more matching processes found
-        if subprocess.run(["pgrep", "-x", "dahomeyd"], stdout=subprocess.DEVNULL).returncode == 0:
-            print("%sWARNING!%s There is already a dahomeyd process running on this system. Tests may fail unexpectedly due to resource contention!" % (BOLD[1], BOLD[0]))
+        if subprocess.run(["pgrep", "-x", "danxomed"], stdout=subprocess.DEVNULL).returncode == 0:
+            print("%sWARNING!%s There is already a danxomed process running on this system. Tests may fail unexpectedly due to resource contention!" % (BOLD[1], BOLD[0]))
     except OSError:
         # pgrep not supported
         pass
@@ -750,7 +750,7 @@ class RPCCoverage():
     Coverage calculation works by having each test script subprocess write
     coverage files into a particular directory. These files contain the RPC
     commands invoked during testing, as well as a complete listing of RPC
-    commands per `dahomey-cli help` (`rpc_interface.txt`).
+    commands per `danxome-cli help` (`rpc_interface.txt`).
 
     After all tests complete, the commands run are combined and diff'd against
     the complete list to calculate uncovered RPC commands.

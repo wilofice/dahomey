@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2014-2021 The Dahomey Core developers
+# Copyright (c) 2014-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -7,7 +7,7 @@ export LC_ALL=C
 set -e
 
 ROOTDIR=dist
-BUNDLE="${ROOTDIR}/Dahomey-Qt.app"
+BUNDLE="${ROOTDIR}/Danxome-Qt.app"
 SIGNAPPLE=signapple
 TEMPDIR=sign.temp
 OUT=signature-osx.tar.gz

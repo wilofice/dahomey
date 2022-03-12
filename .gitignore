@@ -2,17 +2,17 @@
 
 *.exe
 *.pdb
-src/dahomey
-src/dahomeyd
-src/dahomey-cli
-src/dahomey-gui
-src/dahomey-node
-src/dahomey-tx
-src/dahomey-util
-src/dahomey-wallet
+src/danxome
+src/danxomed
+src/danxome-cli
+src/danxome-gui
+src/danxome-node
+src/danxome-tx
+src/danxome-util
+src/danxome-wallet
 src/test/fuzz/fuzz
-src/test/test_dahomey
-src/qt/test/test_dahomey-qt
+src/test/test_danxome
+src/qt/test/test_danxome-qt
 
 # autoreconf
 Makefile.in
@@ -36,8 +36,8 @@ config.log
 config.status
 configure
 libtool
-src/config/dahomey-config.h
-src/config/dahomey-config.h.in
+src/config/danxome-config.h
+src/config/danxome-config.h.in
 src/config/stamp-h1
 src/obj
 share/setup.nsi
@@ -51,11 +51,11 @@ src/qt/forms/ui_*.h
 
 src/qt/test/moc*.cpp
 
-src/qt/dahomey-qt.config
-src/qt/dahomey-qt.creator
-src/qt/dahomey-qt.creator.user
-src/qt/dahomey-qt.files
-src/qt/dahomey-qt.includes
+src/qt/danxome-qt.config
+src/qt/danxome-qt.creator
+src/qt/danxome-qt.creator.user
+src/qt/danxome-qt.files
+src/qt/danxome-qt.includes
 
 .deps
 .dirstamp
@@ -94,15 +94,15 @@ src/qt/dahomey-qt.includes
 *.qm
 Makefile
 !depends/Makefile
-src/qt/dahomey-qt
-Dahomey-Qt.app
+src/qt/danxome-qt
+Danxome-Qt.app
 
 # Qt Creator
 Makefile.am.user
 
 # Unit-tests
 Makefile.test
-dahomey-qt_test
+danxome-qt_test
 
 # Resources cpp
 qrc_*.cpp
@@ -118,7 +118,7 @@ releases
 *.gcno
 *.gcda
 /*.info
-test_dahomey.coverage/
+test_danxome.coverage/
 total.coverage/
 fuzz.coverage/
 coverage_percent.txt
@@ -137,7 +137,7 @@ test/.mypy_cache/
 
 /doc/doxygen/
 
-libdahomeyconsensus.pc
+libdanxomeconsensus.pc
 contrib/devtools/split-debug.sh
 
 # Output from running db4 installation

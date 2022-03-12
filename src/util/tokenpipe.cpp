@@ -1,9 +1,9 @@
-// Copyright (c) 2021 The Dahomey Core developers
+// Copyright (c) 2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include <util/tokenpipe.h>
 
-#include <config/dahomey-config.h>
+#include <config/danxome-config.h>
 
 #ifndef WIN32
 

@@ -1,44 +1,44 @@
 0.20.1 Release Notes
 ====================
 
-Dahomey Core version 0.20.1 is now available from:
+Danxome Core version 0.20.1 is now available from:
 
-  <https://dahomeycore.org/bin/dahomey-core-0.20.1/>
+  <https://danxomecore.org/bin/danxome-core-0.20.1/>
 
 This minor release includes various bug fixes and performance
 improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/dahomey/dahomey/issues>
+  <https://github.com/danxome/danxome/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://dahomeycore.org/en/list/announcements/join/>
+  <https://danxomecore.org/en/list/announcements/join/>
 
 How to Upgrade
 ==============
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes in some cases), then run the
-installer (on Windows) or just copy over `/Applications/Dahomey-Qt` (on Mac)
-or `dahomeyd`/`dahomey-qt` (on Linux).
+installer (on Windows) or just copy over `/Applications/Danxome-Qt` (on Mac)
+or `danxomed`/`danxome-qt` (on Linux).
 
-Upgrading directly from a version of Dahomey Core that has reached its EOL is
+Upgrading directly from a version of Danxome Core that has reached its EOL is
 possible, but it might take some time if the data directory needs to be migrated. Old
-wallet versions of Dahomey Core are generally supported.
+wallet versions of Danxome Core are generally supported.
 
 Compatibility
 ==============
 
-Dahomey Core is supported and extensively tested on operating systems
-using the Linux kernel, macOS 10.12+, and Windows 7 and newer.  Dahomey
+Danxome Core is supported and extensively tested on operating systems
+using the Linux kernel, macOS 10.12+, and Windows 7 and newer.  Danxome
 Core should also work on most other Unix-like systems but is not as
-frequently tested on them.  It is not recommended to use Dahomey Core on
+frequently tested on them.  It is not recommended to use Danxome Core on
 unsupported systems.
 
-From Dahomey Core 0.20.0 onwards, macOS versions earlier than 10.12 are no
-longer supported. Additionally, Dahomey Core does not yet change appearance
+From Danxome Core 0.20.0 onwards, macOS versions earlier than 10.12 are no
+longer supported. Additionally, Danxome Core does not yet change appearance
 when macOS "dark mode" is activated.
 
 Known Bugs
@@ -90,7 +90,7 @@ Notification changes
 removed from the mempool because they conflict with a new block. These
 notifications were sent previously before the v0.19 release, but had been
 broken since that release (bug
-[#18325](https://github.com/dahomey/dahomey/issues/18325)).
+[#18325](https://github.com/danxome/danxome/issues/18325)).
 
 PSBT changes
 ------------
@@ -155,4 +155,4 @@ Thanks to everyone who directly contributed to this release:
 - Wladimir J. van der Laan
 
 As well as to everyone that helped with translations on
-[Transifex](https://www.transifex.com/dahomey/dahomey/).
+[Transifex](https://www.transifex.com/danxome/danxome/).

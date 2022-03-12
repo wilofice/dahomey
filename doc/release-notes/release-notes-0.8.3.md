@@ -1,11 +1,11 @@
-Dahomey-Qt version 0.8.3 is now available from:
-  http://sourceforge.net/projects/dahomey/files/Dahomey/dahomey-0.8.3/
+Danxome-Qt version 0.8.3 is now available from:
+  http://sourceforge.net/projects/danxome/files/Danxome/danxome-0.8.3/
 
 This is a maintenance release to fix a denial-of-service attack that
 can cause nodes to crash.
 
 Please report bugs using the issue tracker at github:
-  https://github.com/dahomey/dahomey/issues
+  https://github.com/danxome/danxome/issues
 
 0.8.3 Release notes
 

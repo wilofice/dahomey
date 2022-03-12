@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-2020 The Dahomey Core developers
+# Copyright (c) 2017-2020 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test wallet load on startup.
 
-Verify that a dahomeyd node can maintain list of wallets loading on startup
+Verify that a danxomed node can maintain list of wallets loading on startup
 """
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import (
     assert_equal,
 )
 
 
-class WalletStartupTest(DahomeyTestFramework):
+class WalletStartupTest(DanxomeTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1

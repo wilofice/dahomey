@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2020 The Dahomey Core developers
+// Copyright (c) 2011-2020 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -30,7 +30,7 @@ public:
 
     enum ColumnIndex {
         Label = 0,   /**< User specified label */
-        Address = 1  /**< Dahomey address */
+        Address = 1  /**< Danxome address */
     };
 
     enum RoleIndex {

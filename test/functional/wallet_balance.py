@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018-2021 The Dahomey Core developers
+# Copyright (c) 2018-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the wallet balance RPC methods."""
@@ -8,7 +8,7 @@ import struct
 
 from test_framework.address import ADDRESS_BCRT1_UNSPENDABLE as ADDRESS_WATCHONLY
 from test_framework.blocktools import COINBASE_MATURITY
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import (
     assert_equal,
     assert_raises_rpc_error,
@@ -45,7 +45,7 @@ def create_transactions(node, address, amt, fees):
 
     return txs
 
-class WalletTest(DahomeyTestFramework):
+class WalletTest(DanxomeTestFramework):
     def set_test_params(self):
         self.num_nodes = 2
         self.setup_clean_chain = True
@@ -98,7 +98,7 @@ class WalletTest(DahomeyTestFramework):
             assert_equal(self.nodes[0].getbalance("*", 1, True), 50)
         assert_equal(self.nodes[1].getbalance(minconf=0, include_watchonly=True), 50)
 
-        # Send 40 DEY from 0 to 1 and 60 DEY from 1 to 0.
+        # Send 40 DAN from 0 to 1 and 60 DAN from 1 to 0.
         txs = create_transactions(self.nodes[0], self.nodes[1].getnewaddress(), 40, [Decimal('0.01')])
         self.nodes[0].sendrawtransaction(txs[0]['hex'])
         self.nodes[1].sendrawtransaction(txs[0]['hex'])  # sending on both nodes is faster than waiting for propagation
@@ -148,7 +148,7 @@ class WalletTest(DahomeyTestFramework):
         # 2) Sent 10 from node B to node A with fee 0.01
         #
         # Then our node would report a confirmed balance of 40 + 50 - 10 = 80
-        # DEY, which is more than would be available if transaction 1 were
+        # DAN, which is more than would be available if transaction 1 were
         # replaced.
 
 

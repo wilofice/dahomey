@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-# Copyright (c) 2021 The Dahomey Core developers
+# Copyright (c) 2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-""" Interactive dahomeyd P2P network traffic monitor utilizing USDT and the
+""" Interactive danxomed P2P network traffic monitor utilizing USDT and the
     net:inbound_message and net:outbound_message tracepoints. """
 
-# This script demonstrates what USDT for Dahomey Core can enable. It uses BCC
+# This script demonstrates what USDT for Danxome Core can enable. It uses BCC
 # (https://github.com/iovisor/bcc) to load a sandboxed eBPF program into the
 # Linux kernel (root privileges are required). The eBPF program attaches to two
 # statically defined tracepoints. The tracepoint 'net:inbound_message' is called
@@ -115,17 +115,17 @@ class Peer:
             self.total_outbound_msgs += 1
 
 
-def main(dahomeyd_path):
+def main(danxomed_path):
     peers = dict()
 
-    dahomeyd_with_usdts = USDT(path=str(dahomeyd_path))
+    danxomed_with_usdts = USDT(path=str(danxomed_path))
 
     # attaching the trace functions defined in the BPF program to the tracepoints
-    dahomeyd_with_usdts.enable_probe(
+    danxomed_with_usdts.enable_probe(
         probe="inbound_message", fn_name="trace_inbound_message")
-    dahomeyd_with_usdts.enable_probe(
+    danxomed_with_usdts.enable_probe(
         probe="outbound_message", fn_name="trace_outbound_message")
-    bpf = BPF(text=program, usdt_contexts=[dahomeyd_with_usdts])
+    bpf = BPF(text=program, usdt_contexts=[danxomed_with_usdts])
 
     # BCC: perf buffer handle function for inbound_messages
     def handle_inbound(_, data, size):
@@ -247,7 +247,7 @@ def render(screen, peers, cur_list_pos, scroll, ROWS_AVALIABLE_FOR_LIST, info_pa
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("USAGE:", sys.argv[0], "path/to/dahomeyd")
+        print("USAGE:", sys.argv[0], "path/to/danxomed")
         exit()
     path = sys.argv[1]
     main(path)

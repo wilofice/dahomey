@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2015-2021 The Dahomey Core developers
+# Copyright (c) 2015-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test CSV soft fork activation.
@@ -50,7 +50,7 @@ from test_framework.script import (
     OP_CHECKSEQUENCEVERIFY,
     OP_DROP,
 )
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import (
     assert_equal,
     softfork_active,
@@ -91,7 +91,7 @@ def all_rlt_txs(txs):
 CSV_ACTIVATION_HEIGHT = 432
 
 
-class BIP68_112_113Test(DahomeyTestFramework):
+class BIP68_112_113Test(DanxomeTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
         self.setup_clean_chain = True

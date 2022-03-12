@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-# Copyright (c) 2021 The Dahomey Core developers
+# Copyright (c) 2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test compact blocks HB selection logic."""
 
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import assert_equal
 
 
-class CompactBlocksConnectionTest(DahomeyTestFramework):
+class CompactBlocksConnectionTest(DanxomeTestFramework):
     """Test class for verifying selection of HB peer connections."""
 
     def set_test_params(self):

@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2021 The Dahomey Core developers
+// Copyright (c) 2011-2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -20,9 +20,9 @@ QT_END_NAMESPACE
 
 /**
  * A container for embedding all wallet-related
- * controls into DahomeyGUI. The purpose of this class is to allow future
+ * controls into DanxomeGUI. The purpose of this class is to allow future
  * refinements of the wallet controls with minimal need for further
- * modifications to DahomeyGUI, thus greatly simplifying merges while
+ * modifications to DanxomeGUI, thus greatly simplifying merges while
  * reducing the risk of breaking top-level stuff.
  */
 class WalletFrame : public QFrame
@@ -81,7 +81,7 @@ public Q_SLOTS:
     /** Show Sign/Verify Message dialog and switch to verify message tab */
     void gotoVerifyMessageTab(QString addr = "");
 
-    /** Load Partially Signed Dahomey Transaction */
+    /** Load Partially Signed Danxome Transaction */
     void gotoLoadPSBT(bool from_clipboard = false);
 
     /** Encrypt the wallet */

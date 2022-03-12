@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-2021 The Dahomey Core developers
+# Copyright (c) 2017-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test various command line arguments and configuration file parameters."""
@@ -8,12 +8,12 @@ import json
 
 from pathlib import Path
 
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.test_node import ErrorMatch
 from test_framework.util import assert_equal
 
 
-class SettingsTest(DahomeyTestFramework):
+class SettingsTest(DanxomeTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1
@@ -22,7 +22,7 @@ class SettingsTest(DahomeyTestFramework):
     def run_test(self):
         node, = self.nodes
         settings = Path(node.datadir, self.chain, "settings.json")
-        conf = Path(node.datadir, "dahomey.conf")
+        conf = Path(node.datadir, "danxome.conf")
 
         # Assert empty settings file was created
         self.stop_node(0)

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018-2021 The Dahomey Core developers
+# Copyright (c) 2018-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test wallet group functionality."""
 
 from test_framework.blocktools import COINBASE_MATURITY
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.messages import (
     tx_from_hex,
 )
@@ -15,7 +15,7 @@ from test_framework.util import (
 )
 
 
-class WalletGroupTest(DahomeyTestFramework):
+class WalletGroupTest(DanxomeTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 5

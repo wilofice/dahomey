@@ -1,27 +1,27 @@
-Dahomey version 0.5.1 is now available for download at:
-http://sourceforge.net/projects/dahomey/files/Dahomey/dahomey-0.5.1/
+Danxome version 0.5.1 is now available for download at:
+http://sourceforge.net/projects/danxome/files/Danxome/danxome-0.5.1/
 
 This is a bugfix-only release.
 
 This release includes 13 translations, including 5 new translations:
 Italian, Hungarian, Ukranian, Portuguese (Brazilian) and Simplified Chinese.
 More translations are welcome; join the project at Transifex if you can help:
-https://www.transifex.net/projects/p/dahomey/
+https://www.transifex.net/projects/p/danxome/
 
 Please report bugs using the issue tracker at github:
-https://github.com/dahomey/dahomey/issues
+https://github.com/danxome/danxome/issues
 
 Project source code is hosted at github; we are no longer
 distributing .tar.gz files here, you can get them
 directly from github:
-https://github.com/dahomey/dahomey/tarball/v0.5.1  # .tar.gz
-https://github.com/dahomey/dahomey/zipball/v0.5.1  # .zip
+https://github.com/danxome/danxome/tarball/v0.5.1  # .tar.gz
+https://github.com/danxome/danxome/zipball/v0.5.1  # .zip
 
 For Ubuntu users, there is a new ppa maintained by Matt Corallo which
 you can add to your system so that it will automatically keep
-dahomey up-to-date.  Just type
-sudo apt-add-repository ppa:dahomey/dahomey
-in your terminal, then install the dahomey-qt package.
+danxome up-to-date.  Just type
+sudo apt-add-repository ppa:danxome/danxome
+in your terminal, then install the danxome-qt package.
 
 
 BUG FIXES
@@ -29,15 +29,15 @@ BUG FIXES
 Re-enable SSL support for the JSON-RPC interface (it was unintentionally
 disabled for the 0.5.0 release binaries).
 
-The code that finds peers via "dns seeds" no longer stops dahomey startup
+The code that finds peers via "dns seeds" no longer stops danxome startup
 if one of the dns seed machines is down.
 
 Tooltips on the transaction list view were rendering incorrectly (as black boxes
 or with a transparent background).
 
-Prevent a denial-of-service attack involving flooding a dahomey node with
+Prevent a denial-of-service attack involving flooding a danxome node with
 orphan blocks.
 
 The wallet passphrase dialog now warns you if the caps lock key was pressed.
 
-Improved searching in addresses and labels in dahomey-qt.
+Improved searching in addresses and labels in danxome-qt.

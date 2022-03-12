@@ -1,4 +1,4 @@
-// Copyright (c) 2012-2021 The Dahomey Core developers
+// Copyright (c) 2012-2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -32,7 +32,7 @@ void LocalTestingSetup :: ResetArgs(const std::string& strArg)
       boost::split(vecArg, strArg, IsSpace, boost::token_compress_on);
 
     // Insert dummy executable name:
-    vecArg.insert(vecArg.begin(), "testdahomey");
+    vecArg.insert(vecArg.begin(), "testdanxome");
 
     // Convert to char*:
     std::vector<const char*> vecChar;

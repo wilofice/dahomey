@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2016-2021 The Dahomey Core developers
+# Copyright (c) 2016-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,15 +12,15 @@ SOURCE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src'
 DEFAULT_PLATFORM_TOOLSET = R'v142'
 
 libs = [
-    'libdahomey_cli',
-    'libdahomey_common',
-    'libdahomey_crypto',
-    'libdahomey_node',
-    'libdahomey_util',
-    'libdahomey_wallet_tool',
-    'libdahomey_wallet',
-    'libdahomey_zmq',
-    'bench_dahomey',
+    'libdanxome_cli',
+    'libdanxome_common',
+    'libdanxome_crypto',
+    'libdanxome_node',
+    'libdanxome_util',
+    'libdanxome_wallet_tool',
+    'libdanxome_wallet',
+    'libdanxome_zmq',
+    'bench_danxome',
     'libtest_util',
 ]
 
@@ -77,9 +77,9 @@ def parse_config_into_btc_config():
     config_dict = dict(item.split(", ") for item in config_info)
     config_dict["PACKAGE_VERSION"] = f"\"{config_dict['CLIENT_VERSION_MAJOR']}.{config_dict['CLIENT_VERSION_MINOR']}.{config_dict['CLIENT_VERSION_BUILD']}\""
     version = config_dict["PACKAGE_VERSION"].strip('"')
-    config_dict["PACKAGE_STRING"] = f"\"Dahomey Core {version}\""
+    config_dict["PACKAGE_STRING"] = f"\"Danxome Core {version}\""
 
-    with open(os.path.join(SOURCE_DIR,'../build_msvc/dahomey_config.h.in'), "r", encoding="utf8") as template_file:
+    with open(os.path.join(SOURCE_DIR,'../build_msvc/danxome_config.h.in'), "r", encoding="utf8") as template_file:
         template = template_file.readlines()
 
     for index, line in enumerate(template):
@@ -89,11 +89,11 @@ def parse_config_into_btc_config():
         if header in config_dict:
             template[index] = line.replace("$", f"{config_dict[header]}")
 
-    with open(os.path.join(SOURCE_DIR,'../build_msvc/dahomey_config.h'), "w", encoding="utf8") as btc_config:
+    with open(os.path.join(SOURCE_DIR,'../build_msvc/danxome_config.h'), "w", encoding="utf8") as btc_config:
         btc_config.writelines(template)
 
 def main():
-    parser = argparse.ArgumentParser(description='Dahomey-core msbuild configuration initialiser.')
+    parser = argparse.ArgumentParser(description='Danxome-core msbuild configuration initialiser.')
     parser.add_argument('-toolset', nargs='?',help='Optionally sets the msbuild platform toolset, e.g. v142 for Visual Studio 2019.'
          ' default is %s.'%DEFAULT_PLATFORM_TOOLSET)
     args = parser.parse_args()
@@ -115,7 +115,7 @@ def main():
                 vcxproj_file.write(vcxproj_in_file.read().replace(
                     '@SOURCE_FILES@\n', content))
     parse_config_into_btc_config()
-    copyfile(os.path.join(SOURCE_DIR,'../build_msvc/dahomey_config.h'), os.path.join(SOURCE_DIR, 'config/dahomey-config.h'))
+    copyfile(os.path.join(SOURCE_DIR,'../build_msvc/danxome_config.h'), os.path.join(SOURCE_DIR, 'config/danxome-config.h'))
     copyfile(os.path.join(SOURCE_DIR,'../build_msvc/libsecp256k1_config.h'), os.path.join(SOURCE_DIR, 'secp256k1/src/libsecp256k1-config.h'))
 
 if __name__ == '__main__':

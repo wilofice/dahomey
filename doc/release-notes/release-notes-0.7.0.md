@@ -1,24 +1,24 @@
-Dahomey version 0.7.0 is now available for download at:
-  http://sourceforge.net/projects/dahomey/files/Dahomey/dahomey-0.7.0/
+Danxome version 0.7.0 is now available for download at:
+  http://sourceforge.net/projects/danxome/files/Danxome/danxome-0.7.0/
 
-We recommend that everybody running prior versions of dahomeyd/Dahomey-Qt
+We recommend that everybody running prior versions of danxomed/Danxome-Qt
 upgrade to this release, except for users running Mac OSX 10.5.
 
 Please report bugs using the issue tracker at github:
-  https://github.com/dahomey/dahomey/issues
+  https://github.com/danxome/danxome/issues
 
 Project source code is hosted at github; you can get
 source-only tarballs/zipballs directly from there:
-  https://github.com/dahomey/dahomey/tarball/v0.7.0  # .tar.gz
-  https://github.com/dahomey/dahomey/zipball/v0.7.0  # .zip
+  https://github.com/danxome/danxome/tarball/v0.7.0  # .tar.gz
+  https://github.com/danxome/danxome/zipball/v0.7.0  # .zip
 
 Ubuntu Linux users can use the "Personal Package Archive" (PPA)
 maintained by Matt Corallo to automatically keep 
-dahomey up-to-date.  Just type
-  sudo apt-add-repository ppa:dahomey/dahomey
+danxome up-to-date.  Just type
+  sudo apt-add-repository ppa:danxome/danxome
   sudo apt-get update
-in your terminal, then install the dahomey-qt package:
-  sudo apt-get install dahomey-qt
+in your terminal, then install the danxome-qt package:
+  sudo apt-get install danxome-qt
 
 
 How to Upgrade
@@ -27,10 +27,10 @@ If you are running an older version, shut it down. Wait
 until it has completely shut down (which might take a few minutes for older
 versions), then run the installer (on Windows) or just copy over
 Code:
-/Applications/Dahomey-Qt
+/Applications/Danxome-Qt
 (on Mac) or
 Code:
-dahomeyd/dahomey-qt
+danxomed/danxome-qt
 (on Linux).
 
 If you were running on Linux with a version that might have been compiled
@@ -45,14 +45,14 @@ Incompatible Changes
   and 'getrawmempool' commands.
 * Remove deprecated RPC 'getblocknumber'
 
-Dahomey Improvement Proposals implemented
+Danxome Improvement Proposals implemented
 
 BIP 22 - 'getblocktemplate', 'submitblock' RPCs
 BIP 34 - block version 2, height in coinbase
 BIP 35 - 'mempool' message, extended 'getdata' message behavior
 
 
-Core dahomey handling and blockchain database
+Core danxome handling and blockchain database
 
 * Reduced CPU usage, by eliminating some redundant hash calculations
 * Cache signature verifications, to eliminate redundant signature checks
@@ -109,7 +109,7 @@ Qt GUI
 * Add 2 labels to the overviewpage that display Wallet and Transaction status (obsolete or current)
 * Extend the optionsdialog (e.g. language selection) and re-work it to a tabbed UI
 * Merge sign/verify message into a single window with tabbed UI
-* Ensure a changed dahomey unit immediately updates all GUI elements that use units
+* Ensure a changed danxome unit immediately updates all GUI elements that use units
 * Update QR Code dialog
 * Improve error reporting at startup
 * Fine-grained UI updates for a much smoother UI during block downloads
@@ -119,8 +119,8 @@ Qt GUI
 * Much better translations
 * Override progress bar design on platforms with segmented progress bars to assist with readability
 * Added 'immature balance' display on the overview page
-* (Windows only): enable ASLR and DEP for dahomey-qt.exe
-* (Windows only): add meta-data to dahomey-qt.exe (e.g. description)
+* (Windows only): enable ASLR and DEP for danxome-qt.exe
+* (Windows only): add meta-data to danxome-qt.exe (e.g. description)
 
 Internal codebase
 
@@ -131,7 +131,7 @@ Internal codebase
 Miscellaneous
 
 * Reopen debug.log upon SIGHUP
-* Bash programmable completion for dahomeyd(1)
+* Bash programmable completion for danxomed(1)
 * On supported OS's, each thread is given a useful name
 
 

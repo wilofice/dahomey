@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021 The Dahomey Core developers
+// Copyright (c) 2018-2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -40,7 +40,7 @@ static RPCHelpMan enumeratesigners()
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
         {
             const std::string command = gArgs.GetArg("-signer", "");
-            if (command == "") throw JSONRPCError(RPC_MISC_ERROR, "Error: restart dahomeyd with -signer=<cmd>");
+            if (command == "") throw JSONRPCError(RPC_MISC_ERROR, "Error: restart danxomed with -signer=<cmd>");
             const std::string chain = gArgs.GetChainName();
             UniValue signers_res = UniValue::VARR;
             try {

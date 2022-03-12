@@ -1,6 +1,6 @@
-# User-space, Statically Defined Tracing (USDT) for Dahomey Core
+# User-space, Statically Defined Tracing (USDT) for Danxome Core
 
-Dahomey Core includes statically defined tracepoints to allow for more
+Danxome Core includes statically defined tracepoints to allow for more
 observability during development, debugging, code review, and production usage.
 These tracepoints make it possible to keep track of custom statistics and
 enable detailed monitoring of otherwise hidden internals. They have
@@ -11,7 +11,7 @@ eBPF and USDT Overview
 ======================
 
                 ┌──────────────────┐            ┌──────────────┐
-                │ tracing script   │            │ dahomeyd     │
+                │ tracing script   │            │ danxomed     │
                 │==================│      2.    │==============│
                 │  eBPF  │ tracing │      hooks │              │
                 │  code  │ logic   │      into┌─┤►tracepoint 1─┼───┐ 3.
@@ -157,7 +157,7 @@ Arguments passed:
 4. Value of the coin as `int64`
 . If the coin is a coinbase as `bool`
 
-## Adding tracepoints to Dahomey Core
+## Adding tracepoints to Danxome Core
 
 To add a new tracepoint, `#include <util/trace.h>` in the compilation unit where
 the tracepoint is inserted. Use one of the `TRACEx` macros listed below
@@ -252,31 +252,31 @@ maximum expected string size if known.
 
 ## Listing available tracepoints
 
-Multiple tools can list the available tracepoints in a `dahomeyd` binary with
+Multiple tools can list the available tracepoints in a `danxomed` binary with
 USDT support.
 
 ### GDB - GNU Project Debugger
 
-To list probes in Dahomey Core, use `info probes` in `gdb`:
+To list probes in Danxome Core, use `info probes` in `gdb`:
 
 ```
-$ gdb ./src/dahomeyd
+$ gdb ./src/danxomed
 …
 (gdb) info probes
 Type Provider   Name             Where              Semaphore Object
-stap net        inbound_message  0x000000000014419e /src/dahomeyd
-stap net        outbound_message 0x0000000000107c05 /src/dahomeyd
-stap validation block_connected  0x00000000002fb10c /src/dahomeyd
+stap net        inbound_message  0x000000000014419e /src/danxomed
+stap net        outbound_message 0x0000000000107c05 /src/danxomed
+stap validation block_connected  0x00000000002fb10c /src/danxomed
 …
 ```
 
 ### With `readelf`
 
-The `readelf` tool can be used to display the USDT tracepoints in Dahomey Core.
+The `readelf` tool can be used to display the USDT tracepoints in Danxome Core.
 Look for the notes with the description `NT_STAPSDT`.
 
 ```
-$ readelf -n ./src/dahomeyd | grep NT_STAPSDT -A 4 -B 2
+$ readelf -n ./src/danxomed | grep NT_STAPSDT -A 4 -B 2
 Displaying notes found in: .note.stapsdt
   Owner                 Data size	Description
   stapsdt              0x0000005d	NT_STAPSDT (SystemTap probe descriptors)
@@ -300,7 +300,7 @@ between distributions. For example, on
 [ubuntu binary]: https://github.com/iovisor/bcc/blob/master/INSTALL.md#ubuntu---binary
 
 ```
-$ tplist -l ./src/dahomeyd -v
+$ tplist -l ./src/danxomed -v
 b'net':b'outbound_message' [sema 0x0]
   1 location(s)
   6 argument(s)

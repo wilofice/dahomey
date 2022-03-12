@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2021 The Dahomey Core developers
+// Copyright (c) 2011-2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/dahomey-config.h>
+#include <config/danxome-config.h>
 #endif
 
 #include <qt/utilitydialog.h>
@@ -58,7 +58,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget *parent, bool about) :
         ui->helpMessage->setVisible(false);
     } else {
         setWindowTitle(tr("Command-line options"));
-        QString header = "Usage:  dahomey-qt [command-line options]                     \n";
+        QString header = "Usage:  danxome-qt [command-line options]                     \n";
         QTextCursor cursor(ui->helpMessage->document());
         cursor.insertText(version);
         cursor.insertBlock();

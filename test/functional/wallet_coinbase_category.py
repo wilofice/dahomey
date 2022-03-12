@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2014-2021 The Dahomey Core developers
+# Copyright (c) 2014-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test coinbase transactions return the correct categories.
@@ -7,12 +7,12 @@
 Tests listtransactions, listsinceblock, and gettransaction.
 """
 
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import (
     assert_array_result
 )
 
-class CoinbaseCategoryTest(DahomeyTestFramework):
+class CoinbaseCategoryTest(DanxomeTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
 

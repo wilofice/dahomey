@@ -1,23 +1,23 @@
-dnl Copyright (c) 2013-2016 The Dahomey Core developers
+dnl Copyright (c) 2013-2016 The Danxome Core developers
 dnl Distributed under the MIT software license, see the accompanying
 dnl file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 dnl Helper for cases where a qt dependency is not met.
-dnl Output: If qt version is auto, set dahomey_enable_qt to false. Else, exit.
+dnl Output: If qt version is auto, set danxome_enable_qt to false. Else, exit.
 AC_DEFUN([BITCOIN_QT_FAIL],[
-  if test "$dahomey_qt_want_version" = "auto" && test "$dahomey_qt_force" != "yes"; then
-    if test "$dahomey_enable_qt" != "no"; then
-      AC_MSG_WARN([$1; dahomey-qt frontend will not be built])
+  if test "$danxome_qt_want_version" = "auto" && test "$danxome_qt_force" != "yes"; then
+    if test "$danxome_enable_qt" != "no"; then
+      AC_MSG_WARN([$1; danxome-qt frontend will not be built])
     fi
-    dahomey_enable_qt=no
-    dahomey_enable_qt_test=no
+    danxome_enable_qt=no
+    danxome_enable_qt_test=no
   else
     AC_MSG_ERROR([$1])
   fi
 ])
 
 AC_DEFUN([BITCOIN_QT_CHECK],[
-  if test "$dahomey_enable_qt" != "no" && test "$dahomey_qt_want_version" != "no"; then
+  if test "$danxome_enable_qt" != "no" && test "$danxome_qt_want_version" != "no"; then
     true
     $1
   else
@@ -54,20 +54,20 @@ AC_DEFUN([BITCOIN_QT_INIT],[
   dnl enable qt support
   AC_ARG_WITH([gui],
     [AS_HELP_STRING([--with-gui@<:@=no|qt5|auto@:>@],
-    [build dahomey-qt GUI (default=auto)])],
+    [build danxome-qt GUI (default=auto)])],
     [
-     dahomey_qt_want_version=$withval
-     if test "$dahomey_qt_want_version" = "yes"; then
-       dahomey_qt_force=yes
-       dahomey_qt_want_version=auto
+     danxome_qt_want_version=$withval
+     if test "$danxome_qt_want_version" = "yes"; then
+       danxome_qt_force=yes
+       danxome_qt_want_version=auto
      fi
     ],
-    [dahomey_qt_want_version=auto])
+    [danxome_qt_want_version=auto])
 
   AS_IF([test "$with_gui" = "qt5_debug"],
         [AS_CASE([$host],
                  [*darwin*], [qt_lib_suffix=_debug],
-                 [qt_lib_suffix= ]); dahomey_qt_want_version=qt5],
+                 [qt_lib_suffix= ]); danxome_qt_want_version=qt5],
         [qt_lib_suffix= ])
 
   AS_CASE([$host], [*android*], [qt_lib_suffix=_$ANDROID_ARCH])
@@ -102,7 +102,7 @@ dnl   BITCOIN_QT_CONFIGURE([MINIMUM-VERSION])
 dnl
 dnl Outputs: See _BITCOIN_QT_FIND_LIBS
 dnl Outputs: Sets variables for all qt-related tools.
-dnl Outputs: dahomey_enable_qt, dahomey_enable_qt_dbus, dahomey_enable_qt_test
+dnl Outputs: danxome_enable_qt, danxome_enable_qt_dbus, danxome_enable_qt_test
 AC_DEFUN([BITCOIN_QT_CONFIGURE],[
   qt_version=">= $1"
   qt_lib_prefix="Qt5"
@@ -119,7 +119,7 @@ AC_DEFUN([BITCOIN_QT_CONFIGURE],[
   CPPFLAGS="$QT_INCLUDES $CPPFLAGS"
   CXXFLAGS="$PIC_FLAGS $CXXFLAGS"
   _BITCOIN_QT_IS_STATIC
-  if test "$dahomey_cv_static_qt" = "yes"; then
+  if test "$danxome_cv_static_qt" = "yes"; then
     _BITCOIN_QT_CHECK_STATIC_LIBS
 
     if test "$qt_plugin_path" != ""; then
@@ -246,14 +246,14 @@ AC_DEFUN([BITCOIN_QT_CONFIGURE],[
   dnl enable qt support
   AC_MSG_CHECKING([whether to build ]AC_PACKAGE_NAME[ GUI])
   BITCOIN_QT_CHECK([
-    dahomey_enable_qt=yes
-    dahomey_enable_qt_test=yes
+    danxome_enable_qt=yes
+    danxome_enable_qt_test=yes
     if test "$have_qt_test" = "no"; then
-      dahomey_enable_qt_test=no
+      danxome_enable_qt_test=no
     fi
-    dahomey_enable_qt_dbus=no
+    danxome_enable_qt_dbus=no
     if test "$use_dbus" != "no" && test "$have_qt_dbus" = "yes"; then
-      dahomey_enable_qt_dbus=yes
+      danxome_enable_qt_dbus=yes
     fi
     if test "$use_dbus" = "yes" && test "$have_qt_dbus" = "no"; then
       AC_MSG_ERROR([libQtDBus not found. Install libQtDBus or remove --with-qtdbus.])
@@ -265,12 +265,12 @@ AC_DEFUN([BITCOIN_QT_CONFIGURE],[
       AC_MSG_WARN([lconvert tool is required to update Qt translations.])
     fi
   ],[
-    dahomey_enable_qt=no
+    danxome_enable_qt=no
   ])
-  if test $dahomey_enable_qt = "yes"; then
-    AC_MSG_RESULT([$dahomey_enable_qt ($qt_lib_prefix)])
+  if test $danxome_enable_qt = "yes"; then
+    AC_MSG_RESULT([$danxome_enable_qt ($qt_lib_prefix)])
   else
-    AC_MSG_RESULT([$dahomey_enable_qt])
+    AC_MSG_RESULT([$danxome_enable_qt])
   fi
 
   AC_SUBST(QT_PIE_FLAGS)
@@ -291,9 +291,9 @@ dnl _BITCOIN_QT_IS_STATIC
 dnl ---------------------
 dnl
 dnl Requires: INCLUDES and LIBS must be populated as necessary.
-dnl Output: dahomey_cv_static_qt=yes|no
+dnl Output: danxome_cv_static_qt=yes|no
 AC_DEFUN([_BITCOIN_QT_IS_STATIC],[
-  AC_CACHE_CHECK(for static Qt, dahomey_cv_static_qt,[
+  AC_CACHE_CHECK(for static Qt, danxome_cv_static_qt,[
     AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
         #include <QtCore/qconfig.h>
         #ifndef QT_VERSION
@@ -305,8 +305,8 @@ AC_DEFUN([_BITCOIN_QT_IS_STATIC],[
         choke
         #endif
       ]])],
-      [dahomey_cv_static_qt=yes],
-      [dahomey_cv_static_qt=no])
+      [danxome_cv_static_qt=yes],
+      [danxome_cv_static_qt=no])
     ])
 ])
 

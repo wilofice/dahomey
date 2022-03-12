@@ -26,17 +26,17 @@ Usage: test/lint/git-subtree-check.sh [-r] DIR [COMMIT]
 
 To do a full check with `-r`, make sure that you have fetched the upstream repository branch in which the subtree is
 maintained:
-* for `src/secp256k1`: https://github.com/dahomey-core/secp256k1.git (branch master)
-* for `src/leveldb`: https://github.com/dahomey-core/leveldb-subtree.git (branch dahomey-fork)
-* for `src/univalue`: https://github.com/dahomey-core/univalue-subtree.git (branch master)
-* for `src/crypto/ctaes`: https://github.com/dahomey-core/ctaes.git (branch master)
-* for `src/crc32c`: https://github.com/dahomey-core/crc32c-subtree.git (branch dahomey-fork)
+* for `src/secp256k1`: https://github.com/danxome-core/secp256k1.git (branch master)
+* for `src/leveldb`: https://github.com/danxome-core/leveldb-subtree.git (branch danxome-fork)
+* for `src/univalue`: https://github.com/danxome-core/univalue-subtree.git (branch master)
+* for `src/crypto/ctaes`: https://github.com/danxome-core/ctaes.git (branch master)
+* for `src/crc32c`: https://github.com/danxome-core/crc32c-subtree.git (branch danxome-fork)
 * for `src/minisketch`: https://github.com/sipa/minisketch.git (branch master)
 
 To do so, add the upstream repository as remote:
 
 ```
-git remote add --fetch secp256k1 https://github.com/dahomey-core/secp256k1.git
+git remote add --fetch secp256k1 https://github.com/danxome-core/secp256k1.git
 ```
 
 lint-all.sh

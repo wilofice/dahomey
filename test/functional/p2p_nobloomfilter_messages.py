@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2015-2020 The Dahomey Core developers
+# Copyright (c) 2015-2020 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test invalid p2p messages for nodes with bloom filters disabled.
@@ -13,11 +13,11 @@ Test that, when bloom filters are not enabled, peers are disconnected if:
 
 from test_framework.messages import msg_mempool, msg_filteradd, msg_filterload, msg_filterclear
 from test_framework.p2p import P2PInterface
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import assert_equal
 
 
-class P2PNoBloomFilterMessages(DahomeyTestFramework):
+class P2PNoBloomFilterMessages(DanxomeTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1

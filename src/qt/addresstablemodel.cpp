@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2021 The Dahomey Core developers
+// Copyright (c) 2011-2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -336,7 +336,7 @@ QModelIndex AddressTableModel::index(int row, int column, const QModelIndex &par
 void AddressTableModel::updateEntry(const QString &address,
         const QString &label, bool isMine, const QString &purpose, int status)
 {
-    // Update address book model from Dahomey core
+    // Update address book model from Danxome core
     priv->updateEntry(address, label, isMine, purpose, status);
 }
 

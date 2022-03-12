@@ -7,7 +7,7 @@ Date:   Tue Dec 7 11:02:07 2021 +0100
     We assume that the assembler supports "?" in .pushsection directives.
     This enables us to skip configure and make.
     
-    See https://github.com/dahomey/dahomey/issues/23297.
+    See https://github.com/danxome/danxome/issues/23297.
 
 diff --git a/includes/sys/sdt.h b/includes/sys/sdt.h
 index 97766e710..352b4ee25 100644

@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
-# Copyright (c) 2020-2021 The Dahomey Core developers
+# Copyright (c) 2020-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test asmap config argument for ASN-based IP bucketing.
 
-Verify node behaviour and debug log when launching dahomeyd in these cases:
+Verify node behaviour and debug log when launching danxomed in these cases:
 
-1. `dahomeyd` with no -asmap arg, using /16 prefix for IP bucketing
+1. `danxomed` with no -asmap arg, using /16 prefix for IP bucketing
 
-2. `dahomeyd -asmap=<absolute path>`, using the unit test skeleton asmap
+2. `danxomed -asmap=<absolute path>`, using the unit test skeleton asmap
 
-3. `dahomeyd -asmap=<relative path>`, using the unit test skeleton asmap
+3. `danxomed -asmap=<relative path>`, using the unit test skeleton asmap
 
-4. `dahomeyd -asmap/-asmap=` with no file specified, using the default asmap
+4. `danxomed -asmap/-asmap=` with no file specified, using the default asmap
 
-5. `dahomeyd -asmap` restart with an addrman containing new and tried entries
+5. `danxomed -asmap` restart with an addrman containing new and tried entries
 
-6. `dahomeyd -asmap` with no file specified and a missing default asmap file
+6. `danxomed -asmap` with no file specified and a missing default asmap file
 
-7. `dahomeyd -asmap` with an empty (unparsable) default asmap file
+7. `danxomed -asmap` with an empty (unparsable) default asmap file
 
 The tests are order-independent.
 
@@ -26,7 +26,7 @@ The tests are order-independent.
 import os
 import shutil
 
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 
 DEFAULT_ASMAP_FILENAME = 'ip_asn.map' # defined in src/init.cpp
 ASMAP = '../../src/test/data/asmap.raw' # path to unit test skeleton asmap
@@ -36,7 +36,7 @@ def expected_messages(filename):
     return [f'Opened asmap file "{filename}" (59 bytes) from disk',
             f'Using asmap version {VERSION} for IP bucketing']
 
-class AsmapTest(DahomeyTestFramework):
+class AsmapTest(DanxomeTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
         self.extra_args = [["-checkaddrman=1"]]  # Do addrman checks on all operations.
@@ -47,13 +47,13 @@ class AsmapTest(DahomeyTestFramework):
             self.nodes[node_id].addpeeraddress(address=f"101.{addr}.0.0", tried=tried, port=2022)
 
     def test_without_asmap_arg(self):
-        self.log.info('Test dahomeyd with no -asmap arg passed')
+        self.log.info('Test danxomed with no -asmap arg passed')
         self.stop_node(0)
         with self.node.assert_debug_log(['Using /16 prefix for IP bucketing']):
             self.start_node(0)
 
     def test_asmap_with_absolute_path(self):
-        self.log.info('Test dahomeyd -asmap=<absolute path>')
+        self.log.info('Test danxomed -asmap=<absolute path>')
         self.stop_node(0)
         filename = os.path.join(self.datadir, 'my-map-file.map')
         shutil.copyfile(self.asmap_raw, filename)
@@ -62,7 +62,7 @@ class AsmapTest(DahomeyTestFramework):
         os.remove(filename)
 
     def test_asmap_with_relative_path(self):
-        self.log.info('Test dahomeyd -asmap=<relative path>')
+        self.log.info('Test danxomed -asmap=<relative path>')
         self.stop_node(0)
         name = 'ASN_map'
         filename = os.path.join(self.datadir, name)
@@ -74,14 +74,14 @@ class AsmapTest(DahomeyTestFramework):
     def test_default_asmap(self):
         shutil.copyfile(self.asmap_raw, self.default_asmap)
         for arg in ['-asmap', '-asmap=']:
-            self.log.info(f'Test dahomeyd {arg} (using default map file)')
+            self.log.info(f'Test danxomed {arg} (using default map file)')
             self.stop_node(0)
             with self.node.assert_debug_log(expected_messages(self.default_asmap)):
                 self.start_node(0, [arg])
         os.remove(self.default_asmap)
 
     def test_asmap_interaction_with_addrman_containing_entries(self):
-        self.log.info("Test dahomeyd -asmap restart with addrman containing new and tried entries")
+        self.log.info("Test danxomed -asmap restart with addrman containing new and tried entries")
         self.stop_node(0)
         shutil.copyfile(self.asmap_raw, self.default_asmap)
         self.start_node(0, ["-asmap", "-checkaddrman=1"])
@@ -97,13 +97,13 @@ class AsmapTest(DahomeyTestFramework):
         os.remove(self.default_asmap)
 
     def test_default_asmap_with_missing_file(self):
-        self.log.info('Test dahomeyd -asmap with missing default map file')
+        self.log.info('Test danxomed -asmap with missing default map file')
         self.stop_node(0)
         msg = f"Error: Could not find asmap file \"{self.default_asmap}\""
         self.node.assert_start_raises_init_error(extra_args=['-asmap'], expected_msg=msg)
 
     def test_empty_asmap(self):
-        self.log.info('Test dahomeyd -asmap with empty map file')
+        self.log.info('Test danxomed -asmap with empty map file')
         self.stop_node(0)
         with open(self.default_asmap, "w", encoding="utf-8") as f:
             f.write("")

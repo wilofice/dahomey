@@ -1,44 +1,44 @@
 0.21.1 Release Notes
 ====================
 
-Dahomey Core version 0.21.1 is now available from:
+Danxome Core version 0.21.1 is now available from:
 
-  <https://dahomeycore.org/bin/dahomey-core-0.21.1/>
+  <https://danxomecore.org/bin/danxome-core-0.21.1/>
 
 This minor release includes various bug fixes and performance
 improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/dahomey/dahomey/issues>
+  <https://github.com/danxome/danxome/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://dahomeycore.org/en/list/announcements/join/>
+  <https://danxomecore.org/en/list/announcements/join/>
 
 How to Upgrade
 ==============
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes in some cases), then run the
-installer (on Windows) or just copy over `/Applications/Dahomey-Qt` (on Mac)
-or `dahomeyd`/`dahomey-qt` (on Linux).
+installer (on Windows) or just copy over `/Applications/Danxome-Qt` (on Mac)
+or `danxomed`/`danxome-qt` (on Linux).
 
-Upgrading directly from a version of Dahomey Core that has reached its EOL is
+Upgrading directly from a version of Danxome Core that has reached its EOL is
 possible, but it might take some time if the data directory needs to be migrated. Old
-wallet versions of Dahomey Core are generally supported.
+wallet versions of Danxome Core are generally supported.
 
 Compatibility
 ==============
 
-Dahomey Core is supported and extensively tested on operating systems
-using the Linux kernel, macOS 10.12+, and Windows 7 and newer.  Dahomey
+Danxome Core is supported and extensively tested on operating systems
+using the Linux kernel, macOS 10.12+, and Windows 7 and newer.  Danxome
 Core should also work on most other Unix-like systems but is not as
-frequently tested on them.  It is not recommended to use Dahomey Core on
+frequently tested on them.  It is not recommended to use Danxome Core on
 unsupported systems.
 
-From Dahomey Core 0.20.0 onwards, macOS versions earlier than 10.12 are no
-longer supported. Additionally, Dahomey Core does not yet change appearance
+From Danxome Core 0.20.0 onwards, macOS versions earlier than 10.12 are no
+longer supported. Additionally, Danxome Core does not yet change appearance
 when macOS "dark mode" is activated.
 
 Notable changes
@@ -53,7 +53,7 @@ for schnorr signatures (BIP340) and tapscript (BIP342).
 If activated, these improvements will allow users of single-signature
 scripts, multisignature scripts, and complex contracts to all use
 identical-appearing commitments that enhance their privacy and the
-fungibility of all dahomeys. Spenders will enjoy lower fees and the
+fungibility of all danxomes. Spenders will enjoy lower fees and the
 ability to resolve many multisig scripts and complex contracts with the
 same efficiency, low fees, and large anonymity set as single-sig users.
 Taproot and schnorr also include efficiency improvements for full nodes
@@ -80,7 +80,7 @@ payments to such addresses are not secure until taproot activates.
 It also includes the ability to relay and mine taproot transactions
 after activation.  Beyond those two basic capabilities, this release
 does not include any code that allows anyone to directly use taproot.
-The addition of taproot-related features to Dahomey Core's wallet is
+The addition of taproot-related features to Danxome Core's wallet is
 expected in later releases once taproot activation is assured.
 
 All users, businesses, and miners are encouraged to upgrade to this
@@ -97,42 +97,42 @@ activates.  Alternatively, miners may manually start signaling on bit 2
 at any time; if taproot activates, they will need to ensure they update
 their nodes before block 709632 or non-upgraded nodes could cause them to mine on
 an invalid chain.  See the [versionbits
-FAQ](https://dahomeycore.org/en/2016/06/08/version-bits-miners-faq/) for
+FAQ](https://danxomecore.org/en/2016/06/08/version-bits-miners-faq/) for
 details.
 
 
 For more information about taproot, please see the following resources:
 
 - Technical specifications
-  - [BIP340 Schnorr signatures for secp256k1](https://github.com/dahomey/bips/blob/master/bip-0340.mediawiki) 
-  - [BIP341 Taproot: SegWit version 1 spending rules](https://github.com/dahomey/bips/blob/master/bip-0341.mediawiki)
-  - [BIP342 Validation of Taproot scripts](https://github.com/dahomey/bips/blob/master/bip-0342.mediawiki)
+  - [BIP340 Schnorr signatures for secp256k1](https://github.com/danxome/bips/blob/master/bip-0340.mediawiki) 
+  - [BIP341 Taproot: SegWit version 1 spending rules](https://github.com/danxome/bips/blob/master/bip-0341.mediawiki)
+  - [BIP342 Validation of Taproot scripts](https://github.com/danxome/bips/blob/master/bip-0342.mediawiki)
 
 - Popular articles;
-  - [Taproot Is Coming: What It Is, and How It Will Benefit Dahomey](https://dahomeymagazine.com/technical/taproot-coming-what-it-and-how-it-will-benefit-dahomey)
-  - [What do Schnorr Signatures Mean for Dahomey?](https://academy.binance.com/en/articles/what-do-schnorr-signatures-mean-for-dahomey)
+  - [Taproot Is Coming: What It Is, and How It Will Benefit Danxome](https://danxomemagazine.com/technical/taproot-coming-what-it-and-how-it-will-benefit-danxome)
+  - [What do Schnorr Signatures Mean for Danxome?](https://academy.binance.com/en/articles/what-do-schnorr-signatures-mean-for-danxome)
   - [The Schnorr Signature & Taproot Softfork Proposal](https://blog.bitmex.com/the-schnorr-signature-taproot-softfork-proposal/)
 
 - Development history overview
-  - [Taproot](https://dahomeyops.org/en/topics/taproot/)
-  - [Schnorr signatures](https://dahomeyops.org/en/topics/schnorr-signatures/)
-  - [Tapscript](https://dahomeyops.org/en/topics/tapscript/)
-  - [Soft fork activation](https://dahomeyops.org/en/topics/soft-fork-activation/)
+  - [Taproot](https://danxomeops.org/en/topics/taproot/)
+  - [Schnorr signatures](https://danxomeops.org/en/topics/schnorr-signatures/)
+  - [Tapscript](https://danxomeops.org/en/topics/tapscript/)
+  - [Soft fork activation](https://danxomeops.org/en/topics/soft-fork-activation/)
 
 - Other
-  - [Questions and answers related to taproot](https://dahomey.stackexchange.com/questions/tagged/taproot)
+  - [Questions and answers related to taproot](https://danxome.stackexchange.com/questions/tagged/taproot)
   - [Taproot review](https://github.com/ajtowns/taproot-review)
 
 Updated RPCs
 ------------
 
-- Due to [BIP 350](https://github.com/dahomey/bips/blob/master/bip-0350.mediawiki)
+- Due to [BIP 350](https://github.com/danxome/bips/blob/master/bip-0350.mediawiki)
   being implemented, behavior for all RPCs that accept addresses is changed when
   a native witness version 1 (or higher) is passed. These now require a Bech32m
   encoding instead of a Bech32 one, and Bech32m encoding will be used for such
   addresses in RPC output as well. No version 1 addresses should be created
   for mainnet until consensus rules are adopted that give them meaning
-  (e.g. through [BIP 341](https://github.com/dahomey/bips/blob/master/bip-0341.mediawiki)).
+  (e.g. through [BIP 341](https://github.com/danxome/bips/blob/master/bip-0341.mediawiki)).
   Once that happens, Bech32m is expected to be used for them, so this shouldn't
   affect any production systems, but may be observed on other networks where such
   addresses already have meaning (like signet).
@@ -174,7 +174,7 @@ Updated RPCs
 - #20861 BIP 350: Implement Bech32m and use it for v1+ segwit addresses (sipa)
 
 ### Documentation
-- #21384 add signet to dahomey.conf documentation (jonatack)
+- #21384 add signet to danxome.conf documentation (jonatack)
 - #21342 Remove outdated comment (hebasto)
 
 Credits
@@ -200,4 +200,4 @@ Thanks to everyone who directly contributed to this release:
 - W. J. van der Laan
 
 As well as to everyone that helped with translations on
-[Transifex](https://www.transifex.com/dahomey/dahomey/).
+[Transifex](https://www.transifex.com/danxome/danxome/).

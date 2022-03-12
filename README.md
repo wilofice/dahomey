@@ -1,38 +1,38 @@
-Dahomey Core integration/staging tree
+Danxome Core integration/staging tree
 =====================================
 
-https://dahomeycore.org
+https://danxomecore.org
 
-For an immediately usable, binary version of the Dahomey Core software, see
-https://dahomeycore.org/en/download/.
+For an immediately usable, binary version of the Danxome Core software, see
+https://danxomecore.org/en/download/.
 
-Further information about Dahomey Core is available in the [doc folder](/doc).
+Further information about Danxome Core is available in the [doc folder](/doc).
 
-What is Dahomey?
+What is Danxome?
 ----------------
 
-Dahomey is an experimental digital currency that enables instant payments to
-anyone, anywhere in the world. Dahomey uses peer-to-peer technology to operate
+Danxome is an experimental digital currency that enables instant payments to
+anyone, anywhere in the world. Danxome uses peer-to-peer technology to operate
 with no central authority: managing transactions and issuing money are carried
-out collectively by the network. Dahomey Core is the name of open source
+out collectively by the network. Danxome Core is the name of open source
 software which enables the use of this currency.
 
-For more information read the original Dahomey whitepaper.
+For more information read the original Danxome whitepaper.
 
 License
 -------
 
-Dahomey Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+Danxome Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
 -------------------
 
 The `master` branch is regularly built (see `doc/build-*.md` for instructions) and tested, but it is not guaranteed to be
-completely stable. [Tags](https://github.com/dahomey/dahomey/tags) are created
-regularly from release branches to indicate new official, stable release versions of Dahomey Core.
+completely stable. [Tags](https://github.com/danxome/danxome/tags) are created
+regularly from release branches to indicate new official, stable release versions of Danxome Core.
 
-The https://github.com/dahomey-core/gui repository is used exclusively for the
+The https://github.com/danxome-core/gui repository is used exclusively for the
 development of the GUI. Its master branch is identical in all monotree
 repositories. Release branches and tags do not exist, so please do not fork
 that repository unless it is for development reasons.
@@ -73,7 +73,7 @@ Translations
 ------------
 
 Changes to translations as well as new translations can be submitted to
-[Dahomey Core's Transifex page](https://www.transifex.com/dahomey/dahomey/).
+[Danxome Core's Transifex page](https://www.transifex.com/danxome/danxome/).
 
 Translations are periodically pulled from Transifex and merged into the git repository. See the
 [translation process](doc/translation_process.md) for details on how this works.

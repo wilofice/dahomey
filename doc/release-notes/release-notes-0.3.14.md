@@ -1,5 +1,5 @@
 Version 0.3.14 is now available
-http://sourceforge.net/projects/dahomey/files/Dahomey/dahomey-0.3.14/
+http://sourceforge.net/projects/danxome/files/Danxome/danxome-0.3.14/
 
 Changes:
 * Key pool feature for safer wallet backup

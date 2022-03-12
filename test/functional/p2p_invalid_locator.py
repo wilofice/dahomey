@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2015-2021 The Dahomey Core developers
+# Copyright (c) 2015-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test node responses to invalid locators.
@@ -7,10 +7,10 @@
 
 from test_framework.messages import msg_getheaders, msg_getblocks, MAX_LOCATOR_SZ
 from test_framework.p2p import P2PInterface
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 
 
-class InvalidLocatorTest(DahomeyTestFramework):
+class InvalidLocatorTest(DanxomeTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
 

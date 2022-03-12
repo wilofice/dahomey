@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2020 The Dahomey Core developers
+// Copyright (c) 2011-2020 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -6,7 +6,7 @@
 #define BITCOIN_QT_PAYMENTSERVER_H
 
 // This class handles payment requests from clicking on
-// dahomey: URIs
+// danxome: URIs
 //
 // This is somewhat tricky, because we have to deal with
 // the situation where the user clicks on a link during
@@ -33,7 +33,7 @@
 //
 
 #if defined(HAVE_CONFIG_H)
-#include <config/dahomey-config.h>
+#include <config/danxome-config.h>
 #endif
 
 #include <qt/sendcoinsrecipient.h>

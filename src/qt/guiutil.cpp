@@ -1,11 +1,11 @@
-// Copyright (c) 2011-2021 The Dahomey Core developers
+// Copyright (c) 2011-2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <qt/guiutil.h>
 
-#include <qt/dahomeyaddressvalidator.h>
-#include <qt/dahomeyunits.h>
+#include <qt/danxomeaddressvalidator.h>
+#include <qt/danxomeunits.h>
 #include <qt/platformstyle.h>
 #include <qt/qvalidatedlineedit.h>
 #include <qt/sendcoinsrecipient.h>
@@ -119,10 +119,10 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent)
     widget->setFont(fixedPitchFont());
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a Dahomey address (e.g. %1)").arg(
+    widget->setPlaceholderText(QObject::tr("Enter a Danxome address (e.g. %1)").arg(
         QString::fromStdString(DummyAddress(Params()))));
-    widget->setValidator(new DahomeyAddressEntryValidator(parent));
-    widget->setCheckValidator(new DahomeyAddressCheckValidator(parent));
+    widget->setValidator(new DanxomeAddressEntryValidator(parent));
+    widget->setCheckValidator(new DanxomeAddressCheckValidator(parent));
 }
 
 void AddButtonShortcut(QAbstractButton* button, const QKeySequence& shortcut)
@@ -130,10 +130,10 @@ void AddButtonShortcut(QAbstractButton* button, const QKeySequence& shortcut)
     QObject::connect(new QShortcut(shortcut, button), &QShortcut::activated, [button]() { button->animateClick(); });
 }
 
-bool parseDahomeyURI(const QUrl &uri, SendCoinsRecipient *out)
+bool parseDanxomeURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // return if URI is not valid or is no dahomey: URI
-    if(!uri.isValid() || uri.scheme() != QString("dahomey"))
+    // return if URI is not valid or is no danxome: URI
+    if(!uri.isValid() || uri.scheme() != QString("danxome"))
         return false;
 
     SendCoinsRecipient rv;
@@ -169,7 +169,7 @@ bool parseDahomeyURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!DahomeyUnits::parse(DahomeyUnits::DEY, i->second, &rv.amount))
+                if(!DanxomeUnits::parse(DanxomeUnits::DAN, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -187,22 +187,22 @@ bool parseDahomeyURI(const QUrl &uri, SendCoinsRecipient *out)
     return true;
 }
 
-bool parseDahomeyURI(QString uri, SendCoinsRecipient *out)
+bool parseDanxomeURI(QString uri, SendCoinsRecipient *out)
 {
     QUrl uriInstance(uri);
-    return parseDahomeyURI(uriInstance, out);
+    return parseDanxomeURI(uriInstance, out);
 }
 
-QString formatDahomeyURI(const SendCoinsRecipient &info)
+QString formatDanxomeURI(const SendCoinsRecipient &info)
 {
     bool bech_32 = info.address.startsWith(QString::fromStdString(Params().Bech32HRP() + "1"));
 
-    QString ret = QString("dahomey:%1").arg(bech_32 ? info.address.toUpper() : info.address);
+    QString ret = QString("danxome:%1").arg(bech_32 ? info.address.toUpper() : info.address);
     int paramCount = 0;
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(DahomeyUnits::format(DahomeyUnits::DEY, info.amount, false, DahomeyUnits::SeparatorStyle::NEVER));
+        ret += QString("?amount=%1").arg(DanxomeUnits::format(DanxomeUnits::DAN, info.amount, false, DanxomeUnits::SeparatorStyle::NEVER));
         paramCount++;
     }
 
@@ -421,7 +421,7 @@ void openDebugLogfile()
         QDesktopServices::openUrl(QUrl::fromLocalFile(PathToQString(pathDebug)));
 }
 
-bool openDahomeyConf()
+bool openDanxomeConf()
 {
     fs::path pathConfig = GetConfigFile(gArgs.GetArg("-conf", BITCOIN_CONF_FILENAME));
 
@@ -433,7 +433,7 @@ bool openDahomeyConf()
 
     configFile.close();
 
-    /* Open dahomey.conf with the associated application */
+    /* Open danxome.conf with the associated application */
     bool res = QDesktopServices::openUrl(QUrl::fromLocalFile(PathToQString(pathConfig)));
 #ifdef Q_OS_MAC
     // Workaround for macOS-specific behavior; see #15409.
@@ -497,15 +497,15 @@ fs::path static StartupShortcutPath()
 {
     std::string chain = gArgs.GetChainName();
     if (chain == CBaseChainParams::MAIN)
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Dahomey.lnk";
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Danxome.lnk";
     if (chain == CBaseChainParams::TESTNET) // Remove this special case when CBaseChainParams::TESTNET = "testnet4"
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Dahomey (testnet).lnk";
-    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Dahomey (%s).lnk", chain);
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Danxome (testnet).lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Danxome (%s).lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
 {
-    // check for Dahomey*.lnk
+    // check for Danxome*.lnk
     return fs::exists(StartupShortcutPath());
 }
 
@@ -580,8 +580,8 @@ fs::path static GetAutostartFilePath()
 {
     std::string chain = gArgs.GetChainName();
     if (chain == CBaseChainParams::MAIN)
-        return GetAutostartDir() / "dahomey.desktop";
-    return GetAutostartDir() / strprintf("dahomey-%s.desktop", chain);
+        return GetAutostartDir() / "danxome.desktop";
+    return GetAutostartDir() / strprintf("danxome-%s.desktop", chain);
 }
 
 bool GetStartOnSystemStartup()
@@ -621,13 +621,13 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         if (!optionFile.good())
             return false;
         std::string chain = gArgs.GetChainName();
-        // Write a dahomey.desktop file to the autostart directory:
+        // Write a danxome.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         if (chain == CBaseChainParams::MAIN)
-            optionFile << "Name=Dahomey\n";
+            optionFile << "Name=Danxome\n";
         else
-            optionFile << strprintf("Name=Dahomey (%s)\n", chain);
+            optionFile << strprintf("Name=Danxome (%s)\n", chain);
         optionFile << "Exec=" << pszExePath << strprintf(" -min -chain=%s\n", chain);
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";

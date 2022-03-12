@@ -6,10 +6,10 @@ define(_CLIENT_VERSION_RC, 0)
 define(_CLIENT_VERSION_IS_RELEASE, false)
 define(_COPYRIGHT_YEAR, 2022)
 define(_COPYRIGHT_HOLDERS,[The %s developers])
-define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Dahomey Core]])
-AC_INIT([Dahomey Core],m4_join([.], _CLIENT_VERSION_MAJOR, _CLIENT_VERSION_MINOR, _CLIENT_VERSION_BUILD)m4_if(_CLIENT_VERSION_RC, [0], [], [rc]_CLIENT_VERSION_RC),[https://github.com/dahomey/dahomey/issues],[dahomey],[https://dahomeycore.org/])
+define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Danxome Core]])
+AC_INIT([Danxome Core],m4_join([.], _CLIENT_VERSION_MAJOR, _CLIENT_VERSION_MINOR, _CLIENT_VERSION_BUILD)m4_if(_CLIENT_VERSION_RC, [0], [], [rc]_CLIENT_VERSION_RC),[https://github.com/danxome/danxome/issues],[danxome],[https://danxomecore.org/])
 AC_CONFIG_SRCDIR([src/validation.cpp])
-AC_CONFIG_HEADERS([src/config/dahomey-config.h])
+AC_CONFIG_HEADERS([src/config/danxome-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
 
@@ -19,15 +19,15 @@ if test "$PKG_CONFIG" = ""; then
   AC_MSG_ERROR([pkg-config not found])
 fi
 
-BITCOIN_DAEMON_NAME=dahomeyd
-BITCOIN_GUI_NAME=dahomey-qt
-BITCOIN_CLI_NAME=dahomey-cli
-BITCOIN_TX_NAME=dahomey-tx
-BITCOIN_UTIL_NAME=dahomey-util
-BITCOIN_WALLET_TOOL_NAME=dahomey-wallet
+BITCOIN_DAEMON_NAME=danxomed
+BITCOIN_GUI_NAME=danxome-qt
+BITCOIN_CLI_NAME=danxome-cli
+BITCOIN_TX_NAME=danxome-tx
+BITCOIN_UTIL_NAME=danxome-util
+BITCOIN_WALLET_TOOL_NAME=danxome-wallet
 dnl Multi Process
-BITCOIN_MP_NODE_NAME=dahomey-node
-BITCOIN_MP_GUI_NAME=dahomey-gui
+BITCOIN_MP_NODE_NAME=danxome-node
+BITCOIN_MP_GUI_NAME=danxome-gui
 
 dnl Unless the user specified ARFLAGS, force it to be cr
 AC_ARG_VAR([ARFLAGS], [Flags for the archiver, defaults to <cr> if not set])
@@ -225,7 +225,7 @@ AC_ARG_ENABLE([ccache],
 
 dnl Suppress warnings from external headers (e.g. Boost, Qt).
 dnl May be useful if warnings from external headers clutter the build output
-dnl too much, so that it becomes difficult to spot Dahomey Core warnings
+dnl too much, so that it becomes difficult to spot Danxome Core warnings
 dnl or if they cause a build failure with --enable-werror.
 AC_ARG_ENABLE([suppress-external-warnings],
   [AS_HELP_STRING([--enable-suppress-external-warnings],
@@ -281,7 +281,7 @@ AC_ARG_WITH([mpgen],
 
 AC_ARG_ENABLE([multiprocess],
   [AS_HELP_STRING([--enable-multiprocess],
-  [build multiprocess dahomey-node, dahomey-wallet, and dahomey-gui executables in addition to monolithic dahomeyd and dahomey-qt executables. Requires libmultiprocess library. Experimental (default is no)])],
+  [build multiprocess danxome-node, danxome-wallet, and danxome-gui executables in addition to monolithic danxomed and danxome-qt executables. Requires libmultiprocess library. Experimental (default is no)])],
   [enable_multiprocess=$enableval],
   [enable_multiprocess=no])
 
@@ -595,45 +595,45 @@ CPPFLAGS="$CPPFLAGS -DHAVE_BUILD_INFO"
 
 AC_ARG_WITH([utils],
   [AS_HELP_STRING([--with-utils],
-  [build dahomey-cli dahomey-tx dahomey-util dahomey-wallet (default=yes)])],
-  [build_dahomey_utils=$withval],
-  [build_dahomey_utils=yes])
+  [build danxome-cli danxome-tx danxome-util danxome-wallet (default=yes)])],
+  [build_danxome_utils=$withval],
+  [build_danxome_utils=yes])
 
 AC_ARG_ENABLE([util-cli],
   [AS_HELP_STRING([--enable-util-cli],
-  [build dahomey-cli])],
-  [build_dahomey_cli=$enableval],
-  [build_dahomey_cli=$build_dahomey_utils])
+  [build danxome-cli])],
+  [build_danxome_cli=$enableval],
+  [build_danxome_cli=$build_danxome_utils])
 
 AC_ARG_ENABLE([util-tx],
   [AS_HELP_STRING([--enable-util-tx],
-  [build dahomey-tx])],
-  [build_dahomey_tx=$enableval],
-  [build_dahomey_tx=$build_dahomey_utils])
+  [build danxome-tx])],
+  [build_danxome_tx=$enableval],
+  [build_danxome_tx=$build_danxome_utils])
 
 AC_ARG_ENABLE([util-wallet],
   [AS_HELP_STRING([--enable-util-wallet],
-  [build dahomey-wallet])],
-  [build_dahomey_wallet=$enableval],
-  [build_dahomey_wallet=$build_dahomey_utils])
+  [build danxome-wallet])],
+  [build_danxome_wallet=$enableval],
+  [build_danxome_wallet=$build_danxome_utils])
 
 AC_ARG_ENABLE([util-util],
   [AS_HELP_STRING([--enable-util-util],
-  [build dahomey-util])],
-  [build_dahomey_util=$enableval],
-  [build_dahomey_util=$build_dahomey_utils])
+  [build danxome-util])],
+  [build_danxome_util=$enableval],
+  [build_danxome_util=$build_danxome_utils])
 
 AC_ARG_WITH([libs],
   [AS_HELP_STRING([--with-libs],
   [build libraries (default=yes)])],
-  [build_dahomey_libs=$withval],
-  [build_dahomey_libs=yes])
+  [build_danxome_libs=$withval],
+  [build_danxome_libs=yes])
 
 AC_ARG_WITH([daemon],
   [AS_HELP_STRING([--with-daemon],
-  [build dahomeyd daemon (default=yes)])],
-  [build_dahomeyd=$withval],
-  [build_dahomeyd=yes])
+  [build danxomed daemon (default=yes)])],
+  [build_danxomed=$withval],
+  [build_danxomed=yes])
 
 case $host in
   *mingw*)
@@ -836,7 +836,7 @@ AC_C_BIGENDIAN
 dnl Check for pthread compile/link requirements
 AX_PTHREAD
 
-dnl The following macro will add the necessary defines to dahomey-config.h, but
+dnl The following macro will add the necessary defines to danxome-config.h, but
 dnl they also need to be passed down to any subprojects. Pull the results out of
 dnl the cache and add them to CPPFLAGS.
 AC_SYS_LARGEFILE
@@ -949,7 +949,7 @@ AC_CHECK_DECLS([getifaddrs, freeifaddrs],[CHECK_SOCKET],,
 )
 AC_CHECK_DECLS([strnlen])
 
-dnl These are used for daemonization in dahomeyd
+dnl These are used for daemonization in danxomed
 AC_CHECK_DECLS([fork])
 AC_CHECK_DECLS([setsid])
 
@@ -1249,16 +1249,16 @@ AC_DEFUN([SUPPRESS_WARNINGS],
 dnl enable-fuzz should disable all other targets
 if test "$enable_fuzz" = "yes"; then
   AC_MSG_WARN([enable-fuzz will disable all other targets and force --enable-fuzz-binary=yes])
-  build_dahomey_utils=no
-  build_dahomey_cli=no
-  build_dahomey_tx=no
-  build_dahomey_util=no
-  build_dahomey_wallet=no
-  build_dahomeyd=no
-  build_dahomey_libs=no
-  dahomey_enable_qt=no
-  dahomey_enable_qt_test=no
-  dahomey_enable_qt_dbus=no
+  build_danxome_utils=no
+  build_danxome_cli=no
+  build_danxome_tx=no
+  build_danxome_util=no
+  build_danxome_wallet=no
+  build_danxomed=no
+  build_danxome_libs=no
+  danxome_enable_qt=no
+  danxome_enable_qt_test=no
+  danxome_enable_qt_dbus=no
   use_bench=no
   use_external_signer=no
   use_upnp=no
@@ -1285,7 +1285,7 @@ if test "$enable_fuzz" = "yes"; then
 else
   BITCOIN_QT_INIT
 
-  dnl sets $dahomey_enable_qt, $dahomey_enable_qt_test, $dahomey_enable_qt_dbus
+  dnl sets $danxome_enable_qt, $danxome_enable_qt_test, $danxome_enable_qt_dbus
   BITCOIN_QT_CONFIGURE([5.9.5])
 
   dnl Keep a copy of the original $QT_INCLUDES and use it when invoking qt's moc
@@ -1349,7 +1349,7 @@ if test "$use_usdt" != "no"; then
   )
 fi
 
-if test "$build_dahomey_cli$build_dahomey_tx$build_dahomey_util$build_dahomeyd$dahomey_enable_qt$use_bench$use_tests" = "nonononononono"; then
+if test "$build_danxome_cli$build_danxome_tx$build_danxome_util$build_danxomed$danxome_enable_qt$use_bench$use_tests" = "nonononononono"; then
   use_upnp=no
   use_natpmp=no
   use_zmq=no
@@ -1391,7 +1391,7 @@ if test "$use_natpmp" != "no"; then
                    [have_natpmp=no])
 fi
 
-if test "$build_dahomey_wallet$build_dahomey_cli$build_dahomey_tx$build_dahomeyd$dahomey_enable_qt$use_tests$use_bench" = "nonononononono"; then
+if test "$build_danxome_wallet$build_danxome_cli$build_danxome_tx$build_danxomed$danxome_enable_qt$use_tests$use_bench" = "nonononononono"; then
   use_boost=no
 else
   use_boost=yes
@@ -1402,7 +1402,7 @@ if test "$use_boost" = "yes"; then
   dnl Check for Boost headers
   AX_BOOST_BASE([1.64.0],[],[AC_MSG_ERROR([Boost is not available!])])
   if test "$want_boost" = "no"; then
-    AC_MSG_ERROR([only libdahomeyconsensus can be built without Boost])
+    AC_MSG_ERROR([only libdanxomeconsensus can be built without Boost])
   fi
   AX_BOOST_SYSTEM
   AX_BOOST_FILESYSTEM
@@ -1434,10 +1434,10 @@ fi
 AM_CONDITIONAL([ENABLE_EXTERNAL_SIGNER], [test "$use_external_signer" = "yes"])
 
 dnl Do not compile with syscall sandbox support when compiling under the sanitizers.
-dnl The sanitizers introduce use of syscalls that are not typically used in dahomeyd
+dnl The sanitizers introduce use of syscalls that are not typically used in danxomed
 dnl (such as execve when the sanitizers execute llvm-symbolizer).
 if test "$use_sanitizers" != ""; then
-  AC_MSG_WARN([Specifying --with-sanitizers forces --without-seccomp since the sanitizers introduce use of syscalls not allowed by the dahomeyd syscall sandbox (-sandbox=<mode>).])
+  AC_MSG_WARN([Specifying --with-sanitizers forces --without-seccomp since the sanitizers introduce use of syscalls not allowed by the danxomed syscall sandbox (-sandbox=<mode>).])
   seccomp_found=no
 fi
 if test "$seccomp_found" != "no"; then
@@ -1503,7 +1503,7 @@ fi
 
 dnl libevent check
 
-if test "$build_dahomey_cli$build_dahomeyd$dahomey_enable_qt$use_tests$use_bench" != "nonononono"; then
+if test "$build_danxome_cli$build_danxomed$danxome_enable_qt$use_tests$use_bench" != "nonononono"; then
   PKG_CHECK_MODULES([EVENT], [libevent >= 2.0.21], [use_libevent=yes], [AC_MSG_ERROR([libevent version 2.0.21 or greater not found.])])
   if test "$TARGET_OS" != "windows"; then
     PKG_CHECK_MODULES([EVENT_PTHREADS], [libevent_pthreads >= 2.0.21],, [AC_MSG_ERROR([libevent_pthreads version 2.0.21 or greater not found.])])
@@ -1601,33 +1601,33 @@ if test "$build_multiprocess" != "no"; then
   AC_SUBST(MPGEN_PREFIX)
 fi
 
-AC_MSG_CHECKING([whether to build dahomeyd])
-AM_CONDITIONAL([BUILD_BITCOIND], [test $build_dahomeyd = "yes"])
-AC_MSG_RESULT($build_dahomeyd)
+AC_MSG_CHECKING([whether to build danxomed])
+AM_CONDITIONAL([BUILD_BITCOIND], [test $build_danxomed = "yes"])
+AC_MSG_RESULT($build_danxomed)
 
-AC_MSG_CHECKING([whether to build dahomey-cli])
-AM_CONDITIONAL([BUILD_BITCOIN_CLI], [test $build_dahomey_cli = "yes"])
-AC_MSG_RESULT($build_dahomey_cli)
+AC_MSG_CHECKING([whether to build danxome-cli])
+AM_CONDITIONAL([BUILD_BITCOIN_CLI], [test $build_danxome_cli = "yes"])
+AC_MSG_RESULT($build_danxome_cli)
 
-AC_MSG_CHECKING([whether to build dahomey-tx])
-AM_CONDITIONAL([BUILD_BITCOIN_TX], [test $build_dahomey_tx = "yes"])
-AC_MSG_RESULT($build_dahomey_tx)
+AC_MSG_CHECKING([whether to build danxome-tx])
+AM_CONDITIONAL([BUILD_BITCOIN_TX], [test $build_danxome_tx = "yes"])
+AC_MSG_RESULT($build_danxome_tx)
 
-AC_MSG_CHECKING([whether to build dahomey-wallet])
-AM_CONDITIONAL([BUILD_BITCOIN_WALLET], [test $build_dahomey_wallet = "yes"])
-AC_MSG_RESULT($build_dahomey_wallet)
+AC_MSG_CHECKING([whether to build danxome-wallet])
+AM_CONDITIONAL([BUILD_BITCOIN_WALLET], [test $build_danxome_wallet = "yes"])
+AC_MSG_RESULT($build_danxome_wallet)
 
-AC_MSG_CHECKING([whether to build dahomey-util])
-AM_CONDITIONAL([BUILD_BITCOIN_UTIL], [test $build_dahomey_util = "yes"])
-AC_MSG_RESULT($build_dahomey_util)
+AC_MSG_CHECKING([whether to build danxome-util])
+AM_CONDITIONAL([BUILD_BITCOIN_UTIL], [test $build_danxome_util = "yes"])
+AC_MSG_RESULT($build_danxome_util)
 
 AC_MSG_CHECKING([whether to build libraries])
-AM_CONDITIONAL([BUILD_BITCOIN_LIBS], [test $build_dahomey_libs = "yes"])
-if test "$build_dahomey_libs" = "yes"; then
+AM_CONDITIONAL([BUILD_BITCOIN_LIBS], [test $build_danxome_libs = "yes"])
+if test "$build_danxome_libs" = "yes"; then
   AC_DEFINE([HAVE_CONSENSUS_LIB], [1], [Define this symbol if the consensus lib has been built])
-  AC_CONFIG_FILES([libdahomeyconsensus.pc:libdahomeyconsensus.pc.in])
+  AC_CONFIG_FILES([libdanxomeconsensus.pc:libdanxomeconsensus.pc.in])
 fi
-AC_MSG_RESULT($build_dahomey_libs)
+AC_MSG_RESULT($build_danxome_libs)
 
 AC_LANG_POP
 
@@ -1720,13 +1720,13 @@ fi
 
 dnl these are only used when qt is enabled
 BUILD_TEST_QT=""
-if test "$dahomey_enable_qt" != "no"; then
+if test "$danxome_enable_qt" != "no"; then
   dnl enable dbus support
   AC_MSG_CHECKING([whether to build GUI with support for D-Bus])
-  if test "$dahomey_enable_qt_dbus" != "no"; then
+  if test "$danxome_enable_qt_dbus" != "no"; then
     AC_DEFINE([USE_DBUS], [1], [Define if dbus support should be compiled in])
   fi
-  AC_MSG_RESULT([$dahomey_enable_qt_dbus])
+  AC_MSG_RESULT([$danxome_enable_qt_dbus])
 
   dnl enable qr support
   AC_MSG_CHECKING([whether to build GUI with support for QR codes])
@@ -1747,8 +1747,8 @@ if test "$dahomey_enable_qt" != "no"; then
     AC_MSG_WARN([xgettext is required to update qt translations])
   fi
 
-  AC_MSG_CHECKING([whether to build test_dahomey-qt])
-  if test "$use_gui_tests$dahomey_enable_qt_test" = "yesyes"; then
+  AC_MSG_CHECKING([whether to build test_danxome-qt])
+  if test "$use_gui_tests$danxome_enable_qt_test" = "yesyes"; then
     AC_MSG_RESULT([yes])
     BUILD_TEST_QT="yes"
   else
@@ -1758,7 +1758,7 @@ fi
 
 AM_CONDITIONAL([ENABLE_ZMQ], [test "$use_zmq" = "yes"])
 
-AC_MSG_CHECKING([whether to build test_dahomey])
+AC_MSG_CHECKING([whether to build test_danxome])
 if test "$use_tests" = "yes"; then
   if test "$enable_fuzz" = "yes"; then
     AC_MSG_RESULT([no, because fuzzing is enabled])
@@ -1778,7 +1778,7 @@ else
   AC_MSG_RESULT([no])
 fi
 
-if test "$build_dahomey_wallet$build_dahomey_cli$build_dahomey_tx$build_dahomey_libs$build_dahomeyd$dahomey_enable_qt$use_bench$use_tests" = "nononononononono"; then
+if test "$build_danxome_wallet$build_danxome_cli$build_danxome_tx$build_danxome_libs$build_danxomed$danxome_enable_qt$use_bench$use_tests" = "nononononononono"; then
   AC_MSG_ERROR([No targets! Please specify at least one of: --with-utils --with-libs --with-daemon --with-gui --enable-bench or --enable-tests])
 fi
 
@@ -1796,7 +1796,7 @@ AM_CONDITIONAL([USE_BDB], [test "$use_bdb" = "yes"])
 AM_CONDITIONAL([ENABLE_TESTS], [test "$BUILD_TEST" = "yes"])
 AM_CONDITIONAL([ENABLE_FUZZ], [test "$enable_fuzz" = "yes"])
 AM_CONDITIONAL([ENABLE_FUZZ_BINARY], [test "$enable_fuzz_binary" = "yes"])
-AM_CONDITIONAL([ENABLE_QT], [test "$dahomey_enable_qt" = "yes"])
+AM_CONDITIONAL([ENABLE_QT], [test "$danxome_enable_qt" = "yes"])
 AM_CONDITIONAL([ENABLE_QT_TESTS], [test "$BUILD_TEST_QT" = "yes"])
 AM_CONDITIONAL([ENABLE_BENCH], [test "$use_bench" = "yes"])
 AM_CONDITIONAL([USE_QRCODE], [test "$use_qr" = "yes"])
@@ -1942,21 +1942,21 @@ echo "Options used to compile and link:"
 echo "  external signer = $use_external_signer"
 echo "  multiprocess    = $build_multiprocess"
 echo "  with experimental syscall sandbox support = $use_syscall_sandbox"
-echo "  with libs       = $build_dahomey_libs"
+echo "  with libs       = $build_danxome_libs"
 echo "  with wallet     = $enable_wallet"
 if test "$enable_wallet" != "no"; then
     echo "    with sqlite   = $use_sqlite"
     echo "    with bdb      = $use_bdb"
 fi
-echo "  with gui / qt   = $dahomey_enable_qt"
-if test $dahomey_enable_qt != "no"; then
+echo "  with gui / qt   = $danxome_enable_qt"
+if test $danxome_enable_qt != "no"; then
     echo "    with qr       = $use_qr"
 fi
 echo "  with zmq        = $use_zmq"
 if test $enable_fuzz = "no"; then
     echo "  with test       = $use_tests"
 else
-    echo "  with test       = not building test_dahomey because fuzzing is enabled"
+    echo "  with test       = not building test_danxome because fuzzing is enabled"
     echo "    with fuzz     = $enable_fuzz"
 fi
 echo "  with bench      = $use_bench"

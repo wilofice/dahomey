@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2020 The Dahomey Core developers
+// Copyright (c) 2018-2020 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,19 +10,19 @@
 #include <string>
 #include <utility>
 
-class DahomeyApplication;
-class DahomeyGUI;
+class DanxomeApplication;
+class DanxomeGUI;
 class RPCConsole;
 
 class AppTests : public QObject
 {
     Q_OBJECT
 public:
-    explicit AppTests(DahomeyApplication& app) : m_app(app) {}
+    explicit AppTests(DanxomeApplication& app) : m_app(app) {}
 
 private Q_SLOTS:
     void appTests();
-    void guiTests(DahomeyGUI* window);
+    void guiTests(DanxomeGUI* window);
     void consoleTests(RPCConsole* console);
 
 private:
@@ -37,8 +37,8 @@ private:
         ~HandleCallback();
     };
 
-    //! Dahomey application.
-    DahomeyApplication& m_app;
+    //! Danxome application.
+    DanxomeApplication& m_app;
 
     //! Set of pending callback names. Used to track expected callbacks and shut
     //! down the app after the last callback has been handled and all tests have

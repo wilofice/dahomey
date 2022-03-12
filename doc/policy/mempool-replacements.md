@@ -14,7 +14,7 @@ other consensus and policy rules, each of the following conditions are met:
    signaling replaceability if any of its inputs have an nSequence number less than (0xffffffff - 1).
 
    *Rationale*: See [BIP125
-   explanation](https://github.com/dahomey/bips/blob/master/bip-0125.mediawiki#motivation).
+   explanation](https://github.com/danxome/bips/blob/master/bip-0125.mediawiki#motivation).
 
 2. The replacement transaction only include an unconfirmed input if that input was included in
    one of the directly conflicting transactions. An unconfirmed input spends an output from a
@@ -56,14 +56,14 @@ This set of rules is similar but distinct from BIP125.
 ## History
 
 * Opt-in full replace-by-fee (without inherited signaling) honoured in mempool and mining as of
-  **v0.12.0** ([PR 6871](https://github.com/dahomey/dahomey/pull/6871)).
+  **v0.12.0** ([PR 6871](https://github.com/danxome/danxome/pull/6871)).
 
-* [BIP125](https://github.com/dahomey/bips/blob/master/bip-0125.mediawiki) defined based on
-  Dahomey Core implementation.
+* [BIP125](https://github.com/danxome/bips/blob/master/bip-0125.mediawiki) defined based on
+  Danxome Core implementation.
 
 * The incremental relay feerate used to calculate the required additional fees is distinct from
   `minRelayTxFee` and configurable using `-incrementalrelayfee`
-  ([PR #9380](https://github.com/dahomey/dahomey/pull/9380)).
+  ([PR #9380](https://github.com/danxome/danxome/pull/9380)).
 
 * RBF enabled by default in the wallet GUI as of **v0.18.1** ([PR
-  #11605](https://github.com/dahomey/dahomey/pull/11605)).
+  #11605](https://github.com/danxome/danxome/pull/11605)).

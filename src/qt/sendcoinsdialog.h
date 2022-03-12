@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2021 The Dahomey Core developers
+// Copyright (c) 2011-2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -29,7 +29,7 @@ QT_BEGIN_NAMESPACE
 class QUrl;
 QT_END_NAMESPACE
 
-/** Dialog for sending dahomeys */
+/** Dialog for sending danxomes */
 class SendCoinsDialog : public QDialog
 {
     Q_OBJECT

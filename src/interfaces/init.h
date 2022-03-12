@@ -1,4 +1,4 @@
-// Copyright (c) 2021 The Dahomey Core developers
+// Copyright (c) 2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -22,7 +22,7 @@ class WalletLoader;
 //! and get access to other interfaces (Node, Chain, Wallet, etc).
 //!
 //! There is a different Init interface implementation for each process
-//! (dahomey-gui, dahomey-node, dahomey-wallet, dahomeyd, dahomey-qt) and each
+//! (danxome-gui, danxome-node, danxome-wallet, danxomed, danxome-qt) and each
 //! implementation can implement the make methods for interfaces it supports.
 //! The default make methods all return null.
 class Init

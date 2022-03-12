@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-systemd: dahomeyd.service
-Upstart: dahomeyd.conf
-OpenRC:  dahomeyd.openrc
-         dahomeyd.openrcconf
-CentOS:  dahomeyd.init
-macOS:   org.dahomey.dahomeyd.plist
+systemd: danxomed.service
+Upstart: danxomed.conf
+OpenRC:  danxomed.openrc
+         danxomed.openrcconf
+CentOS:  danxomed.init
+macOS:   org.danxome.danxomed.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

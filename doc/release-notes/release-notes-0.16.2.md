@@ -1,25 +1,25 @@
-Dahomey Core version 0.16.2 is now available from:
+Danxome Core version 0.16.2 is now available from:
 
-  <https://dahomeycore.org/bin/dahomey-core-0.16.2/>
+  <https://danxomecore.org/bin/danxome-core-0.16.2/>
 
 This is a new minor version release, with various bugfixes
 as well as updated translations.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/dahomey/dahomey/issues>
+  <https://github.com/danxome/danxome/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://dahomeycore.org/en/list/announcements/join/>
+  <https://danxomecore.org/en/list/announcements/join/>
 
 How to Upgrade
 ==============
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
-installer (on Windows) or just copy over `/Applications/Dahomey-Qt` (on Mac)
-or `dahomeyd`/`dahomey-qt` (on Linux).
+installer (on Windows) or just copy over `/Applications/Danxome-Qt` (on Mac)
+or `danxomed`/`danxome-qt` (on Linux).
 
 The first time you run version 0.15.0 or newer, your chainstate database will be converted to a
 new format, which will take anywhere from a few minutes to half an hour,
@@ -40,10 +40,10 @@ wallets that were created with older versions are not affected by this.
 Compatibility
 ==============
 
-Dahomey Core is extensively tested on multiple operating systems using
+Danxome Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later. Windows XP is not supported.
 
-Dahomey Core should also work on most other Unix-like systems but is not
+Danxome Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 0.16.2 change log
@@ -113,4 +113,4 @@ And to those that reported security issues:
 - Braydon Fuller
 - Himanshu Mehta
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/dahomey/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/danxome/).

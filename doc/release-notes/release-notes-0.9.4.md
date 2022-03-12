@@ -1,39 +1,39 @@
-Dahomey Core version 0.9.4 is now available from:
+Danxome Core version 0.9.4 is now available from:
 
-  https://dahomey.org/bin/0.9.4/
+  https://danxome.org/bin/0.9.4/
 
 This is a new minor version release, bringing only bug fixes and updated
 translations. Upgrading to this release is recommended.
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/dahomey/dahomey/issues
+  https://github.com/danxome/danxome/issues
 
 How to Upgrade
 ===============
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
-installer (on Windows) or just copy over /Applications/Dahomey-Qt (on Mac) or
-dahomeyd/dahomey-qt (on Linux).
+installer (on Windows) or just copy over /Applications/Danxome-Qt (on Mac) or
+danxomed/danxome-qt (on Linux).
 
 OpenSSL Warning
 ================
 
 OpenSSL 1.0.0p / 1.0.1k was recently released and is being pushed out by
 various operating system maintainers. Review by Gregory Maxwell determined that
-this update is incompatible with the Dahomey system and could lead to consensus
+this update is incompatible with the Danxome system and could lead to consensus
 forks.
 
-Dahomey Core released binaries from https://dahomey.org are unaffected,
+Danxome Core released binaries from https://danxome.org are unaffected,
 as are any built with the gitian deterministic build system.
 
 However, if you are running either
 
-- The Ubuntu PPA from https://launchpad.net/~dahomey/+archive/ubuntu/dahomey
-- A third-party or self-compiled Dahomey Core
+- The Ubuntu PPA from https://launchpad.net/~danxome/+archive/ubuntu/danxome
+- A third-party or self-compiled Danxome Core
 
-upgrade to Dahomey Core 0.9.4, which includes a workaround, **before** updating
+upgrade to Danxome Core 0.9.4, which includes a workaround, **before** updating
 OpenSSL.
 
 The incompatibility is due to the OpenSSL update changing the
@@ -92,4 +92,4 @@ Thanks to who contributed to this release, at least:
 - Sergio Demian Lerner
 - Wladimir J. van der Laan
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/dahomey/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/danxome/).

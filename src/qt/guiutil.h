@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2021 The Dahomey Core developers
+// Copyright (c) 2011-2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -52,7 +52,7 @@ class QUrl;
 class QWidget;
 QT_END_NAMESPACE
 
-/** Utility functions used by the Dahomey Qt UI.
+/** Utility functions used by the Danxome Qt UI.
  */
 namespace GUIUtil
 {
@@ -77,10 +77,10 @@ namespace GUIUtil
      */
     void AddButtonShortcut(QAbstractButton* button, const QKeySequence& shortcut);
 
-    // Parse "dahomey:" URI into recipient object, return true on successful parsing
-    bool parseDahomeyURI(const QUrl &uri, SendCoinsRecipient *out);
-    bool parseDahomeyURI(QString uri, SendCoinsRecipient *out);
-    QString formatDahomeyURI(const SendCoinsRecipient &info);
+    // Parse "danxome:" URI into recipient object, return true on successful parsing
+    bool parseDanxomeURI(const QUrl &uri, SendCoinsRecipient *out);
+    bool parseDanxomeURI(QString uri, SendCoinsRecipient *out);
+    QString formatDanxomeURI(const SendCoinsRecipient &info);
 
     // Returns true if given address+amount meets "dust" definition
     bool isDust(interfaces::Node& node, const QString& address, const CAmount& amount);
@@ -170,7 +170,7 @@ namespace GUIUtil
     void openDebugLogfile();
 
     // Open the config file
-    bool openDahomeyConf();
+    bool openDanxomeConf();
 
     /** Qt event filter that intercepts ToolTipChange events, and replaces the tooltip with a rich text
       representation if needed. This assures that Qt can word-wrap long tooltip messages.

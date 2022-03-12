@@ -1,13 +1,13 @@
-# I2P support in Dahomey Core
+# I2P support in Danxome Core
 
-It is possible to run Dahomey Core as an
+It is possible to run Danxome Core as an
 [I2P (Invisible Internet Project)](https://en.wikipedia.org/wiki/I2P)
 service and connect to such services.
 
 This [glossary](https://geti2p.net/en/about/glossary) may be useful to get
 started with I2P terminology.
 
-## Run Dahomey Core with an I2P router (proxy)
+## Run Danxome Core with an I2P router (proxy)
 
 A running I2P router (proxy) with [SAM](https://geti2p.net/en/docs/api/samv3)
 enabled is required. Options include:
@@ -24,7 +24,7 @@ enabled is required. Options include:
 Note the IP address and port the SAM proxy is listening to; usually, it is
 `127.0.0.1:7656`.
 
-Once an I2P router with SAM enabled is up and running, use the following Dahomey
+Once an I2P router with SAM enabled is up and running, use the following Danxome
 Core configuration options:
 
 ```
@@ -44,12 +44,12 @@ Core configuration options:
 In a typical situation, this suffices:
 
 ```
-dahomeyd -i2psam=127.0.0.1:7656
+danxomed -i2psam=127.0.0.1:7656
 ```
 
-The first time Dahomey Core connects to the I2P router, its I2P address (and
+The first time Danxome Core connects to the I2P router, its I2P address (and
 corresponding private key) will be automatically generated and saved in a file
-named `i2p_private_key` in the Dahomey Core data directory.
+named `i2p_private_key` in the Danxome Core data directory.
 
 ## Additional configuration options related to I2P
 
@@ -58,7 +58,7 @@ named `i2p_private_key` in the Dahomey Core data directory.
 ```
 
 Set the `debug=i2p` config logging option to see additional information in the
-debug log about your I2P configuration and connections. Run `dahomey-cli help
+debug log about your I2P configuration and connections. Run `danxome-cli help
 logging` for more information.
 
 ```
@@ -73,11 +73,11 @@ Warning: if you use -onlynet with values other than onion, and the -onion or
 -proxy option is set, then outgoing onion connections will still be made; use
 -noonion or -onion=0 to disable outbound onion connections in this case.
 
-I2P support was added to Dahomey Core in version 22.0 and there may be fewer I2P
+I2P support was added to Danxome Core in version 22.0 and there may be fewer I2P
 peers than Tor or IP ones. Therefore, using I2P alone without other networks may
 make a node more susceptible to [Sybil
-attacks](https://en.dahomey.it/wiki/Weaknesses#Sybil_attack). You can use
-`dahomey-cli -addrinfo` to see the number of I2P addresses known to your node.
+attacks](https://en.danxome.it/wiki/Weaknesses#Sybil_attack). You can use
+`danxome-cli -addrinfo` to see the number of I2P addresses known to your node.
 
 Another consideration with `onlynet=i2p` is that the initial blocks download
 phase when syncing up a new node can be very slow. This phase can be sped up by
@@ -87,35 +87,35 @@ In general, a node can be run with both onion and I2P hidden services (or
 any/all of IPv4/IPv6/onion/I2P), which can provide a potential fallback if one
 of the networks has issues.
 
-## I2P-related information in Dahomey Core
+## I2P-related information in Danxome Core
 
-There are several ways to see your I2P address in Dahomey Core:
+There are several ways to see your I2P address in Danxome Core:
 - in the debug log (grep for `AddLocal`, the I2P address ends in `.b32.i2p`)
 - in the output of the `getnetworkinfo` RPC in the "localaddresses" section
-- in the output of `dahomey-cli -netinfo` peer connections dashboard
+- in the output of `danxome-cli -netinfo` peer connections dashboard
 
-To see which I2P peers your node is connected to, use `dahomey-cli -netinfo 4`
-or the `getpeerinfo` RPC (e.g. `dahomey-cli getpeerinfo`).
+To see which I2P peers your node is connected to, use `danxome-cli -netinfo 4`
+or the `getpeerinfo` RPC (e.g. `danxome-cli getpeerinfo`).
 
 To see which I2P addresses your node knows, use the `getnodeaddresses 0 i2p`
 RPC.
 
 ## Compatibility
 
-Dahomey Core uses the [SAM v3.1](https://geti2p.net/en/docs/api/samv3) protocol
+Danxome Core uses the [SAM v3.1](https://geti2p.net/en/docs/api/samv3) protocol
 to connect to the I2P network. Any I2P router that supports it can be used.
 
-## Ports in I2P and Dahomey Core
+## Ports in I2P and Danxome Core
 
-Dahomey Core uses the [SAM v3.1](https://geti2p.net/en/docs/api/samv3)
+Danxome Core uses the [SAM v3.1](https://geti2p.net/en/docs/api/samv3)
 protocol. One particularity of SAM v3.1 is that it does not support ports,
 unlike newer versions of SAM (v3.2 and up) that do support them and default the
 port numbers to 0. From the point of view of peers that use newer versions of
 SAM or other protocols that support ports, a SAM v3.1 peer is connecting to them
 on port 0, from source port 0.
 
-To allow future upgrades to newer versions of SAM, Dahomey Core sets its
+To allow future upgrades to newer versions of SAM, Danxome Core sets its
 listening port to 0 when listening for incoming I2P connections and advertises
 its own I2P address with port 0. Furthermore, it will not attempt to connect to
 I2P addresses with a non-zero port number because with SAM v3.1 the destination
-port (`TO_PORT`) is always set to 0 and is not in the control of Dahomey Core.
+port (`TO_PORT`) is always set to 0 and is not in the control of Danxome Core.

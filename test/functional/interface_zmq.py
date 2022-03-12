@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2015-2021 The Dahomey Core developers
+# Copyright (c) 2015-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the ZMQ notification interface."""
@@ -14,7 +14,7 @@ from test_framework.blocktools import (
     create_block,
     create_coinbase,
 )
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.messages import (
     CTransaction,
     hash256,
@@ -97,7 +97,7 @@ class ZMQTestSetupBlock:
         )
 
 
-class ZMQTest (DahomeyTestFramework):
+class ZMQTest (DanxomeTestFramework):
     def set_test_params(self):
         self.num_nodes = 2
         if self.is_wallet_compiled():
@@ -108,7 +108,7 @@ class ZMQTest (DahomeyTestFramework):
 
     def skip_test_if_missing_module(self):
         self.skip_if_no_py3_zmq()
-        self.skip_if_no_dahomeyd_zmq()
+        self.skip_if_no_danxomed_zmq()
 
     def run_test(self):
         self.ctx = zmq.Context()

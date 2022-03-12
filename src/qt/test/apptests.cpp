@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021 The Dahomey Core developers
+// Copyright (c) 2018-2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -6,8 +6,8 @@
 
 #include <chainparams.h>
 #include <key.h>
-#include <qt/dahomey.h>
-#include <qt/dahomeygui.h>
+#include <qt/danxome.h>
+#include <qt/danxomegui.h>
 #include <qt/networkstyle.h>
 #include <qt/rpcconsole.h>
 #include <shutdown.h>
@@ -15,7 +15,7 @@
 #include <validation.h>
 
 #if defined(HAVE_CONFIG_H)
-#include <config/dahomey-config.h>
+#include <config/danxome-config.h>
 #endif
 
 #include <QAction>
@@ -55,7 +55,7 @@ void TestRpcCommand(RPCConsole* console)
 }
 } // namespace
 
-//! Entry point for DahomeyApplication tests.
+//! Entry point for DanxomeApplication tests.
 void AppTests::appTests()
 {
 #ifdef Q_OS_MAC
@@ -65,7 +65,7 @@ void AppTests::appTests()
         // and fails to handle returned nulls
         // (https://bugreports.qt.io/browse/QTBUG-49686).
         QWARN("Skipping AppTests on mac build with 'minimal' platform set due to Qt bugs. To run AppTests, invoke "
-              "with 'QT_QPA_PLATFORM=cocoa test_dahomey-qt' on mac, or else use a linux or windows build.");
+              "with 'QT_QPA_PLATFORM=cocoa test_danxome-qt' on mac, or else use a linux or windows build.");
         return;
     }
 #endif
@@ -81,7 +81,7 @@ void AppTests::appTests()
     QScopedPointer<const NetworkStyle> style(NetworkStyle::instantiate(Params().NetworkIDString()));
     m_app.setupPlatformStyle();
     m_app.createWindow(style.data());
-    connect(&m_app, &DahomeyApplication::windowShown, this, &AppTests::guiTests);
+    connect(&m_app, &DanxomeApplication::windowShown, this, &AppTests::guiTests);
     expectCallback("guiTests");
     m_app.baseInitialize();
     m_app.requestInitialize();
@@ -94,11 +94,11 @@ void AppTests::appTests()
     AbortShutdown();
 }
 
-//! Entry point for DahomeyGUI tests.
-void AppTests::guiTests(DahomeyGUI* window)
+//! Entry point for DanxomeGUI tests.
+void AppTests::guiTests(DanxomeGUI* window)
 {
     HandleCallback callback{"guiTests", *this};
-    connect(window, &DahomeyGUI::consoleShown, this, &AppTests::consoleTests);
+    connect(window, &DanxomeGUI::consoleShown, this, &AppTests::consoleTests);
     expectCallback("consoleTests");
     QAction* action = window->findChild<QAction*>("openRPCConsoleAction");
     action->activate(QAction::Trigger);

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018-2019 The Dahomey Core developers
+# Copyright (c) 2018-2019 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Verify commits against a trusted keys list."""
@@ -16,7 +16,7 @@ GIT = os.getenv('GIT', 'git')
 def tree_sha512sum(commit='HEAD'):
     """Calculate the Tree-sha512 for the commit.
 
-    This is copied from github-merge.py. See https://github.com/dahomey-core/dahomey-maintainer-tools."""
+    This is copied from github-merge.py. See https://github.com/danxome-core/danxome-maintainer-tools."""
 
     # request metadata for entire tree, recursively
     files = []

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2018 The Dahomey Core developers
+// Copyright (c) 2014-2018 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -6,7 +6,7 @@
 #define BITCOIN_COMPAT_ENDIAN_H
 
 #if defined(HAVE_CONFIG_H)
-#include <config/dahomey-config.h>
+#include <config/danxome-config.h>
 #endif
 
 #include <compat/byteswap.h>
@@ -22,7 +22,7 @@
 #ifndef HAVE_CONFIG_H
 // While not technically a supported configuration, defaulting to defining these
 // DECLs when we were compiled without autotools makes it easier for other build
-// systems to build things like libdahomeyconsensus for strange targets.
+// systems to build things like libdanxomeconsensus for strange targets.
 #ifdef htobe16
 #define HAVE_DECL_HTOBE16 1
 #endif

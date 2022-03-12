@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Copyright (c) 2019-2021 The Dahomey Core developers
+# Copyright (c) 2019-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -20,7 +20,7 @@ fi
 export CONTAINER_NAME=ci_s390x
 export DOCKER_NAME_TAG="debian:bookworm"
 export TEST_RUNNER_ENV="LC_ALL=C"
-export TEST_RUNNER_EXTRA="--exclude rpc_bind,feature_bind_extra"  # Excluded for now, see https://github.com/dahomey/dahomey/issues/17765#issuecomment-602068547
+export TEST_RUNNER_EXTRA="--exclude rpc_bind,feature_bind_extra"  # Excluded for now, see https://github.com/danxome/danxome/issues/17765#issuecomment-602068547
 export RUN_FUNCTIONAL_TESTS=true
 export GOAL="install"
-export BITCOIN_CONFIG="--enable-reduce-exports --disable-gui-tests"  # GUI tests disabled for now, see https://github.com/dahomey/dahomey/issues/23730
+export BITCOIN_CONFIG="--enable-reduce-exports --disable-gui-tests"  # GUI tests disabled for now, see https://github.com/danxome/danxome/issues/23730

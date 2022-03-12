@@ -1,13 +1,13 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: Dahomey
+Upstream-Name: Danxome
 Upstream-Contact: Satoshi Nakamoto <satoshin@gmx.com>
- irc://#dahomey-core-dev@libera.chat
-Source: https://github.com/dahomey/dahomey
+ irc://#danxome-core-dev@libera.chat
+Source: https://github.com/danxome/danxome
 
 Files: *
-Copyright: 2009-2022, Dahomey Core Developers
+Copyright: 2009-2022, Danxome Core Developers
 License: Expat
-Comment: The Dahomey Core Developers encompasses the current developers listed on dahomey.org,
+Comment: The Danxome Core Developers encompasses the current developers listed on danxome.org,
          as well as the numerous contributors to the project.
 
 Files: debian/*
@@ -75,12 +75,12 @@ Copyright: Stephen Hutchings, Jonas Schnelli
 License: Expat
 Comment: Modifications of Stephen Hutchings' Typicons
 
-Files: src/qt/res/icons/dahomey.*
-       share/pixmaps/dahomey*
-       src/qt/res/src/dahomey.svg
+Files: src/qt/res/icons/danxome.*
+       share/pixmaps/danxome*
+       src/qt/res/src/danxome.svg
 Copyright: Bitboy, Jonas Schnelli
 License: public-domain
-Comment: Site: https://dahomeytalk.org/?topic=1756.0
+Comment: Site: https://danxometalk.org/?topic=1756.0
 
 Files: src/qt/res/icons/proxy.png
        src/qt/res/src/proxy.svg

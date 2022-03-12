@@ -2,12 +2,12 @@
 
 ## Supported Versions
 
-See our website for versions of Dahomey Core that are currently supported with
-security updates: https://dahomeycore.org/en/lifecycle/#schedule
+See our website for versions of Danxome Core that are currently supported with
+security updates: https://danxomecore.org/en/lifecycle/#schedule
 
 ## Reporting a Vulnerability
 
-To report security issues send an email to security@dahomeycore.org (not for support).
+To report security issues send an email to security@danxomecore.org (not for support).
 
 The following keys may be used to communicate sensitive information to developers:
 

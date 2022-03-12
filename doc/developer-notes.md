@@ -25,7 +25,7 @@ Developer Notes
     - [Threads](#threads)
     - [Ignoring IDE/editor files](#ignoring-ideeditor-files)
 - [Development guidelines](#development-guidelines)
-    - [General Dahomey Core](#general-dahomey-core)
+    - [General Danxome Core](#general-danxome-core)
     - [Wallet](#wallet)
     - [General C++](#general-c)
     - [C++ data structures](#c-data-structures)
@@ -145,7 +145,7 @@ Refer to [/test/functional/README.md#style-guidelines](/test/functional/README.m
 Coding Style (Doxygen-compatible comments)
 ------------------------------------------
 
-Dahomey Core uses [Doxygen](https://www.doxygen.nl/) to generate its official documentation.
+Danxome Core uses [Doxygen](https://www.doxygen.nl/) to generate its official documentation.
 
 Use Doxygen-compatible comment blocks for functions, methods, and fields.
 
@@ -302,7 +302,7 @@ to see it.
 
 If you are testing multi-machine code that needs to operate across the internet,
 you can run with either the `-signet` or the `-testnet` config option to test
-with "play dahomeys" on a test network.
+with "play danxomes" on a test network.
 
 If you are testing something that can run on one machine, run with the
 `-regtest` option.  In regression test mode, blocks can be created on demand;
@@ -310,7 +310,7 @@ see [test/functional/](/test/functional) for tests that run in `-regtest` mode.
 
 ### DEBUG_LOCKORDER
 
-Dahomey Core is a multi-threaded application, and deadlocks or other
+Danxome Core is a multi-threaded application, and deadlocks or other
 multi-threading bugs can be very difficult to track down. The `--enable-debug`
 configure option adds `-DDEBUG_LOCKORDER` to the compiler flags. This inserts
 run-time checks to keep track of which locks are held and adds warnings to the
@@ -347,15 +347,15 @@ other input.
 
 Valgrind is a programming tool for memory debugging, memory leak detection, and
 profiling. The repo contains a Valgrind suppressions file
-([`valgrind.supp`](https://github.com/dahomey/dahomey/blob/master/contrib/valgrind.supp))
+([`valgrind.supp`](https://github.com/danxome/danxome/blob/master/contrib/valgrind.supp))
 which includes known Valgrind warnings in our dependencies that cannot be fixed
 in-tree. Example use:
 
 ```shell
-$ valgrind --suppressions=contrib/valgrind.supp src/test/test_dahomey
+$ valgrind --suppressions=contrib/valgrind.supp src/test/test_danxome
 $ valgrind --suppressions=contrib/valgrind.supp --leak-check=full \
-      --show-leak-kinds=all src/test/test_dahomey --log_level=test_suite
-$ valgrind -v --leak-check=full src/dahomeyd -printtoconsole
+      --show-leak-kinds=all src/test/test_danxome --log_level=test_suite
+$ valgrind -v --leak-check=full src/danxomed -printtoconsole
 $ ./test/functional/test_runner.py --valgrind
 ```
 
@@ -372,7 +372,7 @@ To enable LCOV report generation during test runs:
 make
 make cov
 
-# A coverage report will now be accessible at `./test_dahomey.coverage/index.html`.
+# A coverage report will now be accessible at `./test_danxome.coverage/index.html`.
 ```
 
 ### Performance profiling with perf
@@ -399,13 +399,13 @@ Make sure you [understand the security
 trade-offs](https://lwn.net/Articles/420403/) of setting these kernel
 parameters.
 
-To profile a running dahomeyd process for 60 seconds, you could use an
+To profile a running danxomed process for 60 seconds, you could use an
 invocation of `perf record` like this:
 
 ```sh
 $ perf record \
     -g --call-graph dwarf --per-thread -F 140 \
-    -p `pgrep dahomeyd` -- sleep 60
+    -p `pgrep danxomed` -- sleep 60
 ```
 
 You could then analyze the results by running:
@@ -421,7 +421,7 @@ See the functional test documentation for how to invoke perf within tests.
 
 ### Sanitizers
 
-Dahomey Core can be compiled with various "sanitizers" enabled, which add
+Danxome Core can be compiled with various "sanitizers" enabled, which add
 instrumentation for issues regarding things like memory safety, thread race
 conditions, or undefined behavior. This is controlled with the
 `--with-sanitizers` configure flag, which should be a comma separated list of
@@ -468,7 +468,7 @@ Additional resources:
  * [UndefinedBehaviorSanitizer](https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html)
  * [GCC Instrumentation Options](https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html)
  * [Google Sanitizers Wiki](https://github.com/google/sanitizers/wiki)
- * [Issue #12691: Enable -fsanitize flags in Travis](https://github.com/dahomey/dahomey/issues/12691)
+ * [Issue #12691: Enable -fsanitize flags in Travis](https://github.com/danxome/danxome/issues/12691)
 
 Locking/mutex usage notes
 -------------------------
@@ -490,51 +490,51 @@ and its `cs_KeyStore` lock for example).
 Threads
 -------
 
-- [Main thread (`dahomeyd`)](https://doxygen.dahomeycore.org/dahomeyd_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97)
-  : Started from `main()` in `dahomeyd.cpp`. Responsible for starting up and
+- [Main thread (`danxomed`)](https://doxygen.danxomecore.org/danxomed_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97)
+  : Started from `main()` in `danxomed.cpp`. Responsible for starting up and
   shutting down the application.
 
-- [ThreadImport (`b-loadblk`)](https://doxygen.dahomeycore.org/init_8cpp.html#ae9e290a0e829ec0198518de2eda579d1)
+- [ThreadImport (`b-loadblk`)](https://doxygen.danxomecore.org/init_8cpp.html#ae9e290a0e829ec0198518de2eda579d1)
   : Loads blocks from `blk*.dat` files or `-loadblock=<file>` on startup.
 
-- [ThreadScriptCheck (`b-scriptch.x`)](https://doxygen.dahomeycore.org/validation_8cpp.html#a925a33e7952a157922b0bbb8dab29a20)
+- [ThreadScriptCheck (`b-scriptch.x`)](https://doxygen.danxomecore.org/validation_8cpp.html#a925a33e7952a157922b0bbb8dab29a20)
   : Parallel script validation threads for transactions in blocks.
 
-- [ThreadHTTP (`b-http`)](https://doxygen.dahomeycore.org/httpserver_8cpp.html#abb9f6ea8819672bd9a62d3695070709c)
+- [ThreadHTTP (`b-http`)](https://doxygen.danxomecore.org/httpserver_8cpp.html#abb9f6ea8819672bd9a62d3695070709c)
   : Libevent thread to listen for RPC and REST connections.
 
-- [HTTP worker threads(`b-httpworker.x`)](https://doxygen.dahomeycore.org/httpserver_8cpp.html#aa6a7bc27265043bc0193220c5ae3a55f)
+- [HTTP worker threads(`b-httpworker.x`)](https://doxygen.danxomecore.org/httpserver_8cpp.html#aa6a7bc27265043bc0193220c5ae3a55f)
   : Threads to service RPC and REST requests.
 
-- [Indexer threads (`b-txindex`, etc)](https://doxygen.dahomeycore.org/class_base_index.html#a96a7407421fbf877509248bbe64f8d87)
+- [Indexer threads (`b-txindex`, etc)](https://doxygen.danxomecore.org/class_base_index.html#a96a7407421fbf877509248bbe64f8d87)
   : One thread per indexer.
 
-- [SchedulerThread (`b-scheduler`)](https://doxygen.dahomeycore.org/class_c_scheduler.html#a14d2800815da93577858ea078aed1fba)
+- [SchedulerThread (`b-scheduler`)](https://doxygen.danxomecore.org/class_c_scheduler.html#a14d2800815da93577858ea078aed1fba)
   : Does asynchronous background tasks like dumping wallet contents, dumping
   addrman and running asynchronous validationinterface callbacks.
 
-- [TorControlThread (`b-torcontrol`)](https://doxygen.dahomeycore.org/torcontrol_8cpp.html#a4faed3692d57a0d7bdbecf3b37f72de0)
+- [TorControlThread (`b-torcontrol`)](https://doxygen.danxomecore.org/torcontrol_8cpp.html#a4faed3692d57a0d7bdbecf3b37f72de0)
   : Libevent thread for tor connections.
 
 - Net threads:
 
-  - [ThreadMessageHandler (`b-msghand`)](https://doxygen.dahomeycore.org/class_c_connman.html#aacdbb7148575a31bb33bc345e2bf22a9)
+  - [ThreadMessageHandler (`b-msghand`)](https://doxygen.danxomecore.org/class_c_connman.html#aacdbb7148575a31bb33bc345e2bf22a9)
     : Application level message handling (sending and receiving). Almost
     all net_processing and validation logic runs on this thread.
 
-  - [ThreadDNSAddressSeed (`b-dnsseed`)](https://doxygen.dahomeycore.org/class_c_connman.html#aa7c6970ed98a4a7bafbc071d24897d13)
+  - [ThreadDNSAddressSeed (`b-dnsseed`)](https://doxygen.danxomecore.org/class_c_connman.html#aa7c6970ed98a4a7bafbc071d24897d13)
     : Loads addresses of peers from the DNS.
 
-  - [ThreadMapPort (`b-upnp`)](https://doxygen.dahomeycore.org/net_8cpp.html#a63f82a71c4169290c2db1651a9bbe249)
+  - [ThreadMapPort (`b-upnp`)](https://doxygen.danxomecore.org/net_8cpp.html#a63f82a71c4169290c2db1651a9bbe249)
     : Universal plug-and-play startup/shutdown.
 
-  - [ThreadSocketHandler (`b-net`)](https://doxygen.dahomeycore.org/class_c_connman.html#a765597cbfe99c083d8fa3d61bb464e34)
+  - [ThreadSocketHandler (`b-net`)](https://doxygen.danxomecore.org/class_c_connman.html#a765597cbfe99c083d8fa3d61bb464e34)
     : Sends/Receives data from peers on port 2022.
 
-  - [ThreadOpenAddedConnections (`b-addcon`)](https://doxygen.dahomeycore.org/class_c_connman.html#a0b787caf95e52a346a2b31a580d60a62)
+  - [ThreadOpenAddedConnections (`b-addcon`)](https://doxygen.danxomecore.org/class_c_connman.html#a0b787caf95e52a346a2b31a580d60a62)
     : Opens network connections to added nodes.
 
-  - [ThreadOpenConnections (`b-opencon`)](https://doxygen.dahomeycore.org/class_c_connman.html#a55e9feafc3bab78e5c9d408c207faa45)
+  - [ThreadOpenConnections (`b-opencon`)](https://doxygen.danxomecore.org/class_c_connman.html#a55e9feafc3bab78e5c9d408c207faa45)
     : Initiates new connections to peers.
 
 Ignoring IDE/editor files
@@ -543,7 +543,7 @@ Ignoring IDE/editor files
 In closed-source environments in which everyone uses the same IDE, it is common
 to add temporary files it produces to the project-wide `.gitignore` file.
 
-However, in open source software such as Dahomey Core, where everyone uses
+However, in open source software such as Danxome Core, where everyone uses
 their own editors/IDE/tools, it is less common. Only you know what files your
 editor produces and this may change from version to version. The canonical way
 to do this is thus to create your local gitignore. Add this to `~/.gitconfig`:
@@ -573,9 +573,9 @@ Development guidelines
 ============================
 
 A few non-style-related recommendations for developers, as well as points to
-pay attention to for reviewers of Dahomey Core code.
+pay attention to for reviewers of Danxome Core code.
 
-General Dahomey Core
+General Danxome Core
 ----------------------
 
 - New features should be exposed on RPC first, then can be made available in the GUI.
@@ -771,7 +771,7 @@ Strings and formatting
 
 - For `strprintf`, `LogPrint`, `LogPrintf` formatting characters don't need size specifiers.
 
-  - *Rationale*: Dahomey Core uses tinyformat, which is type safe. Leave them out to avoid confusion.
+  - *Rationale*: Danxome Core uses tinyformat, which is type safe. Leave them out to avoid confusion.
 
 - Use `.c_str()` sparingly. Its only valid use is to pass C++ strings to C functions that take NULL-terminated
   strings.
@@ -993,13 +993,13 @@ Subtrees
 
 Several parts of the repository are subtrees of software maintained elsewhere.
 
-Some of these are maintained by active developers of Dahomey Core, in which case
+Some of these are maintained by active developers of Danxome Core, in which case
 changes should go directly upstream without being PRed directly against the project.
 They will be merged back in the next subtree merge.
 
 Others are external projects without a tight relationship with our project. Changes
 to these should also be sent upstream, but bugfixes may also be prudent to PR against
-a Dahomey Core subtree, so that they can be integrated quickly. Cosmetic changes
+a Danxome Core subtree, so that they can be integrated quickly. Cosmetic changes
 should be taken upstream.
 
 There is a tool in `test/lint/git-subtree-check.sh` ([instructions](../test/lint#git-subtree-checksh))
@@ -1008,7 +1008,7 @@ to check a subtree directory for consistency with its upstream repository.
 Current subtrees include:
 
 - src/leveldb
-  - Subtree at https://github.com/dahomey-core/leveldb-subtree ; maintained by Core contributors.
+  - Subtree at https://github.com/danxome-core/leveldb-subtree ; maintained by Core contributors.
   - Upstream at https://github.com/google/leveldb ; maintained by Google. Open
     important PRs to the subtree to avoid delay.
   - **Note**: Follow the instructions in [Upgrading LevelDB](#upgrading-leveldb) when
@@ -1016,17 +1016,17 @@ Current subtrees include:
 
 - src/crc32c
   - Used by leveldb for hardware acceleration of CRC32C checksums for data integrity.
-  - Subtree at https://github.com/dahomey-core/crc32c-subtree ; maintained by Core contributors.
+  - Subtree at https://github.com/danxome-core/crc32c-subtree ; maintained by Core contributors.
   - Upstream at https://github.com/google/crc32c ; maintained by Google.
 
 - src/secp256k1
-  - Upstream at https://github.com/dahomey-core/secp256k1/ ; maintained by Core contributors.
+  - Upstream at https://github.com/danxome-core/secp256k1/ ; maintained by Core contributors.
 
 - src/crypto/ctaes
-  - Upstream at https://github.com/dahomey-core/ctaes ; maintained by Core contributors.
+  - Upstream at https://github.com/danxome-core/ctaes ; maintained by Core contributors.
 
 - src/univalue
-  - Subtree at https://github.com/dahomey-core/univalue-subtree ; maintained by Core contributors.
+  - Subtree at https://github.com/danxome-core/univalue-subtree ; maintained by Core contributors.
   - Deviates from upstream https://github.com/jgarzik/univalue.
 
 - src/minisketch
@@ -1042,7 +1042,7 @@ you must be aware of.
 
 In most configurations, we use the default LevelDB value for `max_open_files`,
 which is 1000 at the time of this writing. If LevelDB actually uses this many
-file descriptors, it will cause problems with Dahomey's `select()` loop, because
+file descriptors, it will cause problems with Danxome's `select()` loop, because
 it may cause new sockets to be created where the fd value is >= 1024. For this
 reason, on 64-bit Unix systems, we rely on an internal LevelDB optimization that
 uses `mmap()` + `close()` to open table files without actually retaining
@@ -1053,7 +1053,7 @@ In addition to reviewing the upstream changes in `env_posix.cc`, you can use `ls
 check this. For example, on Linux this command will show open `.ldb` file counts:
 
 ```bash
-$ lsof -p $(pidof dahomeyd) |\
+$ lsof -p $(pidof danxomed) |\
     awk 'BEGIN { fd=0; mem=0; } /ldb$/ { if ($4 == "mem") mem++; else fd++ } END { printf "mem = %s, fd = %s\n", mem, fd}'
 mem = 119, fd = 0
 ```
@@ -1068,14 +1068,14 @@ details.
 ### Consensus Compatibility
 
 It is possible for LevelDB changes to inadvertently change consensus
-compatibility between nodes. This happened in Dahomey 0.8 (when LevelDB was
+compatibility between nodes. This happened in Danxome 0.8 (when LevelDB was
 first introduced). When upgrading LevelDB, you should review the upstream changes
 to check for issues affecting consensus compatibility.
 
 For example, if LevelDB had a bug that accidentally prevented a key from being
 returned in an edge case, and that bug was fixed upstream, the bug "fix" would
 be an incompatible consensus change. In this situation, the correct behavior
-would be to revert the upstream fix before applying the updates to Dahomey's
+would be to revert the upstream fix before applying the updates to Danxome's
 copy of LevelDB. In general, you should be wary of any upstream changes affecting
 what data is returned from LevelDB queries.
 
@@ -1121,13 +1121,13 @@ introduce accidental changes.
 
 Some good examples of scripted-diff:
 
-- [scripted-diff: Rename InitInterfaces to NodeContext](https://github.com/dahomey/dahomey/commit/301bd41a2e6765b185bd55f4c541f9e27aeea29d)
+- [scripted-diff: Rename InitInterfaces to NodeContext](https://github.com/danxome/danxome/commit/301bd41a2e6765b185bd55f4c541f9e27aeea29d)
 uses an elegant script to replace occurrences of multiple terms in all source files.
 
-- [scripted-diff: Remove g_connman, g_banman globals](https://github.com/dahomey/dahomey/commit/8922d7f6b751a3e6b3b9f6fb7961c442877fb65a)
+- [scripted-diff: Remove g_connman, g_banman globals](https://github.com/danxome/danxome/commit/8922d7f6b751a3e6b3b9f6fb7961c442877fb65a)
 replaces specific terms in a list of specific source files.
 
-- [scripted-diff: Replace fprintf with tfm::format](https://github.com/dahomey/dahomey/commit/fac03ec43a15ad547161e37e53ea82482cc508f9)
+- [scripted-diff: Replace fprintf with tfm::format](https://github.com/danxome/danxome/commit/fac03ec43a15ad547161e37e53ea82482cc508f9)
 does a global replacement but excludes certain directories.
 
 To find all previous uses of scripted diffs in the repository, do:
@@ -1191,7 +1191,7 @@ A few guidelines for introducing and reviewing new RPC interfaces:
 - Try not to overload methods on argument type. E.g. don't make `getblock(true)` and `getblock("hash")`
   do different things.
 
-  - *Rationale*: This is impossible to use with `dahomey-cli`, and can be surprising to users.
+  - *Rationale*: This is impossible to use with `danxome-cli`, and can be surprising to users.
 
   - *Exception*: Some RPC calls can take both an `int` and `bool`, most notably when a bool was switched
     to a multi-value, or due to other historical reasons. **Always** have false map to 0 and
@@ -1203,7 +1203,7 @@ A few guidelines for introducing and reviewing new RPC interfaces:
 
 - Add every non-string RPC argument `(method, idx, name)` to the table `vRPCConvertParams` in `rpc/client.cpp`.
 
-  - *Rationale*: `dahomey-cli` and the GUI debug console use this table to determine how to
+  - *Rationale*: `danxome-cli` and the GUI debug console use this table to determine how to
     convert a plaintext command line to JSON. If the types don't match, the method can be unusable
     from there.
 
@@ -1224,7 +1224,7 @@ A few guidelines for introducing and reviewing new RPC interfaces:
   RPCs whose behavior does *not* depend on the current chainstate may omit this
   call.
 
-  - *Rationale*: In previous versions of Dahomey Core, the wallet was always
+  - *Rationale*: In previous versions of Danxome Core, the wallet was always
     in-sync with the chainstate (by virtue of them all being updated in the
     same cs_main lock). In order to maintain the behavior that wallet RPCs
     return results as of at least the highest best-known block an RPC
@@ -1379,4 +1379,4 @@ communication:
 
   Note: This last convention isn't generally followed outside of
   [`src/interfaces/`](../src/interfaces/), though it did come up for discussion
-  before in [#14635](https://github.com/dahomey/dahomey/pull/14635).
+  before in [#14635](https://github.com/danxome/danxome/pull/14635).

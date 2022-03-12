@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2020 The Dahomey Core developers
+// Copyright (c) 2014-2020 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -11,8 +11,8 @@
 class ArgsManager;
 
 /**
- * CBaseChainParams defines the base parameters (shared between dahomey-cli and dahomeyd)
- * of a given instance of the Dahomey system.
+ * CBaseChainParams defines the base parameters (shared between danxome-cli and danxomed)
+ * of a given instance of the Danxome system.
  */
 class CBaseChainParams
 {

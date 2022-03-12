@@ -1,21 +1,21 @@
 Shared Libraries
 ================
 
-## dahomeyconsensus
+## danxomeconsensus
 
-The purpose of this library is to make the verification functionality that is critical to Dahomey's consensus available to other applications, e.g. to language bindings.
+The purpose of this library is to make the verification functionality that is critical to Danxome's consensus available to other applications, e.g. to language bindings.
 
 ### API
 
-The interface is defined in the C header `dahomeyconsensus.h` located in `src/script/dahomeyconsensus.h`.
+The interface is defined in the C header `danxomeconsensus.h` located in `src/script/danxomeconsensus.h`.
 
 #### Version
 
-`dahomeyconsensus_version` returns an `unsigned int` with the API version *(currently `1`)*.
+`danxomeconsensus_version` returns an `unsigned int` with the API version *(currently `1`)*.
 
 #### Script Validation
 
-`dahomeyconsensus_verify_script` returns an `int` with the status of the verification. It will be `1` if the input script correctly spends the previous output `scriptPubKey`.
+`danxomeconsensus_verify_script` returns an `int` with the status of the verification. It will be `1` if the input script correctly spends the previous output `scriptPubKey`.
 
 ##### Parameters
 - `const unsigned char *scriptPubKey` - The previous output script that encumbers spending.
@@ -24,27 +24,27 @@ The interface is defined in the C header `dahomeyconsensus.h` located in `src/sc
 - `unsigned int txToLen` - The number of bytes for the `txTo`.
 - `unsigned int nIn` - The index of the input in `txTo` that spends the `scriptPubKey`.
 - `unsigned int flags` - The script validation flags *(see below)*.
-- `dahomeyconsensus_error* err` - Will have the error/success code for the operation *(see below)*.
+- `danxomeconsensus_error* err` - Will have the error/success code for the operation *(see below)*.
 
 ##### Script Flags
-- `dahomeyconsensus_SCRIPT_FLAGS_VERIFY_NONE`
-- `dahomeyconsensus_SCRIPT_FLAGS_VERIFY_P2SH` - Evaluate P2SH ([BIP16](https://github.com/dahomey/bips/blob/master/bip-0016.mediawiki)) subscripts
-- `dahomeyconsensus_SCRIPT_FLAGS_VERIFY_DERSIG` - Enforce strict DER ([BIP66](https://github.com/dahomey/bips/blob/master/bip-0066.mediawiki)) compliance
-- `dahomeyconsensus_SCRIPT_FLAGS_VERIFY_NULLDUMMY` - Enforce NULLDUMMY ([BIP147](https://github.com/dahomey/bips/blob/master/bip-0147.mediawiki))
-- `dahomeyconsensus_SCRIPT_FLAGS_VERIFY_CHECKLOCKTIMEVERIFY` - Enable CHECKLOCKTIMEVERIFY ([BIP65](https://github.com/dahomey/bips/blob/master/bip-0065.mediawiki))
-- `dahomeyconsensus_SCRIPT_FLAGS_VERIFY_CHECKSEQUENCEVERIFY` - Enable CHECKSEQUENCEVERIFY ([BIP112](https://github.com/dahomey/bips/blob/master/bip-0112.mediawiki))
-- `dahomeyconsensus_SCRIPT_FLAGS_VERIFY_WITNESS` - Enable WITNESS ([BIP141](https://github.com/dahomey/bips/blob/master/bip-0141.mediawiki))
+- `danxomeconsensus_SCRIPT_FLAGS_VERIFY_NONE`
+- `danxomeconsensus_SCRIPT_FLAGS_VERIFY_P2SH` - Evaluate P2SH ([BIP16](https://github.com/danxome/bips/blob/master/bip-0016.mediawiki)) subscripts
+- `danxomeconsensus_SCRIPT_FLAGS_VERIFY_DERSIG` - Enforce strict DER ([BIP66](https://github.com/danxome/bips/blob/master/bip-0066.mediawiki)) compliance
+- `danxomeconsensus_SCRIPT_FLAGS_VERIFY_NULLDUMMY` - Enforce NULLDUMMY ([BIP147](https://github.com/danxome/bips/blob/master/bip-0147.mediawiki))
+- `danxomeconsensus_SCRIPT_FLAGS_VERIFY_CHECKLOCKTIMEVERIFY` - Enable CHECKLOCKTIMEVERIFY ([BIP65](https://github.com/danxome/bips/blob/master/bip-0065.mediawiki))
+- `danxomeconsensus_SCRIPT_FLAGS_VERIFY_CHECKSEQUENCEVERIFY` - Enable CHECKSEQUENCEVERIFY ([BIP112](https://github.com/danxome/bips/blob/master/bip-0112.mediawiki))
+- `danxomeconsensus_SCRIPT_FLAGS_VERIFY_WITNESS` - Enable WITNESS ([BIP141](https://github.com/danxome/bips/blob/master/bip-0141.mediawiki))
 
 ##### Errors
-- `dahomeyconsensus_ERR_OK` - No errors with input parameters *(see the return value of `dahomeyconsensus_verify_script` for the verification status)*
-- `dahomeyconsensus_ERR_TX_INDEX` - An invalid index for `txTo`
-- `dahomeyconsensus_ERR_TX_SIZE_MISMATCH` - `txToLen` did not match with the size of `txTo`
-- `dahomeyconsensus_ERR_DESERIALIZE` - An error deserializing `txTo`
-- `dahomeyconsensus_ERR_AMOUNT_REQUIRED` - Input amount is required if WITNESS is used
-- `dahomeyconsensus_ERR_INVALID_FLAGS` - Script verification `flags` are invalid (i.e. not part of the libconsensus interface)
+- `danxomeconsensus_ERR_OK` - No errors with input parameters *(see the return value of `danxomeconsensus_verify_script` for the verification status)*
+- `danxomeconsensus_ERR_TX_INDEX` - An invalid index for `txTo`
+- `danxomeconsensus_ERR_TX_SIZE_MISMATCH` - `txToLen` did not match with the size of `txTo`
+- `danxomeconsensus_ERR_DESERIALIZE` - An error deserializing `txTo`
+- `danxomeconsensus_ERR_AMOUNT_REQUIRED` - Input amount is required if WITNESS is used
+- `danxomeconsensus_ERR_INVALID_FLAGS` - Script verification `flags` are invalid (i.e. not part of the libconsensus interface)
 
 ### Example Implementations
-- [NDahomey](https://github.com/MetacoSA/NDahomey/blob/5e1055cd7c4186dee4227c344af8892aea54faec/NDahomey/Script.cs#L979-#L1031) (.NET Bindings)
-- [node-libdahomeyconsensus](https://github.com/bitpay/node-libdahomeyconsensus) (Node.js Bindings)
-- [java-libdahomeyconsensus](https://github.com/dexX7/java-libdahomeyconsensus) (Java Bindings)
-- [dahomeyconsensus-php](https://github.com/Bit-Wasp/dahomeyconsensus-php) (PHP Bindings)
+- [NDanxome](https://github.com/MetacoSA/NDanxome/blob/5e1055cd7c4186dee4227c344af8892aea54faec/NDanxome/Script.cs#L979-#L1031) (.NET Bindings)
+- [node-libdanxomeconsensus](https://github.com/bitpay/node-libdanxomeconsensus) (Node.js Bindings)
+- [java-libdanxomeconsensus](https://github.com/dexX7/java-libdanxomeconsensus) (Java Bindings)
+- [danxomeconsensus-php](https://github.com/Bit-Wasp/danxomeconsensus-php) (PHP Bindings)

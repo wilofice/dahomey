@@ -1,12 +1,12 @@
-Contributing to Dahomey Core
+Contributing to Danxome Core
 ============================
 
-The Dahomey Core project operates an open contributor model where anyone is
+The Danxome Core project operates an open contributor model where anyone is
 welcome to contribute towards development in the form of peer review, testing
 and patches. This document explains the practical process and guidelines for
 contributing.
 
-First, in terms of structure, there is no particular concept of "Dahomey Core
+First, in terms of structure, there is no particular concept of "Danxome Core
 developers" in the sense of privileged people. Open source often naturally
 revolves around a meritocracy where contributors earn trust from the developer
 community over time. Nevertheless, some hierarchy is necessary for practical
@@ -25,20 +25,20 @@ as a new contributor. It also will teach you much more about the code and
 process than opening pull requests. Please refer to the [peer review](#peer-review)
 section below.
 
-Before you start contributing, familiarize yourself with the Dahomey Core build
+Before you start contributing, familiarize yourself with the Danxome Core build
 system and tests. Refer to the documentation in the repository on how to build
-Dahomey Core and how to run the unit tests, functional tests, and fuzz tests.
+Danxome Core and how to run the unit tests, functional tests, and fuzz tests.
 
 There are many open issues of varying difficulty waiting to be fixed.
 If you're looking for somewhere to start contributing, check out the
-[good first issue](https://github.com/dahomey/dahomey/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)
+[good first issue](https://github.com/danxome/danxome/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)
 list or changes that are
-[up for grabs](https://github.com/dahomey/dahomey/issues?utf8=%E2%9C%93&q=label%3A%22Up+for+grabs%22).
+[up for grabs](https://github.com/danxome/danxome/issues?utf8=%E2%9C%93&q=label%3A%22Up+for+grabs%22).
 Some of them might no longer be applicable. So if you are interested, but
 unsure, you might want to leave a comment on the issue first.
 
 You may also participate in the weekly
-[Dahomey Core PR Review Club](https://dahomeycore.reviews/) meeting.
+[Danxome Core PR Review Club](https://danxomecore.reviews/) meeting.
 
 ### Good First Issue Label
 
@@ -56,18 +56,18 @@ and is also an effective way to request assistance if and when you need it.
 Communication Channels
 ----------------------
 
-Most communication about Dahomey Core development happens on IRC, in the
-`#dahomey-core-dev` channel on Libera Chat. The easiest way to participate on IRC is
-with the web client, [web.libera.chat](https://web.libera.chat/#dahomey-core-dev). Chat
+Most communication about Danxome Core development happens on IRC, in the
+`#danxome-core-dev` channel on Libera Chat. The easiest way to participate on IRC is
+with the web client, [web.libera.chat](https://web.libera.chat/#danxome-core-dev). Chat
 history logs can be found
-on [https://www.erisian.com.au/dahomey-core-dev/](https://www.erisian.com.au/dahomey-core-dev/)
-and [https://gnusha.org/dahomey-core-dev/](https://gnusha.org/dahomey-core-dev/).
+on [https://www.erisian.com.au/danxome-core-dev/](https://www.erisian.com.au/danxome-core-dev/)
+and [https://gnusha.org/danxome-core-dev/](https://gnusha.org/danxome-core-dev/).
 
 Discussion about codebase improvements happens in GitHub issues and pull
 requests.
 
 The developer
-[mailing list](https://lists.linuxfoundation.org/mailman/listinfo/dahomey-dev)
+[mailing list](https://lists.linuxfoundation.org/mailman/listinfo/danxome-dev)
 should be used to discuss complicated or controversial consensus or P2P protocol changes before working on
 a patch set.
 
@@ -85,8 +85,8 @@ To contribute a patch, the workflow is as follows:
   1. Create topic branch
   1. Commit patches
 
-For GUI-related issues or pull requests, the https://github.com/dahomey-core/gui repository should be used.
-For all other issues and pull requests, the https://github.com/dahomey/dahomey node repository should be used.
+For GUI-related issues or pull requests, the https://github.com/danxome-core/gui repository should be used.
+For all other issues and pull requests, the https://github.com/danxome/danxome node repository should be used.
 
 The master branch for all monotree repositories is identical.
 
@@ -143,7 +143,7 @@ the pull request affects. Valid areas as:
 
   - `consensus` for changes to consensus critical code
   - `doc` for changes to the documentation
-  - `qt` or `gui` for changes to dahomey-qt
+  - `qt` or `gui` for changes to danxome-qt
   - `log` for changes to log messages
   - `mining` for changes to the mining code
   - `net` or `p2p` for changes to the peer-to-peer network code
@@ -170,13 +170,13 @@ mailing list discussions).
 The description for a new pull request should not contain any `@` mentions. The
 PR description will be included in the commit message when the PR is merged and
 any users mentioned in the description will be annoyingly notified each time a
-fork of Dahomey Core copies the merge. Instead, make any username mentions in a
+fork of Danxome Core copies the merge. Instead, make any username mentions in a
 subsequent comment to the PR.
 
 ### Translation changes
 
 Note that translations should not be submitted as pull requests. Please see
-[Translation Process](https://github.com/dahomey/dahomey/blob/master/doc/translation_process.md)
+[Translation Process](https://github.com/danxome/danxome/blob/master/doc/translation_process.md)
 for more information on helping with translations.
 
 ### Work in Progress Changes and Requests for Comments
@@ -282,11 +282,11 @@ workload on reviewing.
 "Decision Making" Process
 -------------------------
 
-The following applies to code changes to the Dahomey Core project (and related
-projects such as libsecp256k1), and is not to be confused with overall Dahomey
+The following applies to code changes to the Danxome Core project (and related
+projects such as libsecp256k1), and is not to be confused with overall Danxome
 Network Protocol consensus changes.
 
-Whether a pull request is merged into Dahomey Core rests with the project merge
+Whether a pull request is merged into Danxome Core rests with the project merge
 maintainers and ultimately the project lead.
 
 Maintainers will take into consideration if a patch is in line with the general
@@ -305,7 +305,7 @@ In general, all pull requests must:
     demonstrating the bug and also proving the fix. This helps prevent regression.
   - Change relevant comments and documentation when behaviour of code changes.
 
-Patches that change Dahomey consensus rules are considerably more involved than
+Patches that change Danxome consensus rules are considerably more involved than
 normal because they affect the entire ecosystem and so must be preceded by
 extensive mailing list discussions and have a numbered BIP. While each case will
 be different, one should be prepared to expend more time and effort than for
@@ -358,7 +358,7 @@ higher in terms of discussion and peer review requirements, keeping in mind that
 mistakes could be very costly to the wider community. This includes refactoring
 of consensus-critical code.
 
-Where a patch set proposes to change the Dahomey consensus, it must have been
+Where a patch set proposes to change the Danxome consensus, it must have been
 discussed extensively on the mailing list and IRC, be accompanied by a widely
 discussed BIP and have a generally widely perceived technical consensus of being
 a worthwhile change based on the judgement of the maintainers.
@@ -417,15 +417,15 @@ Rebased-From: <commit hash of the original commit>
 ```
 
 Have a look at [an example backport PR](
-https://github.com/dahomey/dahomey/pull/16189).
+https://github.com/danxome/danxome/pull/16189).
 
 Also see the [backport.py script](
-https://github.com/dahomey-core/dahomey-maintainer-tools#backport).
+https://github.com/danxome-core/danxome-maintainer-tools#backport).
 
 Release Policy
 --------------
 
-The project leader is the release manager for each Dahomey Core release.
+The project leader is the release manager for each Danxome Core release.
 
 Copyright
 ---------

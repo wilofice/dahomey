@@ -1,42 +1,42 @@
-Dahomey Core
+Danxome Core
 =============
 
 Setup
 ---------------------
-Dahomey Core is the original Dahomey client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Dahomey transactions, which requires a few hundred gigabytes of disk space. Depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
+Danxome Core is the original Danxome client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Danxome transactions, which requires a few hundred gigabytes of disk space. Depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
-To download Dahomey Core, visit [dahomeycore.org](https://dahomeycore.org/en/download/).
+To download Danxome Core, visit [danxomecore.org](https://danxomecore.org/en/download/).
 
 Running
 ---------------------
-The following are some helpful notes on how to run Dahomey Core on your native platform.
+The following are some helpful notes on how to run Danxome Core on your native platform.
 
 ### Unix
 
 Unpack the files into a directory and run:
 
-- `bin/dahomey-qt` (GUI) or
-- `bin/dahomeyd` (headless)
+- `bin/danxome-qt` (GUI) or
+- `bin/danxomed` (headless)
 
 ### Windows
 
-Unpack the files into a directory, and then run dahomey-qt.exe.
+Unpack the files into a directory, and then run danxome-qt.exe.
 
 ### macOS
 
-Drag Dahomey Core to your applications folder, and then run Dahomey Core.
+Drag Danxome Core to your applications folder, and then run Danxome Core.
 
 ### Need Help?
 
-* See the documentation at the [Dahomey Wiki](https://en.dahomey.it/wiki/Main_Page)
+* See the documentation at the [Danxome Wiki](https://en.danxome.it/wiki/Main_Page)
 for help and more information.
-* Ask for help on [Dahomey StackExchange](https://dahomey.stackexchange.com).
-* Ask for help on #dahomey on Libera Chat. If you don't have an IRC client, you can use [web.libera.chat](https://web.libera.chat/#dahomey).
-* Ask for help on the [DahomeyTalk](https://dahomeytalk.org/) forums, in the [Technical Support board](https://dahomeytalk.org/index.php?board=4.0).
+* Ask for help on [Danxome StackExchange](https://danxome.stackexchange.com).
+* Ask for help on #danxome on Libera Chat. If you don't have an IRC client, you can use [web.libera.chat](https://web.libera.chat/#danxome).
+* Ask for help on the [DanxomeTalk](https://danxometalk.org/) forums, in the [Technical Support board](https://danxometalk.org/index.php?board=4.0).
 
 Building
 ---------------------
-The following are developer notes on how to build Dahomey Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build Danxome Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [Dependencies](dependencies.md)
 - [macOS Build Notes](build-osx.md)
@@ -49,13 +49,13 @@ The following are developer notes on how to build Dahomey Core on your native pl
 
 Development
 ---------------------
-The Dahomey repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+The Danxome repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Productivity Notes](productivity.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
-- [Source Code Documentation (External Link)](https://doxygen.dahomeycore.org/)
+- [Source Code Documentation (External Link)](https://doxygen.danxomecore.org/)
 - [Translation Process](translation_process.md)
 - [Translation Strings Policy](translation_strings_policy.md)
 - [JSON-RPC Interface](JSON-RPC-interface.md)
@@ -66,13 +66,13 @@ The Dahomey repo's [root README](/README.md) contains relevant information on th
 - [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [DahomeyTalk](https://dahomeytalk.org/) forums, in the [Development & Technical Discussion board](https://dahomeytalk.org/index.php?board=6.0).
-* Discuss project-specific development on #dahomey-core-dev on Libera Chat. If you don't have an IRC client, you can use [web.libera.chat](https://web.libera.chat/#dahomey-core-dev).
+* Discuss on the [DanxomeTalk](https://danxometalk.org/) forums, in the [Development & Technical Discussion board](https://danxometalk.org/index.php?board=6.0).
+* Discuss project-specific development on #danxome-core-dev on Libera Chat. If you don't have an IRC client, you can use [web.libera.chat](https://web.libera.chat/#danxome-core-dev).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
 - [Assumeutxo design](assumeutxo.md)
-- [dahomey.conf Configuration File](dahomey-conf.md)
+- [danxome.conf Configuration File](danxome-conf.md)
 - [Files](files.md)
 - [Fuzz-testing](fuzzing.md)
 - [I2P Support](i2p.md)

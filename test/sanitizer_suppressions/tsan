@@ -10,7 +10,7 @@ race:BerkeleyBatch
 race:BerkeleyDatabase
 race:DatabaseBatch
 race:zmq::*
-race:dahomey-qt
+race:danxome-qt
 
 # deadlock (TODO fix)
 deadlock:CChainState::ConnectTip
@@ -36,11 +36,11 @@ race:libzmq
 # Suppressions that follow might only happen intermittently, thus they are not
 # reproducible. Make sure to include a link to a full trace.
 
-# https://github.com/dahomey/dahomey/issues/20618
+# https://github.com/danxome/danxome/issues/20618
 race:CZMQAbstractPublishNotifier::SendZmqMessage
 
-# https://github.com/dahomey/dahomey/pull/20218, https://github.com/dahomey/dahomey/pull/20745
+# https://github.com/danxome/danxome/pull/20218, https://github.com/danxome/danxome/pull/20745
 race:epoll_ctl
 
-# https://github.com/dahomey/dahomey/issues/23366
+# https://github.com/danxome/danxome/issues/23366
 race:std::__1::ios_base::width

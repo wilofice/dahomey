@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2020 The Dahomey Core developers
+// Copyright (c) 2011-2020 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.dahomeyfoundation.Dahomey-Qt";
+        return @"org.danxomefoundation.Danxome-Qt";
     } else {
         return [self __bundleIdentifier];
     }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2021-2021 The Dahomey Core developers
+# Copyright (c) 2021-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """
@@ -8,10 +8,10 @@ Test ports handling for I2P hosts
 
 import re
 
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 
 
-class I2PPorts(DahomeyTestFramework):
+class I2PPorts(DanxomeTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
         # The test assumes that an I2P SAM proxy is not listening here.

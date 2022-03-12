@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2014-2021 The Dahomey Core developers
+# Copyright (c) 2014-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test fee estimation code."""
@@ -23,7 +23,7 @@ from test_framework.script import (
 from test_framework.script_util import (
     script_to_p2sh_script,
 )
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import (
     assert_equal,
     assert_greater_than,
@@ -142,7 +142,7 @@ def send_tx(node, utxo, feerate):
     return node.sendrawtransaction(tx.serialize().hex())
 
 
-class EstimateFeeTest(DahomeyTestFramework):
+class EstimateFeeTest(DanxomeTestFramework):
     def set_test_params(self):
         self.num_nodes = 3
         # Force fSendTrickle to true (via whitelist.noban)

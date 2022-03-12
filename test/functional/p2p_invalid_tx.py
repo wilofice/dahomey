@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2015-2021 The Dahomey Core developers
+# Copyright (c) 2015-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test node responses to invalid transactions.
@@ -14,14 +14,14 @@ from test_framework.messages import (
     CTxOut,
 )
 from test_framework.p2p import P2PDataStore
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import (
     assert_equal,
 )
 from data import invalid_txs
 
 
-class InvalidTxRequestTest(DahomeyTestFramework):
+class InvalidTxRequestTest(DanxomeTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
         self.extra_args = [[

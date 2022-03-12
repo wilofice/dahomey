@@ -1,7 +1,7 @@
 Description
 ------------
 
-This directory contains data-driven tests for various aspects of Dahomey.
+This directory contains data-driven tests for various aspects of Danxome.
 
 License
 --------

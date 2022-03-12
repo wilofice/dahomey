@@ -1,23 +1,23 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-2021 The Dahomey Core developers
+# Copyright (c) 2017-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test external signer.
 
-Verify that a dahomeyd node can use an external signer command
+Verify that a danxomed node can use an external signer command
 See also rpc_signer.py for tests without wallet context.
 """
 import os
 import platform
 
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import (
     assert_equal,
     assert_raises_rpc_error,
 )
 
 
-class WalletSignerTest(DahomeyTestFramework):
+class WalletSignerTest(DanxomeTestFramework):
     def mock_signer_path(self):
         path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'mocks', 'signer.py')
         if platform.system() == "Windows":

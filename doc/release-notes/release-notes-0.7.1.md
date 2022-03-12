@@ -1,23 +1,23 @@
-Dahomey version 0.7.1 is now available from:
-  http://sourceforge.net/projects/dahomey/files/Dahomey/dahomey-0.7.1/
+Danxome version 0.7.1 is now available from:
+  http://sourceforge.net/projects/danxome/files/Danxome/danxome-0.7.1/
 
 This is a bug-fix minor release.
 
 Please report bugs using the issue tracker at github:
-  https://github.com/dahomey/dahomey/issues
+  https://github.com/danxome/danxome/issues
 
 Project source code is hosted at github; you can get
 source-only tarballs/zipballs directly from there:
-  https://github.com/dahomey/dahomey/tarball/v0.7.1  # .tar.gz
-  https://github.com/dahomey/dahomey/zipball/v0.7.1  # .zip
+  https://github.com/danxome/danxome/tarball/v0.7.1  # .tar.gz
+  https://github.com/danxome/danxome/zipball/v0.7.1  # .zip
 
 Ubuntu Linux users can use the "Personal Package Archive" (PPA)
 maintained by Matt Corallo to automatically keep 
 up-to-date.  Just type:
-  sudo apt-add-repository ppa:dahomey/dahomey
+  sudo apt-add-repository ppa:danxome/danxome
   sudo apt-get update
-in your terminal, then install the dahomey-qt package:
-  sudo apt-get install dahomey-qt
+in your terminal, then install the danxome-qt package:
+  sudo apt-get install danxome-qt
 
 KNOWN ISSUES
 ------------
@@ -30,7 +30,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait
 until it has completely shut down (which might take a few minutes for older
 versions), then run the installer (on Windows) or just copy over
-/Applications/Dahomey-Qt (on Mac) or dahomeyd/dahomey-qt (on Linux).
+/Applications/Danxome-Qt (on Mac) or danxomed/danxome-qt (on Linux).
 
 If you were running on Linux with a version that might have been compiled
 with a different version of Berkeley DB (for example, if you were using an
@@ -75,7 +75,7 @@ Dependency changes
 Bug fixes
 ---------
 
-* Clicking on a dahomey: URI on Windows should now launch Dahomey-Qt properly.
+* Clicking on a danxome: URI on Windows should now launch Danxome-Qt properly.
 
 * When running -testnet, use RPC port 18332 by default.
 

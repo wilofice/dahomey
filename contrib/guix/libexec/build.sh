@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright (c) 2019-2021 The Dahomey Core developers
+# Copyright (c) 2019-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 export LC_ALL=C
@@ -216,8 +216,8 @@ make -C depends --jobs="$JOBS" HOST="$HOST" \
                                    x86_64_linux_RANLIB=x86_64-linux-gnu-ranlib \
                                    x86_64_linux_NM=x86_64-linux-gnu-nm \
                                    x86_64_linux_STRIP=x86_64-linux-gnu-strip \
-                                   qt_config_opts_i686_linux='-platform linux-g++ -xplatform dahomey-linux-g++' \
-                                   qt_config_opts_x86_64_linux='-platform linux-g++ -xplatform dahomey-linux-g++' \
+                                   qt_config_opts_i686_linux='-platform linux-g++ -xplatform danxome-linux-g++' \
+                                   qt_config_opts_x86_64_linux='-platform linux-g++ -xplatform danxome-linux-g++' \
                                    FORCE_USE_SYSTEM_CLANG=1
 
 
@@ -299,7 +299,7 @@ mkdir -p "$DISTSRC"
 
     sed -i.old 's/-lstdc++ //g' config.status libtool
 
-    # Build Dahomey Core
+    # Build Danxome Core
     make --jobs="$JOBS" ${V:+V=1}
 
     # Check that symbol/security checks tools are sane.
@@ -318,12 +318,12 @@ mkdir -p "$DISTSRC"
             ;;
     esac
 
-    # Setup the directory where our Dahomey Core build for HOST will be
+    # Setup the directory where our Danxome Core build for HOST will be
     # installed. This directory will also later serve as the input for our
     # binary tarballs.
     INSTALLPATH="${PWD}/installed/${DISTNAME}"
     mkdir -p "${INSTALLPATH}"
-    # Install built Dahomey Core to $INSTALLPATH
+    # Install built Danxome Core to $INSTALLPATH
     case "$HOST" in
         *darwin*)
             make install-strip DESTDIR="${INSTALLPATH}" ${V:+V=1}

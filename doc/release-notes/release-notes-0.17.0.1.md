@@ -1,16 +1,16 @@
-Dahomey Core version 0.17.0.1 is now available from:
+Danxome Core version 0.17.0.1 is now available from:
 
-  <https://dahomeycore.org/bin/dahomey-core-0.17.0.1/>
+  <https://danxomecore.org/bin/danxome-core-0.17.0.1/>
 
 This release provides a minor bug fix for 0.17.0.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/dahomey/dahomey/issues>
+  <https://github.com/danxome/danxome/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://dahomeycore.org/en/list/announcements/join/>
+  <https://danxomecore.org/en/list/announcements/join/>
 
 Notable changes
 ===============

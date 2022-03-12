@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Copyright (c) 2018-2021 The Dahomey Core developers
+# Copyright (c) 2018-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -33,7 +33,7 @@ DOCKER_EXEC "${BASE_ROOT_DIR}/configure" --cache-file=config.cache "$BITCOIN_CON
 
 DOCKER_EXEC make distdir VERSION="$HOST"
 
-export P_CI_DIR="${BASE_BUILD_DIR}/dahomey-$HOST"
+export P_CI_DIR="${BASE_BUILD_DIR}/danxome-$HOST"
 
 DOCKER_EXEC ./configure --cache-file=../config.cache "$BITCOIN_CONFIG_ALL" "$BITCOIN_CONFIG" || ( (DOCKER_EXEC cat config.log) && false)
 
@@ -45,7 +45,7 @@ if [[ ${USE_MEMORY_SANITIZER} == "true" ]]; then
   # using the Linux getrandom syscall. Avoid using getrandom by undefining
   # HAVE_SYS_GETRANDOM. See https://github.com/google/sanitizers/issues/852 for
   # details.
-  DOCKER_EXEC 'grep -v HAVE_SYS_GETRANDOM src/config/dahomey-config.h > src/config/dahomey-config.h.tmp && mv src/config/dahomey-config.h.tmp src/config/dahomey-config.h'
+  DOCKER_EXEC 'grep -v HAVE_SYS_GETRANDOM src/config/danxome-config.h > src/config/danxome-config.h.tmp && mv src/config/danxome-config.h.tmp src/config/danxome-config.h'
 fi
 
 DOCKER_EXEC make "$MAKEJOBS" "$GOAL" || ( echo "Build failure. Verbose build follows." && DOCKER_EXEC make "$GOAL" V=1 ; false )

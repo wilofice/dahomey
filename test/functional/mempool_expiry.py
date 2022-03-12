@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2020-2021 The Dahomey Core developers
+# Copyright (c) 2020-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Tests that a mempool transaction expires after a given timeout and that its
@@ -13,7 +13,7 @@ definable expiry timeout via the '-mempoolexpiry=<n>' command line argument
 from datetime import timedelta
 
 from test_framework.blocktools import COINBASE_MATURITY
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import (
     assert_equal,
     assert_raises_rpc_error,
@@ -24,7 +24,7 @@ DEFAULT_MEMPOOL_EXPIRY = 336  # hours
 CUSTOM_MEMPOOL_EXPIRY = 10  # hours
 
 
-class MempoolExpiryTest(DahomeyTestFramework):
+class MempoolExpiryTest(DanxomeTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
         self.setup_clean_chain = True

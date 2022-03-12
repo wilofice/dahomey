@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2014-2021 The Dahomey Core developers
+# Copyright (c) 2014-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Base class for RPC testing."""
@@ -45,7 +45,7 @@ TEST_EXIT_PASSED = 0
 TEST_EXIT_FAILED = 1
 TEST_EXIT_SKIPPED = 77
 
-TMPDIR_PREFIX = "dahomey_func_test_"
+TMPDIR_PREFIX = "danxome_func_test_"
 
 
 class SkipTest(Exception):
@@ -55,30 +55,30 @@ class SkipTest(Exception):
         self.message = message
 
 
-class DahomeyTestMetaClass(type):
-    """Metaclass for DahomeyTestFramework.
+class DanxomeTestMetaClass(type):
+    """Metaclass for DanxomeTestFramework.
 
-    Ensures that any attempt to register a subclass of `DahomeyTestFramework`
+    Ensures that any attempt to register a subclass of `DanxomeTestFramework`
     adheres to a standard whereby the subclass overrides `set_test_params` and
     `run_test` but DOES NOT override either `__init__` or `main`. If any of
     those standards are violated, a ``TypeError`` is raised."""
 
     def __new__(cls, clsname, bases, dct):
-        if not clsname == 'DahomeyTestFramework':
+        if not clsname == 'DanxomeTestFramework':
             if not ('run_test' in dct and 'set_test_params' in dct):
-                raise TypeError("DahomeyTestFramework subclasses must override "
+                raise TypeError("DanxomeTestFramework subclasses must override "
                                 "'run_test' and 'set_test_params'")
             if '__init__' in dct or 'main' in dct:
-                raise TypeError("DahomeyTestFramework subclasses may not override "
+                raise TypeError("DanxomeTestFramework subclasses may not override "
                                 "'__init__' or 'main'")
 
         return super().__new__(cls, clsname, bases, dct)
 
 
-class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
-    """Base class for a dahomey test script.
+class DanxomeTestFramework(metaclass=DanxomeTestMetaClass):
+    """Base class for a danxome test script.
 
-    Individual dahomey test scripts should subclass this class and override the set_test_params() and run_test() methods.
+    Individual danxome test scripts should subclass this class and override the set_test_params() and run_test() methods.
 
     Individual tests can also override the following methods to customize the test setup:
 
@@ -159,11 +159,11 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
         previous_releases_path = os.getenv("PREVIOUS_RELEASES_DIR") or os.getcwd() + "/releases"
         parser = argparse.ArgumentParser(usage="%(prog)s [options]")
         parser.add_argument("--nocleanup", dest="nocleanup", default=False, action="store_true",
-                            help="Leave dahomeyds and test.* datadir on exit or error")
+                            help="Leave danxomeds and test.* datadir on exit or error")
         parser.add_argument("--nosandbox", dest="nosandbox", default=False, action="store_true",
                             help="Don't use the syscall sandbox")
         parser.add_argument("--noshutdown", dest="noshutdown", default=False, action="store_true",
-                            help="Don't stop dahomeyds after the test execution")
+                            help="Don't stop danxomeds after the test execution")
         parser.add_argument("--cachedir", dest="cachedir", default=os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + "/../../cache"),
                             help="Directory for caching pregenerated datadirs (default: %(default)s)")
         parser.add_argument("--tmpdir", dest="tmpdir", help="Root directory for datadirs")
@@ -184,7 +184,7 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
         parser.add_argument("--pdbonfailure", dest="pdbonfailure", default=False, action="store_true",
                             help="Attach a python debugger if test fails")
         parser.add_argument("--usecli", dest="usecli", default=False, action="store_true",
-                            help="use dahomey-cli instead of RPC for all commands")
+                            help="use danxome-cli instead of RPC for all commands")
         parser.add_argument("--perf", dest="perf", default=False, action="store_true",
                             help="profile running nodes with perf for the duration of the test")
         parser.add_argument("--valgrind", dest="valgrind", default=False, action="store_true",
@@ -233,18 +233,18 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
 
         config = self.config
 
-        fname_dahomeyd = os.path.join(
+        fname_danxomed = os.path.join(
             config["environment"]["BUILDDIR"],
             "src",
-            "dahomeyd" + config["environment"]["EXEEXT"],
+            "danxomed" + config["environment"]["EXEEXT"],
         )
-        fname_dahomeycli = os.path.join(
+        fname_danxomecli = os.path.join(
             config["environment"]["BUILDDIR"],
             "src",
-            "dahomey-cli" + config["environment"]["EXEEXT"],
+            "danxome-cli" + config["environment"]["EXEEXT"],
         )
-        self.options.dahomeyd = os.getenv("BITCOIND", default=fname_dahomeyd)
-        self.options.dahomeycli = os.getenv("BITCOINCLI", default=fname_dahomeycli)
+        self.options.danxomed = os.getenv("BITCOIND", default=fname_danxomed)
+        self.options.danxomecli = os.getenv("BITCOINCLI", default=fname_danxomecli)
 
         os.environ['PATH'] = os.pathsep.join([
             os.path.join(config['environment']['BUILDDIR'], 'src'),
@@ -305,7 +305,7 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
         else:
             for node in self.nodes:
                 node.cleanup_on_exit = False
-            self.log.info("Note: dahomeyds were not stopped and may still be running")
+            self.log.info("Note: danxomeds were not stopped and may still be running")
 
         should_clean_up = (
             not self.options.nocleanup and
@@ -346,7 +346,7 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
             h.flush()
             h.close()
             self.log.removeHandler(h)
-        rpc_logger = logging.getLogger("DahomeyRPC")
+        rpc_logger = logging.getLogger("DanxomeRPC")
         for h in list(rpc_logger.handlers):
             h.flush()
             rpc_logger.removeHandler(h)
@@ -476,9 +476,9 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
                 if versions[i] is None or versions[i] >= 219900:
                     extra_args[i] = extra_args[i] + ["-sandbox=log-and-abort"]
         if binary is None:
-            binary = [get_bin_from_version(v, 'dahomeyd', self.options.dahomeyd) for v in versions]
+            binary = [get_bin_from_version(v, 'danxomed', self.options.danxomed) for v in versions]
         if binary_cli is None:
-            binary_cli = [get_bin_from_version(v, 'dahomey-cli', self.options.dahomeycli) for v in versions]
+            binary_cli = [get_bin_from_version(v, 'danxome-cli', self.options.danxomecli) for v in versions]
         assert_equal(len(extra_confs), num_nodes)
         assert_equal(len(extra_args), num_nodes)
         assert_equal(len(versions), num_nodes)
@@ -492,8 +492,8 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
                 rpchost=rpchost,
                 timewait=self.rpc_timeout,
                 timeout_factor=self.options.timeout_factor,
-                dahomeyd=binary[i],
-                dahomey_cli=binary_cli[i],
+                danxomed=binary[i],
+                danxome_cli=binary_cli[i],
                 version=versions[i],
                 coverage_dir=self.options.coveragedir,
                 cwd=self.options.tmpdir,
@@ -507,14 +507,14 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
             self.nodes.append(test_node_i)
             if not test_node_i.version_is_at_least(170000):
                 # adjust conf for pre 17
-                conf_file = test_node_i.dahomeyconf
+                conf_file = test_node_i.danxomeconf
                 with open(conf_file, 'r', encoding='utf8') as conf:
                     conf_data = conf.read()
                 with open(conf_file, 'w', encoding='utf8') as conf:
                     conf.write(conf_data.replace('[regtest]', ''))
 
     def start_node(self, i, *args, **kwargs):
-        """Start a dahomeyd"""
+        """Start a danxomed"""
 
         node = self.nodes[i]
 
@@ -525,7 +525,7 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
             coverage.write_all_rpc_commands(self.options.coveragedir, node.rpc)
 
     def start_nodes(self, extra_args=None, *args, **kwargs):
-        """Start multiple dahomeyds"""
+        """Start multiple danxomeds"""
 
         if extra_args is None:
             extra_args = [None] * self.num_nodes
@@ -545,11 +545,11 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
                 coverage.write_all_rpc_commands(self.options.coveragedir, node.rpc)
 
     def stop_node(self, i, expected_stderr='', wait=0):
-        """Stop a dahomeyd test node"""
+        """Stop a danxomed test node"""
         self.nodes[i].stop_node(expected_stderr, wait=wait)
 
     def stop_nodes(self, wait=0):
-        """Stop multiple dahomeyd test nodes"""
+        """Stop multiple danxomed test nodes"""
         for node in self.nodes:
             # Issue RPC to stop nodes
             node.stop_node(wait=wait, wait_until_stopped=False)
@@ -716,7 +716,7 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
         # User can provide log level as a number or string (eg DEBUG). loglevel was caught as a string, so try to convert it to an int
         ll = int(self.options.loglevel) if self.options.loglevel.isdigit() else self.options.loglevel.upper()
         ch.setLevel(ll)
-        # Format logs the same as dahomeyd's debug.log with microprecision (so log files can be concatenated and sorted)
+        # Format logs the same as danxomed's debug.log with microprecision (so log files can be concatenated and sorted)
         formatter = logging.Formatter(fmt='%(asctime)s.%(msecs)03d000Z %(name)s (%(levelname)s): %(message)s', datefmt='%Y-%m-%dT%H:%M:%S')
         formatter.converter = time.gmtime
         fh.setFormatter(formatter)
@@ -726,7 +726,7 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
         self.log.addHandler(ch)
 
         if self.options.trace_rpc:
-            rpc_logger = logging.getLogger("DahomeyRPC")
+            rpc_logger = logging.getLogger("DanxomeRPC")
             rpc_logger.setLevel(logging.DEBUG)
             rpc_handler = logging.StreamHandler(sys.stdout)
             rpc_handler.setLevel(logging.DEBUG)
@@ -756,8 +756,8 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
                     rpchost=None,
                     timewait=self.rpc_timeout,
                     timeout_factor=self.options.timeout_factor,
-                    dahomeyd=self.options.dahomeyd,
-                    dahomey_cli=self.options.dahomeycli,
+                    danxomed=self.options.danxomed,
+                    danxome_cli=self.options.danxomecli,
                     coverage_dir=None,
                     cwd=self.options.tmpdir,
                     descriptors=self.options.descriptors,
@@ -804,7 +804,7 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
             self.log.debug("Copy cache directory {} to node {}".format(cache_node_dir, i))
             to_dir = get_datadir_path(self.options.tmpdir, i)
             shutil.copytree(cache_node_dir, to_dir)
-            initialize_datadir(self.options.tmpdir, i, self.chain, self.disable_autoconnect)  # Overwrite port/rpcport in dahomey.conf
+            initialize_datadir(self.options.tmpdir, i, self.chain, self.disable_autoconnect)  # Overwrite port/rpcport in danxome.conf
 
     def _initialize_chain_clean(self):
         """Initialize empty blockchain for use by the test.
@@ -821,10 +821,10 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
         except ImportError:
             raise SkipTest("python3-zmq module not available.")
 
-    def skip_if_no_dahomeyd_zmq(self):
-        """Skip the running test if dahomeyd has not been compiled with zmq support."""
+    def skip_if_no_danxomed_zmq(self):
+        """Skip the running test if danxomed has not been compiled with zmq support."""
         if not self.is_zmq_compiled():
-            raise SkipTest("dahomeyd has not been built with zmq enabled.")
+            raise SkipTest("danxomed has not been built with zmq enabled.")
 
     def skip_if_no_wallet(self):
         """Skip the running test if wallet has not been compiled."""
@@ -847,14 +847,14 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
             raise SkipTest("BDB has not been compiled.")
 
     def skip_if_no_wallet_tool(self):
-        """Skip the running test if dahomey-wallet has not been compiled."""
+        """Skip the running test if danxome-wallet has not been compiled."""
         if not self.is_wallet_tool_compiled():
-            raise SkipTest("dahomey-wallet has not been compiled")
+            raise SkipTest("danxome-wallet has not been compiled")
 
     def skip_if_no_cli(self):
-        """Skip the running test if dahomey-cli has not been compiled."""
+        """Skip the running test if danxome-cli has not been compiled."""
         if not self.is_cli_compiled():
-            raise SkipTest("dahomey-cli has not been compiled.")
+            raise SkipTest("danxome-cli has not been compiled.")
 
     def skip_if_no_previous_releases(self):
         """Skip the running test if previous releases are not available."""
@@ -875,7 +875,7 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
             raise SkipTest("external signer support has not been compiled.")
 
     def is_cli_compiled(self):
-        """Checks whether dahomey-cli was compiled."""
+        """Checks whether danxome-cli was compiled."""
         return self.config["components"].getboolean("ENABLE_CLI")
 
     def is_external_signer_compiled(self):
@@ -895,7 +895,7 @@ class DahomeyTestFramework(metaclass=DahomeyTestMetaClass):
             return self.is_bdb_compiled()
 
     def is_wallet_tool_compiled(self):
-        """Checks whether dahomey-wallet was compiled."""
+        """Checks whether danxome-wallet was compiled."""
         return self.config["components"].getboolean("ENABLE_WALLET_TOOL")
 
     def is_zmq_compiled(self):

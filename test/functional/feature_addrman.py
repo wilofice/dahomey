@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2021 The Dahomey Core developers
+# Copyright (c) 2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test addrman functionality"""
@@ -10,7 +10,7 @@ import struct
 
 from test_framework.messages import ser_uint256, hash256
 from test_framework.p2p import MAGIC_BYTES
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.test_node import ErrorMatch
 from test_framework.util import assert_equal
 
@@ -48,7 +48,7 @@ def write_addrman(peers_dat, **kwargs):
         f.write(serialize_addrman(**kwargs))
 
 
-class AddrmanTest(DahomeyTestFramework):
+class AddrmanTest(DanxomeTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
 

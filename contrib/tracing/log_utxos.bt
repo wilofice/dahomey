@@ -6,9 +6,9 @@
 
   bpftrace contrib/tracing/log_utxos.bt
 
-  This script requires a 'dahomeyd' binary compiled with eBPF support and the
-  'utxochache' tracepoints. By default, it's assumed that 'dahomeyd' is
-  located in './src/dahomeyd'. This can be modified in the script below.
+  This script requires a 'danxomed' binary compiled with eBPF support and the
+  'utxochache' tracepoints. By default, it's assumed that 'danxomed' is
+  located in './src/danxomed'. This can be modified in the script below.
 
   NOTE: requires bpftrace v0.12.0 or above.
 */
@@ -22,7 +22,7 @@ BEGIN
 /*
   Attaches to the 'utxocache:add' tracepoint and prints additions to the UTXO set cache.
 */
-usdt:./src/dahomeyd:utxocache:add
+usdt:./src/danxomed:utxocache:add
 {
   $txid = arg0;
   $index = (uint32)arg1;
@@ -44,7 +44,7 @@ usdt:./src/dahomeyd:utxocache:add
 /*
   Attaches to the 'utxocache:spent' tracepoint and prints spents from the UTXO set cache.
 */
-usdt:./src/dahomeyd:utxocache:spent
+usdt:./src/danxomed:utxocache:spent
 {
   $txid = arg0;
   $index = (uint32)arg1;
@@ -66,7 +66,7 @@ usdt:./src/dahomeyd:utxocache:spent
 /*
   Attaches to the 'utxocache:uncache' tracepoint and uncache UTXOs from the UTXO set cache.
 */
-usdt:./src/dahomeyd:utxocache:uncache
+usdt:./src/danxomed:utxocache:uncache
 {
   $txid = arg0;
   $index = (uint32)arg1;

@@ -1,21 +1,21 @@
-dahomeyd version 0.4.3 is now available for download at:
-http://luke.dashjr.org/programs/dahomey/files/dahomeyd-0.4.3/ (until Gavin uploads to SourceForge)
+danxomed version 0.4.3 is now available for download at:
+http://luke.dashjr.org/programs/danxome/files/danxomed-0.4.3/ (until Gavin uploads to SourceForge)
 
 This is a bugfix-only release based on 0.4.0.
 
-Please note that the wxDahomey GUI client is no longer maintained nor supported. If someone would like to step up to maintain this, they should contact Luke-Jr.
+Please note that the wxDanxome GUI client is no longer maintained nor supported. If someone would like to step up to maintain this, they should contact Luke-Jr.
 
 Please report bugs for the daemon only using the issue tracker at github:
-https://github.com/dahomey/dahomey/issues
+https://github.com/danxome/danxome/issues
 
 Stable source code is hosted at Gitorious:
-http://gitorious.org/dahomey/dahomeyd-stable/archive-tarball/v0.4.3#.tar.gz
+http://gitorious.org/danxome/danxomed-stable/archive-tarball/v0.4.3#.tar.gz
 
 BUG FIXES
 
 Cease locking memory used by non-sensitive information (this caused a huge performance hit on some platforms, especially noticable during initial blockchain download).
 Fixed some address-handling deadlocks (client freezes).
-No longer accept inbound connections over the internet when Dahomey is being used with Tor (identity leak).
-Use the correct base transaction fee of 0.0005 DEY for accepting transactions into mined blocks (since 0.4.0, it was incorrectly accepting 0.0001 DEY which was only meant to be relayed).
+No longer accept inbound connections over the internet when Danxome is being used with Tor (identity leak).
+Use the correct base transaction fee of 0.0005 DAN for accepting transactions into mined blocks (since 0.4.0, it was incorrectly accepting 0.0001 DAN which was only meant to be relayed).
 Add new DNS seeds (maintained by Pieter Wuille and Luke Dashjr).
 

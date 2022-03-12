@@ -145,14 +145,14 @@ chain for " target " development."))
     xglibc "libc_cv_ssp" "no")
    "libc_cv_ssp_strong" "no"))
 
-(define* (make-dahomey-cross-toolchain target
+(define* (make-danxome-cross-toolchain target
                                        #:key
                                        (base-gcc-for-libc gcc-7)
                                        (base-kernel-headers linux-libre-headers-4.9)
                                        (base-libc (make-glibc-without-ssp glibc-2.24))
                                        (base-gcc (make-gcc-rpath-link base-gcc)))
   "Convenience wrapper around MAKE-CROSS-TOOLCHAIN with default values
-desirable for building Dahomey Core release binaries."
+desirable for building Danxome Core release binaries."
   (make-cross-toolchain target
                         base-gcc-for-libc
                         base-kernel-headers
@@ -536,7 +536,7 @@ inspecting signatures in Mach-O binaries.")
                                            "glibc-2.24-elfm-loadaddr-dynamic-rewrite.patch"
                                            "glibc-2.24-no-build-time-cxx-header-run.patch"))))))
 
-(define-public glibc-2.27/dahomey-patched
+(define-public glibc-2.27/danxome-patched
   (package
     (inherit glibc-2.31)
     (version "2.27")
@@ -602,11 +602,11 @@ inspecting signatures in Mach-O binaries.")
                  osslsigncode))
           ((string-contains target "-linux-")
            (list (cond ((string-contains target "riscv64-")
-                        (make-dahomey-cross-toolchain target
-                                                      #:base-libc glibc-2.27/dahomey-patched
+                        (make-danxome-cross-toolchain target
+                                                      #:base-libc glibc-2.27/danxome-patched
                                                       #:base-kernel-headers linux-libre-headers-4.19))
                        (else
-                        (make-dahomey-cross-toolchain target)))))
+                        (make-danxome-cross-toolchain target)))))
           ((string-contains target "darwin")
            (list clang-toolchain-10 binutils cmake xorriso python-signapple))
           (else '())))))

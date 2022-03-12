@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2021 The Dahomey Core developers
+// Copyright (c) 2009-2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -74,7 +74,7 @@
 // Application startup time (used for uptime calculation)
 const int64_t nStartupTime = GetTime();
 
-const char * const BITCOIN_CONF_FILENAME = "dahomey.conf";
+const char * const BITCOIN_CONF_FILENAME = "danxome.conf";
 const char * const BITCOIN_SETTINGS_FILENAME = "settings.json";
 
 ArgsManager gArgs;
@@ -316,7 +316,7 @@ bool ArgsManager::ParseParameters(int argc, const char* const argv[], std::strin
         if (key.substr(0, 5) == "-psn_") continue;
 #endif
 
-        if (key == "-") break; //dahomey-tx using stdin
+        if (key == "-") break; //danxome-tx using stdin
         std::string val;
         size_t is_index = key.find('=');
         if (is_index != std::string::npos) {
@@ -763,7 +763,7 @@ static std::string FormatException(const std::exception* pex, const char* pszThr
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(nullptr, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "dahomey";
+    const char* pszModule = "danxome";
 #endif
     if (pex)
         return strprintf(
@@ -782,12 +782,12 @@ void PrintExceptionContinue(const std::exception* pex, const char* pszThread)
 
 fs::path GetDefaultDataDir()
 {
-    // Windows: C:\Users\Username\AppData\Roaming\Dahomey
-    // macOS: ~/Library/Application Support/Dahomey
-    // Unix-like: ~/.dahomey
+    // Windows: C:\Users\Username\AppData\Roaming\Danxome
+    // macOS: ~/Library/Application Support/Danxome
+    // Unix-like: ~/.danxome
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Dahomey";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "Danxome";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -797,10 +797,10 @@ fs::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // macOS
-    return pathRet / "Library/Application Support/Dahomey";
+    return pathRet / "Library/Application Support/Danxome";
 #else
     // Unix-like
-    return pathRet / ".dahomey";
+    return pathRet / ".danxome";
 #endif
 #endif
 }
@@ -1347,9 +1347,9 @@ std::string CopyrightHolders(const std::string& strPrefix)
     const auto copyright_devs = strprintf(_(COPYRIGHT_HOLDERS).translated, COPYRIGHT_HOLDERS_SUBSTITUTION);
     std::string strCopyrightHolders = strPrefix + copyright_devs;
 
-    // Make sure Dahomey Core copyright is not removed by accident
-    if (copyright_devs.find("Dahomey Core") == std::string::npos) {
-        strCopyrightHolders += "\n" + strPrefix + "The Dahomey Core developers";
+    // Make sure Danxome Core copyright is not removed by accident
+    if (copyright_devs.find("Danxome Core") == std::string::npos) {
+        strCopyrightHolders += "\n" + strPrefix + "The Danxome Core developers";
     }
     return strCopyrightHolders;
 }

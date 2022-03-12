@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2021 The Dahomey Core developers
+// Copyright (c) 2011-2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //
@@ -46,13 +46,13 @@ BOOST_AUTO_TEST_CASE(fsbridge_fstream)
     fs::path tmpfile2 = tmpfolder / "fs_tests_₿_🏃";
     {
         fsbridge::ofstream file(tmpfile1);
-        file << "dahomey";
+        file << "danxome";
     }
     {
         fsbridge::ifstream file(tmpfile2);
         std::string input_buffer;
         file >> input_buffer;
-        BOOST_CHECK_EQUAL(input_buffer, "dahomey");
+        BOOST_CHECK_EQUAL(input_buffer, "danxome");
     }
     {
         fsbridge::ifstream file(tmpfile1, std::ios_base::in | std::ios_base::ate);
@@ -68,17 +68,17 @@ BOOST_AUTO_TEST_CASE(fsbridge_fstream)
         fsbridge::ifstream file(tmpfile1);
         std::string input_buffer;
         file >> input_buffer;
-        BOOST_CHECK_EQUAL(input_buffer, "dahomeytests");
+        BOOST_CHECK_EQUAL(input_buffer, "danxometests");
     }
     {
         fsbridge::ofstream file(tmpfile2, std::ios_base::out | std::ios_base::trunc);
-        file << "dahomey";
+        file << "danxome";
     }
     {
         fsbridge::ifstream file(tmpfile1);
         std::string input_buffer;
         file >> input_buffer;
-        BOOST_CHECK_EQUAL(input_buffer, "dahomey");
+        BOOST_CHECK_EQUAL(input_buffer, "danxome");
     }
     {
         // Join an absolute path and a relative path.

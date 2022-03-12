@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2016 The Dahomey Core developers
+# Copyright (c) 2013-2016 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -7,11 +7,11 @@ noinst_PROGRAMS += test/fuzz/fuzz
 endif
 
 if !ENABLE_FUZZ
-bin_PROGRAMS += test/test_dahomey
+bin_PROGRAMS += test/test_danxome
 endif
 
 TEST_SRCDIR = test
-TEST_BINARY=test/test_dahomey$(EXEEXT)
+TEST_BINARY=test/test_danxome$(EXEEXT)
 FUZZ_BINARY=test/fuzz/fuzz$(EXEEXT)
 
 JSON_TEST_FILES = \
@@ -63,7 +63,7 @@ if USE_NATPMP
 FUZZ_SUITE_LD_COMMON += $(NATPMP_LIBS)
 endif
 
-# test_dahomey binary #
+# test_danxome binary #
 BITCOIN_TESTS =\
   test/addrman_tests.cpp \
   test/allocator_tests.cpp \
@@ -190,22 +190,22 @@ BITCOIN_TEST_SUITE += \
   wallet/test/init_test_fixture.h
 endif # ENABLE_WALLET
 
-test_test_dahomey_SOURCES = $(BITCOIN_TEST_SUITE) $(BITCOIN_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
-test_test_dahomey_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(TESTDEFS) $(EVENT_CFLAGS)
-test_test_dahomey_LDADD = $(LIBTEST_UTIL)
+test_test_danxome_SOURCES = $(BITCOIN_TEST_SUITE) $(BITCOIN_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
+test_test_danxome_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(TESTDEFS) $(EVENT_CFLAGS)
+test_test_danxome_LDADD = $(LIBTEST_UTIL)
 if ENABLE_WALLET
-test_test_dahomey_LDADD += $(LIBBITCOIN_WALLET)
+test_test_danxome_LDADD += $(LIBBITCOIN_WALLET)
 endif
 
-test_test_dahomey_LDADD += $(LIBBITCOIN_NODE) $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) \
+test_test_danxome_LDADD += $(LIBBITCOIN_NODE) $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) \
   $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) $(BOOST_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB) $(LIBSECP256K1) $(EVENT_LIBS) $(EVENT_PTHREADS_LIBS) $(MINISKETCH_LIBS)
-test_test_dahomey_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+test_test_danxome_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
-test_test_dahomey_LDADD += $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(SQLITE_LIBS)
-test_test_dahomey_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS) -static
+test_test_danxome_LDADD += $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(SQLITE_LIBS)
+test_test_danxome_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS) -static
 
 if ENABLE_ZMQ
-test_test_dahomey_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+test_test_danxome_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 FUZZ_SUITE_LD_COMMON += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
 
@@ -292,7 +292,7 @@ test_fuzz_fuzz_SOURCES = \
  test/fuzz/rpc.cpp \
  test/fuzz/script.cpp \
  test/fuzz/script_assets_test_minimizer.cpp \
- test/fuzz/script_dahomey_consensus.cpp \
+ test/fuzz/script_danxome_consensus.cpp \
  test/fuzz/script_descriptor_cache.cpp \
  test/fuzz/script_flags.cpp \
  test/fuzz/script_interpreter.cpp \
@@ -322,7 +322,7 @@ test_fuzz_fuzz_SOURCES = \
  test/fuzz/versionbits.cpp
 endif # ENABLE_FUZZ_BINARY
 
-nodist_test_test_dahomey_SOURCES = $(GENERATED_TEST_FILES)
+nodist_test_test_danxome_SOURCES = $(GENERATED_TEST_FILES)
 
 $(BITCOIN_TESTS): $(GENERATED_TEST_FILES)
 
@@ -331,20 +331,20 @@ CLEAN_BITCOIN_TEST = test/*.gcda test/*.gcno test/fuzz/*.gcda test/fuzz/*.gcno t
 CLEANFILES += $(CLEAN_BITCOIN_TEST)
 
 if TARGET_WINDOWS
-dahomey_test: $(TEST_BINARY)
+danxome_test: $(TEST_BINARY)
 else
 if ENABLE_BENCH
-dahomey_test: $(TEST_BINARY) $(BENCH_BINARY)
+danxome_test: $(TEST_BINARY) $(BENCH_BINARY)
 else
-dahomey_test: $(TEST_BINARY)
+danxome_test: $(TEST_BINARY)
 endif
 endif
 
-dahomey_test_check: $(TEST_BINARY) FORCE
+danxome_test_check: $(TEST_BINARY) FORCE
 	$(MAKE) check-TESTS TESTS=$^
 
-dahomey_test_clean : FORCE
-	rm -f $(CLEAN_BITCOIN_TEST) $(test_test_dahomey_OBJECTS) $(TEST_BINARY)
+danxome_test_clean : FORCE
+	rm -f $(CLEAN_BITCOIN_TEST) $(test_test_danxome_OBJECTS) $(TEST_BINARY)
 
 check-local: $(BITCOIN_TESTS:.cpp=.cpp.test)
 if BUILD_BITCOIN_TX
@@ -356,7 +356,7 @@ endif
 if TARGET_WINDOWS
 else
 if ENABLE_BENCH
-	@echo "Running bench/bench_dahomey ..."
+	@echo "Running bench/bench_danxome ..."
 	$(BENCH_BINARY) > /dev/null
 endif
 endif

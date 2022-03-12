@@ -1,4 +1,4 @@
-*After branching off for a major version release of Dahomey Core, use this
+*After branching off for a major version release of Danxome Core, use this
 template to create the initial release notes draft.*
 
 *The release notes draft is a temporary file that can be added to by anyone. See
@@ -8,47 +8,47 @@ for the process.*
 *Create the draft, named* "*version* Release Notes Draft"
 *(e.g. "22.0 Release Notes Draft"), as a collaborative wiki in:*
 
-https://github.com/dahomey-core/dahomey-devwiki/wiki/
+https://github.com/danxome-core/danxome-devwiki/wiki/
 
 *Before the final release, move the notes back to this git repository.*
 
 *version* Release Notes Draft
 ===============================
 
-Dahomey Core version *version* is now available from:
+Danxome Core version *version* is now available from:
 
-  <https://dahomeycore.org/bin/dahomey-core-*version*/>
+  <https://danxomecore.org/bin/danxome-core-*version*/>
 
 This release includes new features, various bug fixes and performance
 improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/dahomey/dahomey/issues>
+  <https://github.com/danxome/danxome/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://dahomeycore.org/en/list/announcements/join/>
+  <https://danxomecore.org/en/list/announcements/join/>
 
 How to Upgrade
 ==============
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes in some cases), then run the
-installer (on Windows) or just copy over `/Applications/Dahomey-Qt` (on Mac)
-or `dahomeyd`/`dahomey-qt` (on Linux).
+installer (on Windows) or just copy over `/Applications/Danxome-Qt` (on Mac)
+or `danxomed`/`danxome-qt` (on Linux).
 
-Upgrading directly from a version of Dahomey Core that has reached its EOL is
+Upgrading directly from a version of Danxome Core that has reached its EOL is
 possible, but it might take some time if the data directory needs to be migrated. Old
-wallet versions of Dahomey Core are generally supported.
+wallet versions of Danxome Core are generally supported.
 
 Compatibility
 ==============
 
-Dahomey Core is supported and extensively tested on operating systems
-using the Linux kernel, macOS 10.15+, and Windows 7 and newer.  Dahomey
+Danxome Core is supported and extensively tested on operating systems
+using the Linux kernel, macOS 10.15+, and Windows 7 and newer.  Danxome
 Core should also work on most other Unix-like systems but is not as
-frequently tested on them.  It is not recommended to use Dahomey Core on
+frequently tested on them.  It is not recommended to use Danxome Core on
 unsupported systems.
 
 Notable changes
@@ -57,7 +57,7 @@ Notable changes
 P2P and network changes
 -----------------------
 
-- A dahomeyd node will no longer rumour addresses to inbound peers by default.
+- A danxomed node will no longer rumour addresses to inbound peers by default.
   They will become eligible for address gossip after sending an ADDR, ADDRV2,
   or GETADDR message. (#21528)
 
@@ -106,7 +106,7 @@ Updated RPCs
   `-deprecated=fees` if needed in this version). The same fee fields can be accessed
   through the `fees` object in the result. WARNING: deprecated
   fields `ancestorfees` and `descendantfees` are denominated in sats, whereas all
-  fields in the `fees` object are denominated in DEY. (#22689)
+  fields in the `fees` object are denominated in DAN. (#22689)
 
 - Both `createmultisig` and `addmultisigaddress` now include a `warnings`
   field, which will show a warning if a non-legacy address type is requested
@@ -122,7 +122,7 @@ Files
 -----
 
 * On startup, the list of banned hosts and networks (via `setban` RPC) in
-  `banlist.dat` is ignored and only `banlist.json` is considered. Dahomey Core
+  `banlist.dat` is ignored and only `banlist.json` is considered. Danxome Core
   version 22.x is the only version that can read `banlist.dat` and also write
   it to `banlist.json`. If `banlist.json` already exists, version 22.x will not
   try to translate the `banlist.dat` into json. After an upgrade, `listbanned`
@@ -151,7 +151,7 @@ Tools and Utilities
 
 - CLI `-addrinfo` now returns a single field for the number of `onion` addresses
   known to the node instead of separate `torv2` and `torv3` fields, as support
-  for Tor V2 addresses was removed from Dahomey Core in 22.0. (#22544)
+  for Tor V2 addresses was removed from Danxome Core in 22.0. (#22544)
 
 Wallet
 ------
@@ -214,4 +214,4 @@ Thanks to everyone who directly contributed to this release:
 
 
 As well as to everyone that helped with translations on
-[Transifex](https://www.transifex.com/dahomey/dahomey/).
+[Transifex](https://www.transifex.com/danxome/danxome/).

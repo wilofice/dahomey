@@ -1,4 +1,4 @@
-// Copyright (c) 2012-2021 The Dahomey Core developers
+// Copyright (c) 2012-2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -203,7 +203,7 @@ BOOST_AUTO_TEST_CASE(key_key_negation)
 {
     // create a dummy hash for signature comparison
     unsigned char rnd[8];
-    std::string str = "Dahomey key verification\n";
+    std::string str = "Danxome key verification\n";
     GetRandBytes(rnd, sizeof(rnd));
     uint256 hash;
     CHash256().Write(MakeUCharSpan(str)).Write(rnd).Finalize(hash);

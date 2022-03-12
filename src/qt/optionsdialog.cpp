@@ -1,15 +1,15 @@
-// Copyright (c) 2011-2021 The Dahomey Core developers
+// Copyright (c) 2011-2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/dahomey-config.h>
+#include <config/danxome-config.h>
 #endif
 
 #include <qt/optionsdialog.h>
 #include <qt/forms/ui_optionsdialog.h>
 
-#include <qt/dahomeyunits.h>
+#include <qt/danxomeunits.h>
 #include <qt/guiconstants.h>
 #include <qt/guiutil.h>
 #include <qt/optionsmodel.h>
@@ -82,8 +82,8 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     /* remove Window tab on Mac */
     ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->tabWindow));
     /* hide launch at startup option on macOS */
-    ui->dahomeyAtStartup->setVisible(false);
-    ui->verticalLayout_Main->removeWidget(ui->dahomeyAtStartup);
+    ui->danxomeAtStartup->setVisible(false);
+    ui->verticalLayout_Main->removeWidget(ui->danxomeAtStartup);
     ui->verticalLayout_Main->removeItem(ui->horizontalSpacer_0_Main);
 #endif
 
@@ -102,10 +102,10 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     /* Display elements init */
     QDir translations(":translations");
 
-    ui->dahomeyAtStartup->setToolTip(ui->dahomeyAtStartup->toolTip().arg(PACKAGE_NAME));
-    ui->dahomeyAtStartup->setText(ui->dahomeyAtStartup->text().arg(PACKAGE_NAME));
+    ui->danxomeAtStartup->setToolTip(ui->danxomeAtStartup->toolTip().arg(PACKAGE_NAME));
+    ui->danxomeAtStartup->setText(ui->danxomeAtStartup->text().arg(PACKAGE_NAME));
 
-    ui->openDahomeyConfButton->setToolTip(ui->openDahomeyConfButton->toolTip().arg(PACKAGE_NAME));
+    ui->openDanxomeConfButton->setToolTip(ui->openDanxomeConfButton->toolTip().arg(PACKAGE_NAME));
 
     ui->lang->setToolTip(ui->lang->toolTip().arg(PACKAGE_NAME));
     ui->lang->addItem(QString("(") + tr("default") + QString(")"), QVariant(""));
@@ -125,7 +125,7 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
             ui->lang->addItem(locale.nativeLanguageName() + QString(" (") + langStr + QString(")"), QVariant(langStr));
         }
     }
-    ui->unit->setModel(new DahomeyUnits(this));
+    ui->unit->setModel(new DanxomeUnits(this));
 
     /* Widget-to-option mapper */
     mapper = new QDataWidgetMapper(this);
@@ -233,7 +233,7 @@ void OptionsDialog::setCurrentTab(OptionsDialog::Tab tab)
 void OptionsDialog::setMapper()
 {
     /* Main */
-    mapper->addMapping(ui->dahomeyAtStartup, OptionsModel::StartAtStartup);
+    mapper->addMapping(ui->danxomeAtStartup, OptionsModel::StartAtStartup);
     mapper->addMapping(ui->threadsScriptVerif, OptionsModel::ThreadsScriptVerif);
     mapper->addMapping(ui->databaseCache, OptionsModel::DatabaseCache);
     mapper->addMapping(ui->prune, OptionsModel::Prune);
@@ -244,7 +244,7 @@ void OptionsDialog::setMapper()
     mapper->addMapping(ui->coinControlFeatures, OptionsModel::CoinControlFeatures);
     mapper->addMapping(ui->subFeeFromAmount, OptionsModel::SubFeeFromAmount);
     mapper->addMapping(ui->externalSignerPath, OptionsModel::ExternalSignerPath);
-    mapper->addMapping(ui->m_enable_psbt_controls, OptionsModel::EnablePSDEYontrols);
+    mapper->addMapping(ui->m_enable_psbt_controls, OptionsModel::EnablePSDANontrols);
 
     /* Network */
     mapper->addMapping(ui->mapPortUpnp, OptionsModel::MapPortUPnP);
@@ -300,7 +300,7 @@ void OptionsDialog::on_resetButton_clicked()
     }
 }
 
-void OptionsDialog::on_openDahomeyConfButton_clicked()
+void OptionsDialog::on_openDanxomeConfButton_clicked()
 {
     QMessageBox config_msgbox(this);
     config_msgbox.setIcon(QMessageBox::Information);
@@ -320,7 +320,7 @@ void OptionsDialog::on_openDahomeyConfButton_clicked()
     if (config_msgbox.clickedButton() != open_button) return;
 
     /* show an error if there was some problem opening the file */
-    if (!GUIUtil::openDahomeyConf())
+    if (!GUIUtil::openDanxomeConf())
         QMessageBox::critical(this, tr("Error"), tr("The configuration file could not be opened."));
 }
 

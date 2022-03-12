@@ -1,6 +1,6 @@
 ### TestGen ###
 
-Utilities to generate test vectors for the data-driven Dahomey tests.
+Utilities to generate test vectors for the data-driven Danxome tests.
 
 Usage:
 

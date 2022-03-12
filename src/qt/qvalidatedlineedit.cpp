@@ -1,10 +1,10 @@
-// Copyright (c) 2011-2018 The Dahomey Core developers
+// Copyright (c) 2011-2018 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <qt/qvalidatedlineedit.h>
 
-#include <qt/dahomeyaddressvalidator.h>
+#include <qt/danxomeaddressvalidator.h>
 #include <qt/guiconstants.h>
 
 QValidatedLineEdit::QValidatedLineEdit(QWidget *parent) :

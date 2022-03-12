@@ -1,5 +1,5 @@
 {
-  "name": "dahomey-core",
+  "name": "danxome-core",
   "version-string": "1",
   "dependencies": [
     "berkeleydb",

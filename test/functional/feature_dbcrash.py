@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-2021 The Dahomey Core developers
+# Copyright (c) 2017-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test recovery from a crash during chainstate writing.
@@ -37,14 +37,14 @@ from test_framework.messages import (
     CTxIn,
     CTxOut,
 )
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import (
     assert_equal,
     create_confirmed_utxos,
 )
 
 
-class ChainstateWriteCrashTest(DahomeyTestFramework):
+class ChainstateWriteCrashTest(DanxomeTestFramework):
     def set_test_params(self):
         self.num_nodes = 4
         self.rpc_timeout = 480
@@ -91,14 +91,14 @@ class ChainstateWriteCrashTest(DahomeyTestFramework):
                 return utxo_hash
             except:
                 # An exception here should mean the node is about to crash.
-                # If dahomeyd exits, then try again.  wait_for_node_exit()
-                # should raise an exception if dahomeyd doesn't exit.
+                # If danxomed exits, then try again.  wait_for_node_exit()
+                # should raise an exception if danxomed doesn't exit.
                 self.wait_for_node_exit(node_index, timeout=10)
             self.crashed_on_restart += 1
             time.sleep(1)
 
-        # If we got here, dahomeyd isn't coming back up on restart.  Could be a
-        # bug in dahomeyd, or we've gotten unlucky with our dbcrash ratio --
+        # If we got here, danxomed isn't coming back up on restart.  Could be a
+        # bug in danxomed, or we've gotten unlucky with our dbcrash ratio --
         # perhaps we generated a test case that blew up our cache?
         # TODO: If this happens a lot, we should try to restart without -dbcrashratio
         # and make sure that recovery happens.

@@ -1,9 +1,9 @@
 WINDOWS BUILD NOTES
 ====================
 
-Below are some notes on how to build Dahomey Core for Windows.
+Below are some notes on how to build Danxome Core for Windows.
 
-The options known to work for building Dahomey Core on Windows are:
+The options known to work for building Danxome Core on Windows are:
 
 * On Linux, using the [Mingw-w64](https://www.mingw-w64.org/) cross compiler tool chain.
 * On Windows, using [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/windows/wsl/about) and Mingw-w64.
@@ -42,8 +42,8 @@ If you want to build the windows installer with `make deploy` you need [NSIS](ht
 
 Acquire the source in the usual way:
 
-    git clone https://github.com/dahomey/dahomey.git
-    cd dahomey
+    git clone https://github.com/danxome/danxome.git
+    cd danxome
 
 ## Building for 64-bit Windows
 
@@ -53,8 +53,8 @@ The first step is to install the mingw-w64 cross-compilation tool chain:
 
 Once the toolchain is installed the build steps are common:
 
-Note that for WSL the Dahomey Core source path MUST be somewhere in the default mount file system, for
-example /usr/src/dahomey, AND not under /mnt/d/. If this is not the case the dependency autoconf scripts will fail.
+Note that for WSL the Danxome Core source path MUST be somewhere in the default mount file system, for
+example /usr/src/danxome, AND not under /mnt/d/. If this is not the case the dependency autoconf scripts will fail.
 This means you cannot use a directory that is located directly on the host Windows file system to perform the build.
 
 Additional WSL Note: WSL support for [launching Win32 applications](https://docs.microsoft.com/en-us/archive/blogs/wsl/windows-and-ubuntu-interoperability#launching-win32-applications-from-within-wsl)
@@ -84,9 +84,9 @@ Installation
 After building using the Windows subsystem it can be useful to copy the compiled
 executables to a directory on the Windows drive in the same directory structure
 as they appear in the release `.zip` archive. This can be done in the following
-way. This will install to `c:\workspace\dahomey`, for example:
+way. This will install to `c:\workspace\danxome`, for example:
 
-    make install DESTDIR=/mnt/c/workspace/dahomey
+    make install DESTDIR=/mnt/c/workspace/danxome
 
 You can also create an installer using:
 

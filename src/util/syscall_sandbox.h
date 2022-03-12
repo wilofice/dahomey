@@ -1,4 +1,4 @@
-// Copyright (c) 2020-2021 The Dahomey Core developers
+// Copyright (c) 2020-2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -36,9 +36,9 @@ enum class SyscallSandboxPolicy {
 //!
 //! This function is a no-op unless SetupSyscallSandbox(...) has been called.
 //!
-//! SetupSyscallSandbox(...) is called during dahomeyd initialization if Dahomey Core was compiled
+//! SetupSyscallSandbox(...) is called during danxomed initialization if Danxome Core was compiled
 //! with seccomp-bpf support (--with-seccomp) *and* the parameter -sandbox=<mode> was passed to
-//! dahomeyd.
+//! danxomed.
 //!
 //! This experimental feature is available under Linux x86_64 only.
 void SetSyscallSandboxPolicy(SyscallSandboxPolicy syscall_policy);

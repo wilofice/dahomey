@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-# Copyright (c) 2020-2021 The Dahomey Core developers
+# Copyright (c) 2020-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test orphaned block rewards in the wallet."""
 
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import assert_equal
 
-class OrphanedBlockRewardTest(DahomeyTestFramework):
+class OrphanedBlockRewardTest(DanxomeTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 2
@@ -46,7 +46,7 @@ class OrphanedBlockRewardTest(DahomeyTestFramework):
         })
         # The following abandontransaction is necessary to make the later
         # lines succeed, and probably should not be needed; see
-        # https://github.com/dahomey/dahomey/issues/14148.
+        # https://github.com/danxome/danxome/issues/14148.
         self.nodes[1].abandontransaction(txid)
         assert_equal(self.nodes[1].getbalances()["mine"], {
           "trusted": 10,

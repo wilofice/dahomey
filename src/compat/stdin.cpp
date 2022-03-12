@@ -1,9 +1,9 @@
-// Copyright (c) 2018-2019 The Dahomey Core developers
+// Copyright (c) 2018-2019 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/dahomey-config.h>
+#include <config/danxome-config.h>
 #endif
 
 #include <cstdio>       // for fileno(), stdin

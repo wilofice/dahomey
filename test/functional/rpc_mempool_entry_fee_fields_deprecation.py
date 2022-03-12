@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-# Copyright (c) 2021 The Dahomey Core developers
+# Copyright (c) 2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test deprecation of fee fields from top level mempool entry object"""
 
 from test_framework.blocktools import COIN
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import assert_equal
 from test_framework.wallet import MiniWallet
 
@@ -16,14 +16,14 @@ def assertions_helper(new_object, deprecated_object, deprecated_fields):
         assert field not in new_object
 
 
-class MempoolFeeFieldsDeprecationTest(DahomeyTestFramework):
+class MempoolFeeFieldsDeprecationTest(DanxomeTestFramework):
     def set_test_params(self):
         self.num_nodes = 2
         self.extra_args = [[], ["-deprecatedrpc=fees"]]
 
     def run_test(self):
         # we get spendable outputs from the premined chain starting
-        # at block 76. see DahomeyTestFramework._initialize_chain() for details
+        # at block 76. see DanxomeTestFramework._initialize_chain() for details
         self.wallet = MiniWallet(self.nodes[0])
         self.wallet.rescan_utxos()
 

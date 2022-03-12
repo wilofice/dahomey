@@ -1,9 +1,9 @@
-// Copyright (c) 2021 The Dahomey Core developers
+// Copyright (c) 2021 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 //! @file
-//! @brief Common init functions shared by dahomey-node, dahomey-wallet, etc.
+//! @brief Common init functions shared by danxome-node, danxome-wallet, etc.
 
 #ifndef BITCOIN_INIT_COMMON_H
 #define BITCOIN_INIT_COMMON_H

@@ -1,5 +1,5 @@
 // Copyright (c) 2014 BitPay Inc.
-// Copyright (c) 2014-2016 The Dahomey Core developers
+// Copyright (c) 2014-2016 The Danxome Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://opensource.org/licenses/mit-license.php.
 

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-# Copyright (c) 2014-2021 The Dahomey Core developers
+# Copyright (c) 2014-2021 The Danxome Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the wallet accounts properly when there are cloned transactions with malleated scriptsigs."""
 
-from test_framework.test_framework import DahomeyTestFramework
+from test_framework.test_framework import DanxomeTestFramework
 from test_framework.util import (
     assert_equal,
     find_vout_for_address
@@ -15,7 +15,7 @@ from test_framework.messages import (
 )
 
 
-class TxnMallTest(DahomeyTestFramework):
+class TxnMallTest(DanxomeTestFramework):
     def set_test_params(self):
         self.num_nodes = 3
         self.supports_cli = False
@@ -47,7 +47,7 @@ class TxnMallTest(DahomeyTestFramework):
         else:
             output_type = "legacy"
 
-        # All nodes should start with 1,250 DEY:
+        # All nodes should start with 1,250 DAN:
         starting_balance = 1250
         for i in range(3):
             assert_equal(self.nodes[i].getbalance(), starting_balance)
@@ -98,7 +98,7 @@ class TxnMallTest(DahomeyTestFramework):
         tx1 = self.nodes[0].gettransaction(txid1)
         tx2 = self.nodes[0].gettransaction(txid2)
 
-        # Node0's balance should be starting balance, plus 50DEY for another
+        # Node0's balance should be starting balance, plus 50DAN for another
         # matured block, minus tx1 and tx2 amounts, and minus transaction fees:
         expected = starting_balance + node0_tx1["fee"] + node0_tx2["fee"]
         if self.options.mine_block:
@@ -140,7 +140,7 @@ class TxnMallTest(DahomeyTestFramework):
         assert_equal(tx1_clone["confirmations"], 2)
         assert_equal(tx2["confirmations"], 1)
 
-        # Check node0's total balance; should be same as before the clone, + 100 DEY for 2 matured,
+        # Check node0's total balance; should be same as before the clone, + 100 DAN for 2 matured,
         # less possible orphaned matured subsidy
         expected += 100
         if (self.options.mine_block):
